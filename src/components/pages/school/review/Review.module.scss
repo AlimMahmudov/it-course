@@ -1,0 +1,74 @@
+#Review {
+  padding: 50px;
+  padding-top: 200px;
+  .review {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 50px;
+
+    .review_text {
+      h1 {
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 35px;
+        color: #ffffff;
+      }
+    }
+    .review_block {
+      display: flex;
+      overflow-x: auto;
+      padding: 50px;
+      gap: 20px;
+
+      .review_box {
+        width: 457px;
+        min-width: 457px;
+        height: 272px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        background: #102146;
+
+        img {
+          border-radius: 50%;
+          margin-top: -60px;
+        }
+        h1 {
+          font-family: Montserrat;
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 21.94px;
+          color: #ffffff;
+        }
+        h3 {
+          font-family: Montserrat;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 20px;
+          color: #ffffff;
+        }
+      }
+      .review_data {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+        h2 {
+          font-family: Montserrat;
+          font-size: 16px;
+          font-weight: 600;
+          line-height: 19.5px;
+          color: #ffffff;
+        }
+      }
+    }
+    .review_block::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}

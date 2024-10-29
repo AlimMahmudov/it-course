@@ -1,0 +1,65 @@
+#Subscribe {
+  padding: 50px;
+  padding-top: 100px;
+
+  .subscribe {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 70px;
+    border-radius: 10px;
+    .subscribe_text {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+      h2 {
+        width: 100%;
+        height: 34px;
+        font-family: Montserrat;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 34.13px;
+        color: #000000;
+      }
+      p {
+        width: 80%;
+        height: 56px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.5px;
+        color: #000000;
+      }
+    }
+    .subscribe_buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      button {
+        background: #034078;
+        color: #ffffff;
+        border-radius: 5px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.5px;
+        text-align: center;
+        padding: 10px 30px;
+        border: none;
+      }
+      a {
+        width: 184px;
+        height: 18px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 19.5px;
+        text-align: center;
+        color: #767676;
+      }
+    }
+  }
+}

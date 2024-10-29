@@ -1,0 +1,92 @@
+#Footer {
+  padding: 30px;
+  .footer {
+    display: flex;
+    justify-content: space-between;
+
+    h1 {
+      font-family: Montserrat;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24.38px;
+      color: #ffffff;
+    }
+
+    h2 {
+      font-family: Montserrat;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 18.29px;
+      color: #ffffff;
+    }
+    h3 {
+      font-family: Montserrat;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 18.29px;
+      color: #ffffff;
+    }
+
+    p {
+      width: 195px;
+      height: 36px;
+      font-family: Montserrat;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 18.29px;
+      color: #ffffff;
+    }
+    a {
+      font-family: Montserrat;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 18.29px;
+      color: #ffffff;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .logo_buttons {
+        display: flex;
+
+        button {
+          width: 36px;
+          height: 30px;
+          border: solid 2px #ffffff;
+          background: none;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .teg {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .icon {
+      display: flex;
+      flex-direction: column;
+      width: 150px;
+
+      .icons {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .adress {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}

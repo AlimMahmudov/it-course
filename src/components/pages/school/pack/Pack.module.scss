@@ -1,0 +1,104 @@
+#Pack {
+  padding: 50px;
+  padding-top: 200px;
+  .pack {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    .pack_text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      h1 {
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 35px;
+        color: #ffffff;
+      }
+      p {
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.5px;
+        text-align: center;
+        width: 80%;
+        color: #ffffff;
+      }
+    }
+    .pack_block {
+      display: flex;
+      justify-content: space-between;
+      .pack_box {
+        width: 346px;
+        height: 325px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 50px;
+        box-shadow: 0 0 10px #040b23, 0 0 10px #040b23, 0 0 20px #040b23;
+        .box1 {
+          display: flex;
+          flex-direction: column;
+
+          h2 {
+            font-family: Montserrat;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 19.5px;
+            color: #ffffff;
+          }
+          p {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 18.29px;
+            color: #ffffff;
+          }
+        }
+        .box2 {
+          display: flex;
+          flex-direction: column;
+
+          h1 {
+            font-family: Montserrat;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 58.51px;
+            color: #ffffff;
+          }
+          p {
+            font-family: Montserrat;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 18.29px;
+            color: #ffffff;
+          }
+        }
+        .pack_buttons {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          .btn1 {
+            padding: 10px 10px;
+            border-radius: 5px;
+            background: #043c71;
+            color: #ffffff;
+            border: none;
+          }
+          .btn2 {
+            // width: 130.91px;
+            // height: 37px;
+            padding: 10px 10px;
+            border-radius: 5px;
+            background: none;
+            border: solid 2px #043c71;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

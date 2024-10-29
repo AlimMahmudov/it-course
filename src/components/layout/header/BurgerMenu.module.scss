@@ -1,0 +1,44 @@
+.burger_menu {
+  position: absolute;
+  top: 89px;
+  right: -300px;
+  width: 270px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px 0 0 20px;
+
+  background: rgba(55, 92, 41, 0.699);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px #17b902, 0 0 20px #17b902;
+  border: solid #17b902 4px;
+
+  transition: 0.5s;
+  &.active {
+    right: 0px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .burger_menu {
+    width: 200px;
+    height: 160px;
+  }
+}
+.content {
+  .nav {
+    ul {
+      li {
+        a {
+          // background: red;
+          text-decoration: none;
+          font-size: 25px;
+          color: white;
+        }
+      }
+    }
+  }
+}

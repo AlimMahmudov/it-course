@@ -1,0 +1,47 @@
+#Left {
+  padding: 50px;
+  padding-top: 100px;
+  .left {
+    display: flex;
+    justify-content: space-between;
+    .left_img {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      h1 {
+        width: 270px;
+        height: 90px;
+        font-family: Montserrat;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 45px;
+        color: #ffffff;
+      }
+    }
+
+    .left_accardeon {
+      display: flex;
+      flex-direction: column;
+      .accardeon {
+        display: flex;
+        flex-direction: column;
+
+        .accordion_button {
+          border-bottom: solid 2px red;
+          padding: 20px;
+          background: none;
+          color: #ffffff;
+          //   border: none;
+          cursor: pointer;
+        }
+
+        .accordion_p {
+          p {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
