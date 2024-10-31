@@ -20,7 +20,12 @@ const Header = () => {
             <Link href="/us">О нас</Link>
           </div>
           <div className={scss.header_button}>
-            <button className={scss.btn}>Войти</button>
+            <button
+              onClick={() => router.push("/auth/signin")}
+              className={scss.btn}
+            >
+              Войти
+            </button>
             <button>Подписаться</button>
           </div>
         </div>

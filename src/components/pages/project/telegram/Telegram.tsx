@@ -13,9 +13,6 @@ interface IFormTelegram {
 const Telegram = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
 
-  const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
-  const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
-
   const messageModel = (data: IFormTelegram) => {
     let messageTG = `Name: <b>${data.name}</b>\n`;
     messageTG += `Email Addres:   <b>${data.email}</b>\n`;

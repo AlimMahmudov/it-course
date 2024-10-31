@@ -12,8 +12,15 @@ import { PiTiktokLogo } from "react-icons/pi";
 import { PiTelegramLogo } from "react-icons/pi";
 import { BsTelephone } from "react-icons/bs";
 import { TfiEmail } from "react-icons/tfi";
+import { useLanguageStore } from "@/stores/Language";
 
 const Footer = () => {
+  const { translate, setLanguage } = useLanguageStore();
+
+  const handleLanguage = (lang: "ky" | "ru") => {
+    setLanguage(lang);
+  };
+
   return (
     <footer id={scss.Footer}>
       <div className="container">
@@ -21,18 +28,18 @@ const Footer = () => {
           <div className={scss.logo}>
             <Image src={logo} alt="" />
             <div className={scss.logo_buttons}>
-              <button>KG</button>
-              <button>RU</button>
+              <button onClick={() => handleLanguage("ky")}>KG</button>
+              <button onClick={() => handleLanguage("ru")}>RU</button>
             </div>
           </div>
           <div className={scss.teg}>
             <h1>Быстрые ссылки</h1>
-            <Link href="">о школе</Link>
-            <Link href="">Наши курсы</Link>
-            <Link href="">О нас</Link>
+            <Link href="">о школе {translate("херо", "херору")}</Link>
+            <Link href="">Наши курсы {translate("херо", "херору")}</Link>
+            <Link href="">О нас {translate("херо", "херору")}</Link>
           </div>
           <div className={scss.icon}>
-            <h1>Социальные сети</h1>
+            <h1>Социальные сети </h1>
             <div className={scss.icons}>
               <h2>
                 <FaInstagram />

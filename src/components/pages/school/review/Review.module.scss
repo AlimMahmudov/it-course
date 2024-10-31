@@ -21,11 +21,11 @@
       overflow-x: auto;
       padding: 50px;
       gap: 20px;
+      width: 100%;
 
       .review_box {
-        width: 457px;
-        min-width: 457px;
         height: 272px;
+        min-width: 457px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;

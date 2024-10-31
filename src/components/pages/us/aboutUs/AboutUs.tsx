@@ -25,8 +25,8 @@ const AboutUs = () => {
             </p>
           </div>
           <div className={scss.aboutUs_img}>
-            <Image src={us1} alt="" />
-            <Image src={us2} alt="" />
+            <Image className={scss.asimimg} src={us1} alt="" />
+            <Image className={scss.asimimg} src={us2} alt="" />
           </div>
         </div>
       </div>

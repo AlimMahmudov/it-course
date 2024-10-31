@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.scss";
-import LayoutSlice from "@/components/layout/LayoutSlice";
+import LayoutClient from "./layout.client";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <LayoutSlice>{children}</LayoutSlice>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );
