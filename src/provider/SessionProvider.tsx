@@ -33,9 +33,9 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
     }
   }, [pathname, router, status]);
 
-  // useEffect(() => {
-  //   handleNavigation();
-  // }, [handleNavigation]);
+  useEffect(() => {
+    handleNavigation();
+  }, [handleNavigation]);
 
   return <>{children}</>;
 };

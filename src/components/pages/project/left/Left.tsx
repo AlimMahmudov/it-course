@@ -2,96 +2,94 @@
 import React, { useState } from "react";
 import scss from "./Left.module.scss";
 import Image from "next/image";
-import leftq from "@/assets/imgq.svg";
+import Question from "@/assets/imgq.svg";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
 
-interface Question {
-  id: number;
+interface AccordionItem {
   question: string;
   answer: string;
 }
 
-const questions: Question[] = [
-  {
-    id: 1,
-    question: "Что такое зарезервированные слова в программировании?",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 2,
-    question: "Могу ли я отказаться от автопродления подписки",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 3,
-    question: "Могу ли я вернуть деньги",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 4,
-    question: "Какие направление в IT самые актуальные",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 5,
-    question:
-      "Нужно ли учить другой язык программирования, перед изучением языка С++?",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 6,
-    question: "Платформа обнавляется?",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-  {
-    id: 7,
-    question: "Как я могу получить доступ ка всем курсом",
-    answer:
-      "Lorem ipsum dolor, sit amet consectetur adipisicing elit.Possimus assumenda, quasi maxime odio id amet. Rem eveniet accusantium, architecto placeat sapiente animi,consequatur ad enim porro, maiores odit vitae dicta?",
-  },
-];
+const Left: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-const Left = () => {
-  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
-
-  const toggleQuestion = (id: number) => {
-    setActiveQuestion((prevId) => (prevId === id ? null : id));
+  const toggleAccordion = (index: number) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
+  const accordionData: AccordionItem[] = [
+    {
+      question: "Что такое зарезервированные слова в программировании?",
+      answer:
+        "Зарезервированные или ключевые слова – это слова и выражения, которые имеют предопределенные значения и не могут использоваться при написании кода для иных целей, например, для именования переменных. Примеры распространенных ключевых слов в языках программирования – это конструкции if/then/else или различные варианты циклов. Вроде for и while.",
+    },
+    {
+      question: "Могу ли я отказаться от автопродления подписки?",
+      answer:
+        "Зарезервированные или ключевые слова – это слова и выражения, которые имеют предопределенные значения и не могут использоваться при написании кода для иных целей, например, для именования переменных. Примеры распространенных ключевых слов в языках программирования – это конструкции if/then/else или различные варианты циклов. Вроде for и while.",
+    },
+    {
+      question: "Могу ли я вернуть деньги?",
+      answer:
+        "Зарезервированные или ключевые слова – это слова и выражения, которые имеют предопределенные значения и не могут использоваться при написании кода для иных целей, например, для именования переменных. Примеры распространенных ключевых слов в языках программирования – это конструкции if/then/else или различные варианты циклов. Вроде for и while.",
+    },
+    {
+      question: "Какие направления в IT самые актуальные?",
+      answer: "Ответ на четвертый вопрос.",
+    },
+    {
+      question:
+        "Нужно ли учить другой язык программирования, перед изучением языка C++?",
+      answer: "Ответ на пятый вопрос.",
+    },
+    { question: "Платформа обновляется?", answer: "Ответ на шестой вопрос." },
+    {
+      question: "Как я могу получить доступ ко всем курсам?",
+      answer: "Ответ на седьмой вопрос.",
+    },
+  ];
+
   return (
-    <div id={scss.Left}>
+    <section className={scss.DoYouHave}>
       <div className="container">
-        <div className={scss.left}>
-          <div className={scss.left_img}>
-            <h1>Остались вопросы?</h1>
-            <Image src={leftq} alt="" />
+        <div className={scss.content}>
+          <div className={scss.left}>
+            <h1>
+              Остались <br />
+              вопросы?
+            </h1>
+            <Image src={Question} alt="img" width={170} height={170} />
           </div>
-          <div className={scss.left_accardeon}>
-            {questions.map((item) => (
-              <div key={item.id} className={scss.accardeon}>
+          <div className={scss.accordion}>
+            {accordionData.map((item, index) => (
+              <div key={index} className={scss.accordionItem}>
                 <button
-                  onClick={() => toggleQuestion(item.id)}
-                  className={scss.accordion_button}
+                  className={scss.accordionHeader}
+                  onClick={() => toggleAccordion(index)}
                 >
                   {item.question}
+                  <span className={scss.icon}>
+                    {activeIndex === index ? (
+                      <IoIosArrowUp />
+                    ) : (
+                      <IoIosArrowDown />
+                    )}
+                  </span>
                 </button>
-
-                {activeQuestion === item.id && (
-                  <div className={scss.accordion_p}>
-                    <p>{item.answer}</p>
-                  </div>
-                )}
+                <div
+                  className={`${scss.accordionContent} ${
+                    activeIndex === index ? scss.open : ""
+                  }`}
+                >
+                  <p>{item.answer}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

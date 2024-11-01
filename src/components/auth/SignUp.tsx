@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import scss from "./SignUp.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios, { AxiosError } from "axios";
