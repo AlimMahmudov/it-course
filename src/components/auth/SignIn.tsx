@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { AxiosError } from "axios";
 import { usePostUserSigninMutation } from "@/redux/api/auth";
+import logo from "@/assets/logo.svg";
+import Image from "next/image";
 
 interface SigninType {
   email: string;
@@ -29,19 +31,33 @@ const SignIn = () => {
     <div id={scss.SignIn}>
       <div className="container">
         <div className={scss.signin}>
-          <div className={scss.signin_inputs}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={scss.signin_logo}>
+            <Image src={logo} alt="" />
+          </div>
+          <form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
+            <div className={scss.for_inp}>
+              <p>Email</p>
               <input {...register("email", { required: true })} type="text" />
+            </div>
+            <div className={scss.for_inp}>
+              <p>пароль</p>
               <input
                 {...register("password", { required: true })}
                 type="text"
               />
-              <button type="submit">add</button>
-              <button onClick={() => route.push("/auth/signup")}>
+            </div>
+            <div className={scss.buttons}>
+              <button className={scss.sign_btn} type="submit">
+                add
+              </button>
+              <button
+                className={scss.sign_btn2}
+                onClick={() => route.push("/auth/signup")}
+              >
                 забыли пароль
               </button>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

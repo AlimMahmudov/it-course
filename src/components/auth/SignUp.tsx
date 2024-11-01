@@ -1,19 +1,30 @@
 "use client";
 import { useState } from "react";
-import styles from "./SignUp.module.scss";
-import Link from "next/link";
+import scss from "./SignUp.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios, { AxiosError } from "axios";
+import Image from "next/image";
+import logo from "@/assets/logo.svg";
+import { useRouter } from "next/navigation";
 
 interface IInputComponentProps {
+  username: string;
+  tel: string;
   email: string;
   password: string;
-  username: string;
   photo: string;
+  day: number;
+  month: string;
+  year: number;
+  country: string;
+  sity: string;
+  Occupat: string;
+  man: string;
+  woman: string;
 }
 
 const SignIn = () => {
-  const [accepted, setAccepted] = useState(false);
+  const route = useRouter();
   const { register, handleSubmit, reset } = useForm<IInputComponentProps>();
 
   const onSubmit: SubmitHandler<IInputComponentProps> = async (data) => {
@@ -24,7 +35,7 @@ const SignIn = () => {
       );
       console.log(responseData);
       reset();
-      alert("Пользователь успешно зарегистрирован");
+      alert("Пользователь успешно за регицтраван");
     } catch (e) {
       const error = e as AxiosError;
       console.log(error.response?.data);
@@ -32,78 +43,31 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <header id={styles.Header}>
-        <div className="container">
-          <div className={styles.Header}>
-            <Link href={"/auth/signin"}>Sign in</Link>
+    <div id={scss.SignUp}>
+      <div className="container">
+        <div className={scss.signup}>
+          <div className={scss.signup_logo}>
+            <Image src={logo} alt="" />
           </div>
+          <form onSubmit={handleSubmit(onSubmit)} className={scss.form}>
+            {/* <input type="text" {...register("username", { required: true })} />
+            <input type="text" {...register("tel", { required: true })} /> */}
+            <input type="text" {...register("email", { required: true })} />
+            <input type="text" {...register("password", { required: true })} />
+            {/* <input type="text" {...register("photo", { required: true })} />
+            <input type="text" {...register("day", { required: true })} />
+            <input type="text" {...register("month", { required: true })} />
+            <input type="text" {...register("year", { required: true })} />
+            <input type="text" {...register("country", { required: true })} />
+            <input type="text" {...register("sity", { required: true })} />
+            <input type="text" {...register("Occupat", { required: true })} />
+            <input type="text" {...register("man", { required: true })} />
+            <input type="text" {...register("woman", { required: true })} /> */}
+            <button type="submit">create</button>
+          </form>
         </div>
-        <hr />
-      </header>
-      <div className={styles.container}>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <h1>Registration</h1>
-
-          <small>This email will be used as your login</small>
-
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            {...register("email", { required: true })}
-            className={styles.input}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className={styles.input}
-            {...register("password", { required: true })}
-          />
-          <input
-            type="text"
-            placeholder="Username"
-            className={styles.input}
-            {...register("username", { required: true })}
-          />
-          <input
-            type="text"
-            placeholder="User Photo URL"
-            className={styles.input}
-            {...register("photo", { required: true })}
-          />
-          <small>Password will be sent to this email</small>
-
-          <div className={styles.checkboxContainer}>
-            <input
-              type="checkbox"
-              id="accept"
-              checked={accepted}
-              onChange={() => setAccepted(!accepted)}
-            />
-            <label htmlFor="accept">
-              I accept the{" "}
-              <a href="/terms" target="_blank">
-                terms of the user agreement
-              </a>{" "}
-              and{" "}
-              <a href="/privacy" target="_blank">
-                agree to Privacy Policy
-              </a>
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={!accepted}
-          >
-            Sign up
-          </button>
-        </form>
       </div>
-    </>
+    </div>
   );
 };
 
