@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './CourseInfo.module.scss'
+import Animate from '@/shared/ui/animate/Animate'
 interface IBeforePurchaseProps {
 	course: ICourse
 }
 const CourseInfo: React.FC<IBeforePurchaseProps> = ({ course }) => {
 	return (
 		<section className={styles.course_info}>
-			<div className={`${styles['container']} container`}>
+			<Animate className={`${styles['container']} container`}>
 				<div className={styles['left']}>
 					<h4>{course.title}</h4>
 					<p>{course.description2}</p>
@@ -23,7 +24,7 @@ const CourseInfo: React.FC<IBeforePurchaseProps> = ({ course }) => {
 						<span>{course.duration.materials} материалов</span>
 					</div>
 				</div>
-			</div>
+			</Animate>
 		</section>
 	)
 }

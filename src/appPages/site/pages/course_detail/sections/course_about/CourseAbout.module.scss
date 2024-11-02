@@ -1,9 +1,6 @@
 .course_about {
 	padding: 200px 0;
 	.container {
-		* {
-			color: #ffffff;
-		}
 		.first_span {
 			font-size: 16px;
 			font-weight: 400;
@@ -74,10 +71,6 @@
 					flex-direction: column;
 					gap: 4px;
 
-					* {
-						color: #fff;
-					}
-
 					span {
 						font-size: 20px;
 						font-weight: 600;
@@ -106,15 +99,11 @@
 			}
 			.by {
 				background: #044076;
-				width: 332px;
-				height: 70px;
 				padding: 25px 115px 25px 115px;
 				border-radius: 10px;
 			}
 			.inview {
 				border: 1px solid #044076;
-				width: 330px;
-				height: 70px;
 				padding: 25px 75px 25px 75px;
 				border-radius: 10px;
 				text-wrap: nowrap;

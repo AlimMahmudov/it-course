@@ -50,50 +50,49 @@ const Left: React.FC = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  return (
-    <section id={scss.Left}>
-      <div className="container">
-        <div className={scss.left}>
-          <div className={scss.left_img}>
-            <h1>Остались вопросы?</h1>
-            <Image src={Question} alt="img" />
-          </div>
-          <div className={scss.accordion}>
-            {accordionData.map((item, index) => (
-              <Animate
-                idx={index}
-                isView={true}
-                key={index}
-                className={scss.accordionItem}
-              >
-                <button
-                  className={scss.accordionHeader}
-                  onClick={() => toggleAccordion(index)}
-                >
-                  <span>{item.question}</span>
-                  <span className={scss.icon}>
-                    {activeIndex === index ? (
-                      <IoIosArrowUp />
-                    ) : (
-                      <IoIosArrowDown />
-                    )}
-                  </span>
-                </button>
-                {activeIndex === index && (
-                  <Animate
-                    key={activeIndex}
-                    className={`${scss.accordionContent}`}
-                  >
-                    <p>{item.answer}</p>
-                  </Animate>
-                )}
-              </Animate>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
+	return (
+		<section id={scss.Left}>
+			<div className='container'>
+				<div className={scss.left}>
+					<div className={scss.left_img}>
+						<h1>Остались вопросы?</h1>
+						<Image src={Question} alt='img' />
+					</div>
+					<div className={scss.accordion}>
+						{accordionData.map((item, index) => (
+							<Animate
+								idx={index}
+								key={index}
+								className={scss.accordionItem}
+							>
+								<button
+									className={scss.accordionHeader}
+									onClick={() => toggleAccordion(index)}
+								>
+									<span>{item.question}</span>
+									<span className={scss.icon}>
+										{activeIndex === index ? (
+											<IoIosArrowUp />
+										) : (
+											<IoIosArrowDown />
+										)}
+									</span>
+								</button>
+								{activeIndex === index && (
+									<Animate
+										key={activeIndex}
+										className={`${scss.accordionContent}`}
+									>
+										<p>{item.answer}</p>
+									</Animate>
+								)}
+							</Animate>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
 
 export default Left;

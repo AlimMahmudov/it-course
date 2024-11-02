@@ -1,0 +1,64 @@
+.course_program {
+	padding-bottom: 80px;
+	padding-top: 40px;
+	.container {
+		display: flex;
+		align-items: flex-start;
+		gap: 140px;
+		.right {
+			margin-top: 30px;
+		}
+		.left {
+			h4 {
+				font-family: Montserrat;
+				font-size: 36px;
+				font-weight: 700;
+				margin-bottom: 20px;
+			}
+			ul {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+				margin-bottom: 50px;
+				li {
+					border: 1px solid #044076;
+					width: 671px;
+					height: 69.62px;
+					border-radius: 10px;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					gap: 80px;
+					padding: 0 40px;
+					span:first-child {
+						font-size: 20px;
+						font-weight: 700;
+					}
+					span:last-child {
+						font-size: 16px;
+						font-weight: 500;
+					}
+				}
+			}
+			button {
+				background: #044076;
+				padding: 25px 75px 25px 75px;
+				border-radius: 10px;
+				transition: all 0.25s;
+				will-change: transform;
+				a {
+					width: 100%;
+					height: 100%;
+				}
+				&:hover {
+					transform: translateY(-3);
+				}
+
+				&:active {
+					transform: translateY(1);
+				}
+			}
+		}
+	}
+}

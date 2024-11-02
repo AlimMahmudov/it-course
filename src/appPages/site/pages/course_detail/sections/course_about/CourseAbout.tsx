@@ -1,3 +1,4 @@
+import Animate from '@/shared/ui/animate/Animate'
 import React from 'react'
 import styles from './CourseAbout.module.scss'
 interface ICourseAboutProps {
@@ -7,7 +8,7 @@ interface ICourseAboutProps {
 const CourseAbout: React.FC<ICourseAboutProps> = ({ course }) => {
 	return (
 		<section className={styles.course_about}>
-			<div className={`${styles['container']} container`}>
+			<Animate className={`${styles['container']} container`}>
 				<span className={styles.first_span}>Что, как и почему</span>
 				<h3>О курсу</h3>
 				<div className={`${styles['row']} ${styles.block}`}>
@@ -46,14 +47,12 @@ const CourseAbout: React.FC<ICourseAboutProps> = ({ course }) => {
 						<p key={key}>{result}</p>
 					))}
 				</div>
-				<h4 className={`${styles['outcomes']}`}>
-					{course.results.outcomes}
-				</h4>
+				<h4 className={`${styles['outcomes']}`}>{course.results.outcomes}</h4>
 				<div className={`${styles.actions}`}>
 					<button className={styles.by}>Купить курс</button>
 					<button className={styles.inview}>Смотреть программу</button>
 				</div>
-			</div>
+			</Animate>
 		</section>
 	)
 }

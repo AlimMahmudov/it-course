@@ -43,12 +43,12 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Модуль 1: Reactivity',
-				'Модуль 2: Reactive approach',
-				'Модуль 3: Observable example',
-				'Модуль 4: Implementing and subscribing to an observer',
-				'Модуль 5: Reactive Streams spec',
-				'Модуль 6: Reactive Streams spec'
+				'Reactivity',
+				'Reactive approach',
+				'Observable example',
+				'Implementing and subscribing to an observer',
+				'Reactive Streams spec',
+				'Reactive Streams spec'
 			]
 		},
 		learning_process: {
