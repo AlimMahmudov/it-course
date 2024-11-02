@@ -1,7 +1,5 @@
-"use client";
-import { useLanguageStore } from "@/shared/stores/Language";
-import scss from "./Master.module.scss";
-import { useRouter } from "next/navigation";
+import React from "react";
+import scss from "./MasterClasses.module.scss";
 
 const asim = [
   {
@@ -11,19 +9,16 @@ const asim = [
   },
 ];
 
-const Master = () => {
-  const { translate } = useLanguageStore();
-  const router = useRouter();
-
+const MasterClasses = () => {
   return (
-    <div id={scss.Master}>
+    <div id={scss.MasterClasses}>
       <div className="container">
-        <div className={scss.master}>
-          <div className={scss.master_text}>
-            <h1>{translate("Мастер-класстары", "Мастер-классы")}</h1>
+        <div className={scss.masterclasses}>
+          <div className={scss.masterclasses_text}>
+            <h1>Мастер классы</h1>
           </div>
           <div className={scss.master_block}>
-            {Array.from({ length: 3 }).map((_, index) => (
+            {Array.from({ length: 6 }).map((_, index) => (
               <div key={index} className={scss.master_box}>
                 <div className={scss.asim_box}>
                   <h1>{asim[0].title}</h1>
@@ -32,15 +27,10 @@ const Master = () => {
               </div>
             ))}
           </div>
-          <div className={scss.master_button}>
-            <button onClick={() => router.push("/master_class")}>
-              {translate("Бардык мастер-класстар", "Все мастер классы")}
-            </button>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Master;
+export default MasterClasses;
