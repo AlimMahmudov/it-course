@@ -49,6 +49,12 @@
         text-align: center;
         padding: 10px 30px;
         border: none;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background: #0455a0;
+        transform: scale(1.05);
+        transition: all 0.3s;
       }
       a {
         width: 184px;
@@ -59,6 +65,11 @@
         line-height: 19.5px;
         text-align: center;
         color: #767676;
+        transition: all 0.3s;
+      }
+      a:hover {
+        color: #4d4c4c;
+        transition: all 0.3s;
       }
     }
   }

@@ -29,6 +29,7 @@
         align-items: start;
         padding: 30px;
         background: #ffffff;
+        transition: all 0.3s;
 
         h1 {
           font-family: Montserrat;
@@ -53,6 +54,11 @@
           border-bottom: splid 2px #000000;
         }
       }
+      .courses_box:hover {
+        background: #e5f0fa;
+        transform: scale(1.05);
+        transition: all 0.3s;
+      }
     }
     .courses_button {
       button {
@@ -65,6 +71,12 @@
         color: #ffffff;
         background: #043c71;
         border: none;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background: #0455a0;
+        transform: scale(1.05);
+        transition: all 0.3s;
       }
     }
   }

@@ -59,6 +59,12 @@
         color: #ffffff;
         border-radius: 5px;
         border: none;
+        transition: all 0.3s;
+      }
+      .SuButton:hover {
+        background: #0455a0;
+        transform: scale(1.05);
+        transition: all 0.3s;
       }
     }
   }
