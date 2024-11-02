@@ -34,6 +34,7 @@
         text-align: center;
         padding: 20px;
         background: #102146;
+        transition: all 0.3s;
 
         img {
           border-radius: 50%;
@@ -53,6 +54,10 @@
           line-height: 20px;
           color: #ffffff;
         }
+      }
+      .review_box:hover {
+        transform: scale(1.02);
+        transition: all 0.3s;
       }
       .review_data {
         width: 100%;

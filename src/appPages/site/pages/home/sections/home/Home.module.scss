@@ -35,17 +35,19 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 600px;
+      height: 500px;
       border-radius: 60%;
       border: none;
       animation: img 3s infinite;
       box-shadow: inset 1000px 0px 0px 0px #03407869,
         0px 0px 100px 100px #03407869;
+      position: relative;
 
       .box {
-        margin-bottom: -100px;
+        margin-bottom: 400px;
         animation: rgb 3s infinite;
         width: 15%;
+        position: absolute;
       }
       .home_men {
         display: flex;
@@ -56,12 +58,13 @@
         .box2 {
           width: 20%;
           margin-right: -120px;
-          animation: rgb2 2s infinite;
+          animation: rgb2 3s infinite;
         }
 
         .men {
           animation: rgbmen 3s infinite;
           width: 70%;
+          margin-top: 0;
         }
 
         .box3 {
@@ -72,8 +75,9 @@
       }
       .box4 {
         width: 15%;
-        margin-top: -200px;
+        margin-bottom: -300px;
         animation: rgb4 3s infinite;
+        position: absolute;
       }
     }
   }
@@ -84,31 +88,7 @@
     margin-top: 0px;
   }
   50% {
-    margin-top: 30px;
-  }
-  100% {
-    margin-top: 0px;
-  }
-}
-
-@keyframes rgb2 {
-  0% {
-    margin-top: 0px;
-  }
-  50% {
-    margin-top: 50px;
-  }
-  100% {
-    margin-top: 0px;
-  }
-}
-
-@keyframes rgb3 {
-  0% {
-    margin-top: 0px;
-  }
-  50% {
-    margin-top: 50px;
+    margin-top: 100px;
   }
   100% {
     margin-top: 0px;
@@ -120,151 +100,45 @@
     margin-top: 0px;
   }
   50% {
-    margin-top: -50px;
+    margin-top: 100px;
   }
   100% {
     margin-top: 0px;
   }
 }
 
-@keyframes men {
+@keyframes rgb2 {
+  0% {
+    margin-top: 120px;
+  }
+  50% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 120px;
+  }
+}
+
+@keyframes rgb3 {
+  0% {
+    margin-top: 120px;
+  }
+  50% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 120px;
+  }
+}
+
+@keyframes men11 {
   0% {
     margin-top: 0px;
   }
   50% {
-    margin-top: 50px;
+    margin-top: 100px;
   }
   100% {
     margin-top: 0px;
-  }
-}
-
-@media (max-width: 1100px) {
-  #Home {
-    padding: 50px;
-    padding-top: 150px;
-
-    .home {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      .home_text {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        h1 {
-          font-size: 48px;
-          font-weight: 700;
-          line-height: 60px;
-          width: 516px;
-          height: 120px;
-        }
-        p {
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 25px;
-          width: 419px;
-          height: 75px;
-        }
-      }
-      .home_img {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 600px;
-        border-radius: 60%;
-        border: none;
-
-        .box {
-          margin-bottom: -100px;
-          width: 15%;
-        }
-        .home_men {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          .box2 {
-            width: 20%;
-            margin-right: -120px;
-          }
-
-          .men {
-            width: 70%;
-          }
-
-          .box3 {
-            width: 15%;
-            margin-left: -50px;
-          }
-        }
-        .box4 {
-          width: 15%;
-          margin-top: -200px;
-        }
-      }
-    }
-  }
-
-  @keyframes rgb {
-    0% {
-      margin-top: 0px;
-    }
-    50% {
-      margin-top: 30px;
-    }
-    100% {
-      margin-top: 0px;
-    }
-  }
-
-  @keyframes rgb2 {
-    0% {
-      margin-top: 0px;
-    }
-    50% {
-      margin-top: 100px;
-    }
-    100% {
-      margin-top: 0px;
-    }
-  }
-
-  @keyframes rgb3 {
-    0% {
-      margin-top: 0px;
-    }
-    50% {
-      margin-top: 100px;
-    }
-    100% {
-      margin-top: 0px;
-    }
-  }
-
-  @keyframes rgb4 {
-    0% {
-      margin-top: 0px;
-    }
-    50% {
-      margin-top: -100px;
-    }
-    100% {
-      margin-top: 0px;
-    }
-  }
-
-  @keyframes men {
-    0% {
-      margin-top: 0px;
-    }
-    50% {
-      margin-top: 50px;
-    }
-    100% {
-      margin-top: 0px;
-    }
   }
 }
