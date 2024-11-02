@@ -1,5 +1,5 @@
 import React from 'react'
-import Home from './sections/home/Home'
+import Hero from './sections/hero/Hero'
 import Article from './sections/article/Article'
 import Subscribe from './sections/subscribe/Subscribe'
 import Left from './sections/left/Left'
@@ -8,7 +8,7 @@ import Telegram from './sections/telegram/Telegram'
 const HomePage = () => {
 	return (
 		<div>
-			<Home />
+			<Hero />
 			<Article />
 			<Subscribe />
 			<Left />

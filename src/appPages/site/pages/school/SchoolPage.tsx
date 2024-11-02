@@ -8,14 +8,14 @@ import Telegram from '../home/sections/telegram/Telegram'
 
 const SchoolPage = () => {
 	return (
-		<div>
+		<>
 			<School />
 			<Courses />
 			<Master />
 			<Pack />
 			<Review />
 			<Telegram />
-		</div>
+		</>
 	)
 }
 
