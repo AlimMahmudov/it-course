@@ -1,0 +1,124 @@
+.course_about {
+	padding: 200px 0;
+	.container {
+		* {
+			color: #ffffff;
+		}
+		.first_span {
+			font-size: 16px;
+			font-weight: 400;
+			color: #a5a5a5;
+		}
+		h3 {
+			margin-top: 80px;
+			font-size: 36px;
+			font-weight: 700;
+			margin-bottom: 30px;
+		}
+		.block {
+			padding: 40px 0;
+			h5 {
+				font-size: 20px;
+				font-weight: 600;
+				margin-bottom: 30px;
+			}
+			.dot {
+				font-size: 20px;
+				font-weight: 400;
+			}
+			ul {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				padding-left: 20px;
+				gap: 10px;
+				li {
+					font-size: 20px;
+					font-weight: 400;
+				}
+			}
+		}
+		.outcomes {
+			font-size: 20px;
+			font-weight: 600;
+			margin-bottom: 60px;
+		}
+		.results {
+			p {
+				font-size: 20px;
+				font-weight: 400;
+				margin-bottom: 20px;
+			}
+		}
+		.row {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 100px;
+			.left {
+				width: 738px;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				p {
+					font-size: 20px;
+					font-weight: 400;
+				}
+			}
+			.right {
+				display: flex;
+				flex-direction: column;
+				gap: 50px;
+
+				.col {
+					display: flex;
+					flex-direction: column;
+					gap: 4px;
+
+					* {
+						color: #fff;
+					}
+
+					span {
+						font-size: 20px;
+						font-weight: 600;
+					}
+
+					label {
+						font-weight: 400;
+						font-size: 20px;
+					}
+				}
+			}
+		}
+		.actions {
+			display: flex;
+			align-items: center;
+			gap: 140px;
+			button {
+				transition: all 0.25s;
+				will-change: transform;
+				&:hover {
+					transform: translateY(-3);
+				}
+				&:active {
+					transform: translateY(1);
+				}
+			}
+			.by {
+				background: #044076;
+				width: 332px;
+				height: 70px;
+				padding: 25px 115px 25px 115px;
+				border-radius: 10px;
+			}
+			.inview {
+				border: 1px solid #044076;
+				width: 330px;
+				height: 70px;
+				padding: 25px 75px 25px 75px;
+				border-radius: 10px;
+				text-wrap: nowrap;
+			}
+		}
+	}
+}
