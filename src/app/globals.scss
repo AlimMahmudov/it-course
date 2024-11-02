@@ -3,7 +3,7 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-  font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
 a {
@@ -24,4 +24,6 @@ body {
 
 button {
 	cursor: pointer;
+	border: none;
+	background: transparent;
 }
