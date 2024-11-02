@@ -1,6 +1,6 @@
 'use client'
 import Question from '@/shared/assets/imgq.svg'
-import Animate from '@/shared/ui/Animate'
+import Animate from '@/shared/ui/animate/Animate'
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'

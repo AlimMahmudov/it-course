@@ -6,9 +6,9 @@ import men_box3 from '@/shared/assets/men_box3.svg'
 import men_box4 from '@/shared/assets/men_box4.svg'
 import { useLanguageStore } from '@/shared/stores/Language'
 import Image from 'next/image'
-import scss from './Home.module.scss'
+import scss from './Hero.module.scss'
 
-const Home = () => {
+const Hero = () => {
 	const { translate } = useLanguageStore()
 
 	return (
@@ -44,4 +44,4 @@ const Home = () => {
 	)
 }
 
-export default Home
+export default Hero

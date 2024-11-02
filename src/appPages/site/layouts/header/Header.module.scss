@@ -4,7 +4,7 @@
 	padding-block: 20px;
 	background: rgba(31, 31, 31, 0);
 	backdrop-filter: blur(10px);
-  z-index: 80;
+	z-index: 80;
 
 	.header {
 		display: flex;
@@ -14,7 +14,11 @@
 			display: flex;
 			align-items: center;
 			gap: 20px;
-
+			[data-home] {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+			}
 			a {
 				font-family: Montserrat;
 				font-size: 15px;

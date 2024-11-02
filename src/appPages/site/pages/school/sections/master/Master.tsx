@@ -1,6 +1,5 @@
 'use client'
 import { useLanguageStore } from '@/shared/stores/Language'
-import Animate from '@/shared/ui/Animate'
 import scss from './Master.module.scss'
 
 const asim = [

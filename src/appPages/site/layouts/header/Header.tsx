@@ -11,13 +11,17 @@ const Header = () => {
 	const { translate } = useLanguageStore()
 
 	return (
-		<header id={scss.Header}>
+		<header id={scss.Header} data-header='true'>
 			<div className='container'>
 				<div className={scss.header}>
 					<div className={scss.teg}>
-						<Image onClick={() => router.push('/')} src={logo} alt='Logo' />
+						<Link href='/' data-home>
+							<Image onClick={() => router.push('/')} src={logo} alt='Logo' />
+						</Link>
 						<Link href='/school'>{translate('Мектеп жөнүндө', 'О школе')}</Link>
-						<Link href='/our_courses'>{translate('Биздин курстар', 'Наши курсы')}</Link>
+						<Link href='/our_courses'>
+							{translate('Биздин курстар', 'Наши курсы')}
+						</Link>
 						<Link href='/us'>{translate('Биз жөнүндө', 'О нас')}</Link>
 					</div>
 					<div className={scss.header_button}>
