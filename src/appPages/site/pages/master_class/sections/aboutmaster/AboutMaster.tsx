@@ -39,11 +39,11 @@ const AboutMaster = () => {
             </div>
             <div className={scss.aboutmaster_box2}>
               <div className={scss.d}>
-                <p>Доступ:</p>
+                <h3>Доступ:</h3>
                 <h2>6 недель</h2>
               </div>
               <div className={scss.m}>
-                <p>В мастер-класс входит:</p>
+                <h3>В мастер-класс входит:</h3>
                 <h2>5 уроков</h2>
               </div>
             </div>
