@@ -17,7 +17,7 @@ import { useLanguageStore } from "@/stores/Language";
 const Footer = () => {
   const { translate, setLanguage } = useLanguageStore();
 
-  const handleLanguage = (lang: "ky" | "ru") => {
+  const handleLanguage = (lang: "ru" | "ky") => {
     setLanguage(lang);
   };
 
@@ -33,13 +33,13 @@ const Footer = () => {
             </div>
           </div>
           <div className={scss.teg}>
-            <h1>Быстрые ссылки</h1>
-            <Link href="">о школе {translate("херо", "херору")}</Link>
-            <Link href="">Наши курсы {translate("херо", "херору")}</Link>
-            <Link href="">О нас {translate("херо", "херору")}</Link>
+            <h1>{translate("Тез шилтемелер", "Быстрые ссылки")}</h1>
+            <Link href="">{translate("мектеп жонундо", "о школе")}</Link>
+            <Link href="">{translate("биздин мектеп", "Наши курсы")}</Link>
+            <Link href="">{translate("биз жонундо", "О нас")}</Link>
           </div>
           <div className={scss.icon}>
-            <h1>Социальные сети </h1>
+            <h1>{translate("Социалдык тармактар", "Социальные сети")}</h1>
             <div className={scss.icons}>
               <h2>
                 <FaInstagram />
@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={scss.contact}>
-            <h1>Контакты</h1>
+            <h1>{translate("Байланыштар", "Контакты")}</h1>
             <h3>
               <BsTelephone /> @motionwebteam@gmail.com
             </h3>
@@ -71,9 +71,14 @@ const Footer = () => {
             </h3>
           </div>
           <div className={scss.adress}>
-            <h1>Адреса</h1>
-            <p>Турусбекова 109 / 3</p>
-            <p>Идентификационный код: 1234567890</p>
+            <h1>{translate("Даректер", "Адреса")}</h1>
+            <p>{translate("Турусбекова 109 / 3", "Турусбекова 109 / 3")}</p>
+            <p>
+              {translate(
+                "Идентификациялык код: 1234567890",
+                "Идентификационный код: 1234567890"
+              )}
+            </p>
           </div>
         </div>
       </div>

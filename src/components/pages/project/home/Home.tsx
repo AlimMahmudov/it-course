@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import scss from "./Home.module.scss";
 import Image from "next/image";
@@ -6,17 +7,27 @@ import men_box from "@/assets/men_box.svg";
 import men_box2 from "@/assets/men_box2.svg";
 import men_box3 from "@/assets/men_box3.svg";
 import men_box4 from "@/assets/men_box4.svg";
+import { useLanguageStore } from "@/stores/Language";
 
 const Home = () => {
+  const { translate } = useLanguageStore();
+
   return (
     <div id={scss.Home}>
       <div className="container">
         <div className={scss.home}>
           <div className={scss.home_text}>
-            <h1>IT образовательная платформа</h1>
+            <h1>
+              {translate(
+                "IT билим берүү платформасы",
+                "IT образовательная платформа"
+              )}
+            </h1>
             <p>
-              Наша образовательная платформа вам даст необходимые практические
-              знания для адаптации в IT-сфере.
+              {translate(
+                "Биздин билим берүү платформабыз IT тармагына адаптациялоо үчүн керектүү практикалык билимдерди берет.",
+                "Наша образовательная платформа вам даст необходимые практические знания для адаптации в IT-сфере."
+              )}
             </p>
           </div>
           <div className={scss.home_img}>

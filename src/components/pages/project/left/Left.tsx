@@ -51,15 +51,12 @@ const Left: React.FC = () => {
   ];
 
   return (
-    <section className={scss.DoYouHave}>
+    <section id={scss.Left}>
       <div className="container">
-        <div className={scss.content}>
-          <div className={scss.left}>
-            <h1>
-              Остались <br />
-              вопросы?
-            </h1>
-            <Image src={Question} alt="img" width={170} height={170} />
+        <div className={scss.left}>
+          <div className={scss.left_img}>
+            <h1>Остались вопросы?</h1>
+            <Image src={Question} alt="img" />
           </div>
           <div className={scss.accordion}>
             {accordionData.map((item, index) => (

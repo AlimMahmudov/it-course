@@ -5,9 +5,11 @@ import logo from "@/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useLanguageStore } from "@/stores/Language";
 
 const Header = () => {
   const router = useRouter();
+  const { translate } = useLanguageStore();
 
   return (
     <header id={scss.Header}>
@@ -15,18 +17,18 @@ const Header = () => {
         <div className={scss.header}>
           <div className={scss.teg}>
             <Image onClick={() => router.push("/")} src={logo} alt="Logo" />
-            <Link href="/school">о школе</Link>
-            <Link href="">Наши курсы</Link>
-            <Link href="/us">О нас</Link>
+            <Link href="/school">{translate("мектеп жонундо", "о школе")}</Link>
+            <Link href="">{translate("биздин мектеп", "Наши курсы")}</Link>
+            <Link href="/us">{translate("биз жонундо", "О нас")}</Link>
           </div>
           <div className={scss.header_button}>
             <button
               onClick={() => router.push("/auth/signin")}
               className={scss.btn}
             >
-              Войти
+              {translate("Кирүү", "Войти")}
             </button>
-            <button>Подписаться</button>
+            <button>{translate("Катталуу", "Подписаться")}</button>
           </div>
         </div>
       </div>

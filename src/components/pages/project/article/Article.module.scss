@@ -30,7 +30,7 @@
         height: 355.44px;
         border-radius: 20px;
         background: #ffffff;
-
+        transition: all 0.1s;
         .article_box_text {
           padding: 20px;
           display: flex;
@@ -68,6 +68,14 @@
             }
           }
         }
+      }
+      .article_box:hover {
+        width: 377px;
+        height: 355.44px;
+        border-radius: 20px;
+        margin-top: -5px;
+        transform: scale(1.01);
+        background: #f7f4f4;
       }
     }
     .article_button {
