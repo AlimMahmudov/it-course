@@ -1,21 +1,18 @@
-"use client";
-import LayoutSlice from "@/components/layout/LayoutSlice";
-import ReduxProvider from "@/provider/ReduxProvider";
-import { SessionProvider } from "@/provider/SessionProvider";
-import React, { FC, ReactNode } from "react";
+'use client'
+import ReduxProvider from '@/shared/providers/ReduxProvider'
+import { SessionProvider } from '@/shared/providers/SessionProvider'
+import React, { FC, ReactNode } from 'react'
 
 interface LayoutClientType {
-  children: ReactNode;
+	children: ReactNode
 }
 
 const LayoutClient: FC<LayoutClientType> = ({ children }) => {
-  return (
-    <ReduxProvider>
-      <SessionProvider>
-        <LayoutSlice>{children}</LayoutSlice>
-      </SessionProvider>
-    </ReduxProvider>
-  );
-};
+	return (
+		<ReduxProvider>
+			<SessionProvider>{children}</SessionProvider>
+		</ReduxProvider>
+	)
+}
 
-export default LayoutClient;
+export default LayoutClient
