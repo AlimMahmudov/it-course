@@ -62,7 +62,6 @@ const Left: React.FC = () => {
 						{accordionData.map((item, index) => (
 							<Animate
 								idx={index}
-								isView={true}
 								key={index}
 								className={scss.accordionItem}
 							>
