@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './CourseInfo.module.scss'
 import Animate from '@/shared/ui/animate/Animate'
 interface IBeforePurchaseProps {
 	course: ICourse
 }
-const CourseInfo: React.FC<IBeforePurchaseProps> = ({ course }) => {
+const CourseInfo: React.FC<IBeforePurchaseProps> = memo(({ course }) => {
 	return (
 		<section className={styles.course_info}>
 			<Animate className={`${styles['container']} container`}>
@@ -27,6 +27,7 @@ const CourseInfo: React.FC<IBeforePurchaseProps> = ({ course }) => {
 			</Animate>
 		</section>
 	)
-}
+})
+CourseInfo.displayName = 'CourseInfo'
 
 export default CourseInfo

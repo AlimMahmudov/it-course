@@ -2,21 +2,19 @@
 import logo from '@/shared/assets/logo.svg'
 import { useLanguageStore } from '@/shared/stores/Language'
 import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import scss from './Header.module.scss'
-
+import { useRouter } from 'next-nprogress-bar'
+import Link from 'next/link'
 const Header = () => {
-	const router = useRouter()
 	const { translate } = useLanguageStore()
-
+	const router = useRouter()
 	return (
 		<header id={scss.Header} data-header='true'>
 			<div className='container'>
 				<div className={scss.header}>
 					<div className={scss.teg}>
 						<Link href='/' data-home>
-							<Image onClick={() => router.push('/')} src={logo} alt='Logo' />
+							<Image src={logo} alt='Logo' />
 						</Link>
 						<Link href='/school'>{translate('Мектеп жөнүндө', 'О школе')}</Link>
 						<Link href='/our_courses'>

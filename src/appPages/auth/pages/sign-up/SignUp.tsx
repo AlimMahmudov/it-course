@@ -2,7 +2,7 @@
 import logo from '@/shared/assets/logo.svg'
 import axios, { AxiosError } from 'axios'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next-nprogress-bar'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import scss from './SignUp.module.scss'
 import Link from 'next/link'
