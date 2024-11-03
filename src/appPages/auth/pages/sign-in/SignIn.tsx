@@ -5,11 +5,11 @@ import { useLanguageStore } from '@/shared/stores/Language'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AxiosError } from 'axios'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import scss from './SignIn.module.scss'
 import Link from 'next/link'
+import { useRouter } from 'next-nprogress-bar'
 
 const signinSchema = z.object({
 	email: z.string().nonempty('Email обязателен').email('Неверный формат email'),
@@ -23,8 +23,7 @@ const SignIn = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-		setError
+		formState: { errors }
 	} = useForm<SigninType>({
 		resolver: zodResolver(signinSchema)
 	})
@@ -45,7 +44,7 @@ const SignIn = () => {
 		<div id={scss.SignIn}>
 			<div className='container'>
 				<div className={scss.signin}>
-					<Link href="/" className={scss.signin_logo}>
+					<Link href='/' className={scss.signin_logo}>
 						<Image src={logo} alt='' />
 					</Link>
 					<form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
@@ -76,6 +75,7 @@ const SignIn = () => {
 								{translate('Кирүү', 'Войти')}
 							</button>
 							<button
+								type='button'
 								className={scss.sign_btn2}
 								onClick={() => route.push('/auth/signup')}
 							>

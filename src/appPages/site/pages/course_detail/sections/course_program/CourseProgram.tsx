@@ -2,9 +2,9 @@ import CourseProgramImage from '@/shared/assets/course_program.png'
 import Animate from '@/shared/ui/animate/Animate'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './CourseProgram.module.scss'
-const CourseProgram: React.FC<{ course: ICourse }> = ({ course }) => {
+const CourseProgram: React.FC<{ course: ICourse }> = memo(({ course }) => {
 	return (
 		<section className={styles.course_program}>
 			<Animate className={`${styles['container']} container`}>
@@ -30,6 +30,7 @@ const CourseProgram: React.FC<{ course: ICourse }> = ({ course }) => {
 			</Animate>
 		</section>
 	)
-}
+})
 
+CourseProgram.displayName = 'CourseProgram'
 export default CourseProgram

@@ -1,10 +1,10 @@
 import Animate from '@/shared/ui/animate/Animate'
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './CourseLP.module.scss'
 
 const stepsname = ['Мастер-класс', 'Своё расписание', 'Сообщество', 'Доступ']
 // Course Learning Process
-const CourseLP: React.FC<{ course: ICourse }> = ({ course }) => {
+const CourseLP: React.FC<{ course: ICourse }> = memo(({ course }) => {
 	return (
 		<section className={styles['course_lp']}>
 			<Animate className={`${styles['container']} container`}>
@@ -21,6 +21,7 @@ const CourseLP: React.FC<{ course: ICourse }> = ({ course }) => {
 			</Animate>
 		</section>
 	)
-}
+})
 
+CourseLP.displayName = 'CourseLP'
 export default CourseLP

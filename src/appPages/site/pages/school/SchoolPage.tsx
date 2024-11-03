@@ -1,10 +1,12 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import School from './sections/aboutSchool/School'
-import Courses from './sections/courses/Courses'
-import Master from './sections/master/Master'
+import Telegram from '../home/sections/telegram/Telegram'
 import Pack from './sections/pack/Pack'
 import Review from './sections/review/Review'
-import Telegram from '../home/sections/telegram/Telegram'
+import Master from './sections/master/Master'
+import Courses from './sections/courses/Courses'
+
 
 const SchoolPage = () => {
 	return (

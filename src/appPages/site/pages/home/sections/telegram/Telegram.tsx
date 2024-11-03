@@ -1,8 +1,8 @@
 'use client'
 import { useLanguageStore } from '@/shared/stores/Language'
-import axios from 'axios'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import scss from './Telegram.module.scss'
+import { AxiosInstance } from 'axios'
 
 interface IFormTelegram {
 	name: string
@@ -22,6 +22,9 @@ const Telegram = () => {
 	}
 
 	const onSubmit: SubmitHandler<IFormTelegram> = async data => {
+		const axiosModule = await import('axios')
+		const axios = axiosModule.default
+
 		await axios.post(
 			`https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TG_TOKEN}/sendMessage`,
 			{

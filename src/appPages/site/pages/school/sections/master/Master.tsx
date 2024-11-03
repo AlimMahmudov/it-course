@@ -1,7 +1,7 @@
 "use client";
 import { useLanguageStore } from "@/shared/stores/Language";
 import scss from "./Master.module.scss";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next-nprogress-bar'
 
 const asim = [
   {

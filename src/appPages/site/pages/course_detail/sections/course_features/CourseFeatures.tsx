@@ -4,9 +4,9 @@ import AnyTime from '@/shared/assets/features/any_time.svg'
 import MasterClassLeader from '@/shared/assets/features/master_class_leader.png'
 import Animate from '@/shared/ui/animate/Animate'
 import Image from 'next/image'
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './CourseFeatures.module.scss'
-const CourseFeatures: React.FC<{ course: ICourse }> = ({ course }) => {
+const CourseFeatures: React.FC<{ course: ICourse }> = memo(({ course }) => {
 	return (
 		<section className={styles.course_features}>
 			<Animate className={`${styles['container']} container`}>
@@ -50,6 +50,7 @@ const CourseFeatures: React.FC<{ course: ICourse }> = ({ course }) => {
 			</Animate>
 		</section>
 	)
-}
+})
 
+CourseFeatures.displayName = 'CourseFeatures'
 export default CourseFeatures

@@ -1,6 +1,7 @@
 'use client';
 import { useGetUserAuthQuery } from '@/shared/redux/api/auth'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next-nprogress-bar'
 import { FC, ReactNode, useCallback, useEffect } from 'react'
 
 interface SessionProviderProps {

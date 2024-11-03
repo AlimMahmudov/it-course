@@ -1,11 +1,11 @@
 import Animate from '@/shared/ui/animate/Animate'
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './CourseAbout.module.scss'
 interface ICourseAboutProps {
 	course: ICourse
 }
 
-const CourseAbout: React.FC<ICourseAboutProps> = ({ course }) => {
+const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 	return (
 		<section className={styles.course_about}>
 			<Animate className={`${styles['container']} container`}>
@@ -55,6 +55,7 @@ const CourseAbout: React.FC<ICourseAboutProps> = ({ course }) => {
 			</Animate>
 		</section>
 	)
-}
+})
 
+CourseAbout.displayName = 'CourseAbout'
 export default CourseAbout
