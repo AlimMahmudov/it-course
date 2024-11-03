@@ -19,7 +19,7 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 			case '/auth/signup':
 			case '/':
 				if (status === 'fulfilled') {
-					router.push('/school')
+					router.push('/')
 				}
 				break
 			case '/service/servicepage/advancedsettings':
