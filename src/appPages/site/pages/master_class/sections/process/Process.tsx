@@ -1,5 +1,4 @@
 import scss from "./Process.module.scss";
-import { FaCheck } from "react-icons/fa6";
 
 const Process = () => {
   return (

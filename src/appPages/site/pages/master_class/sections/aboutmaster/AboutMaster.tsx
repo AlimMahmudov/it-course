@@ -19,19 +19,19 @@ const AboutMaster = () => {
                 может дать. А еще описал недостатки реактивного подхода.
               </p>
               <h2>Переходите к видеоурокам, что бы научится: </h2>
-              <li>
-                <ul>Чтению файла (blocked on reading file);</ul>
-                <ul>
+              <ul>
+                <li>Чтению файла (blocked on reading file);</li>
+                <li>
                   Что бы научиться базе данных (blocked on reading from DB);
-                </ul>
-                <ul>
+                </li>
+                <li>
                   Научится использовать в сложных вычислениях (blocked on heavy
                   calculations);
-                </ul>
-                <ul>
+                </li>
+                <li>
                   На ответе от клиента (blocked on responding the client).
-                </ul>
-              </li>
+                </li>
+              </ul>
               <div className={scss.buttons}>
                 <button>Купить мастер-класс</button>
                 <button>Смотреть программу</button>

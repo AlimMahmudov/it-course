@@ -76,6 +76,11 @@
             rgba(0, 11, 48, 0.2) 100%
           );
           border: 1px solid #0272ce;
+          transition: all 0.3s;
+        }
+        .process_card:hover {
+          transform: scale(1.03);
+          transition: all 0.3s;
         }
       }
       .process_box2 {
@@ -108,7 +113,20 @@
           padding: 25px 70px;
           border-radius: 10px;
           border: none;
+          transition: all 0.3s;
         }
+
+        button:hover {
+          background: #0455a0;
+          transform: scale(1.05);
+          transition: all 0.3s;
+        }
+
+        transition: all 0.3s;
+      }
+      .process_box2:hover {
+        transform: scale(1.03);
+        transition: all 0.3s;
       }
     }
   }

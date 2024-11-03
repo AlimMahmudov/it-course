@@ -1,0 +1,80 @@
+#Programma {
+  padding: 50px;
+  padding-top: 100px;
+  .programma {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    .programma_text {
+      h1 {
+        width: 608px;
+        height: 44px;
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.88px;
+      }
+    }
+    .programma_block {
+      display: flex;
+      justify-content: space-between;
+
+      .programma_box {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 40px;
+
+        .box {
+          width: 571px;
+          height: 70.35px;
+          border-radius: 10px;
+          border: 1px solid #044076;
+          display: flex;
+          align-items: center;
+          gap: 50px;
+          padding: 0px 50px;
+          transition: all 0.3s;
+
+          h1 {
+            height: 44px;
+            font-family: Montserrat;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 43.88px;
+          }
+
+          p {
+            height: 20.1px;
+            font-family: Montserrat;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 19.5px;
+          }
+        }
+        .box:hover {
+          transform: scale(1.05);
+          transition: all 0.3s;
+        }
+
+        button {
+          font-family: Montserrat;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 19.5px;
+          background: #044076;
+          padding: 25px 70px;
+          border-radius: 10px;
+          border: none;
+          transition: all 0.3s;
+        }
+
+        button:hover {
+          background: #0455a0;
+          transform: scale(1.05);
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+}

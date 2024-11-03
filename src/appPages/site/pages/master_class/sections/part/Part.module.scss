@@ -1,7 +1,7 @@
-#AboutMaster {
+#Part {
   padding: 50px;
   padding-top: 150px;
-  .aboutmaster {
+  .part {
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -10,16 +10,13 @@
       font-size: 36px;
       font-weight: 700;
       line-height: 43.88px;
-      color: #ffffff;
+      width: 668px;
     }
     p {
       font-family: Montserrat;
       font-size: 20px;
       font-weight: 400;
       line-height: 24.38px;
-      width: 738px;
-      height: 96px;
-      color: #ffffff;
     }
 
     h2 {
@@ -27,7 +24,7 @@
       font-size: 20px;
       font-weight: 600;
       line-height: 24.38px;
-      color: #ffffff;
+      width: 641px;
     }
 
     h3 {
@@ -35,48 +32,42 @@
       font-size: 20px;
       font-weight: 400;
       line-height: 24.38px;
-      color: #ffffff;
     }
 
-    li {
+    h4 {
       font-family: Montserrat;
       font-size: 20px;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 24.38px;
-      color: #ffffff;
     }
-    .aboutmaster_text {
+
+    .part_text {
       display: flex;
       flex-direction: column;
       align-items: start;
     }
-    .aboutmaster_block {
+    .part_block {
       display: flex;
       justify-content: space-between;
       align-items: start;
 
-      .aboutmaster_box {
+      .box {
         display: flex;
         flex-direction: column;
         align-items: start;
-        gap: 80px;
+        gap: 50px;
 
-        .buttons {
-          display: flex;
-          gap: 30px;
-
-          button {
-            padding: 25px 75px 25px 75px;
-            border-radius: 10px;
-            color: #ffffff;
-            border: 1px solid #044076;
-            transition: all 0.3s;
-          }
-          button:hover {
-            background: #0455a0;
-            transform: scale(1.05);
-            transition: all 0.3s;
-          }
+        button {
+          padding: 25px 75px 25px 75px;
+          border-radius: 10px;
+          color: #ffffff;
+          border: 1px solid #044076;
+          transition: all 0.3s;
+        }
+        button:hover {
+          background: #0455a0;
+          transform: scale(1.05);
+          transition: all 0.3s;
         }
       }
       .aboutmaster_box2 {
