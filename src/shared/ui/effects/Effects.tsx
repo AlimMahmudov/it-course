@@ -1,11 +1,11 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 
 const Effects: React.FC = () => {
 	const size = useWindowSize()
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		document.documentElement.style.setProperty(
 			'--viewport-height',
 			`${size.height}px`

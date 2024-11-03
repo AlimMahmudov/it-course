@@ -34,9 +34,6 @@ interface ICourse {
 	program: {
 		modules: string[]
 	}
-	learning_process: {
-		steps: string[]
-	}
 	master_class_leader: {
 		name: string
 		title: string
