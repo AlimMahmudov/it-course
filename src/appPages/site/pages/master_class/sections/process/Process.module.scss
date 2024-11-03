@@ -1,0 +1,115 @@
+#Process {
+  padding: 50px;
+  padding-top: 100px;
+  .process {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    h1 {
+      font-family: Montserrat;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 43.88px;
+    }
+    h2 {
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 19.5px;
+      width: 298px;
+    }
+
+    h3 {
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 19.5px;
+      width: 250px;
+    }
+    p {
+      font-family: Montserrat;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19.5px;
+    }
+
+    .process_text {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 43.88px;
+      }
+      p {
+        width: 750px;
+        height: 48px;
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 24.38px;
+      }
+    }
+    .process_block {
+      display: flex;
+      justify-content: space-between;
+      .process_box {
+        width: 700px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        .process_card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          gap: 25px;
+          width: 300px;
+          height: 300px;
+          border-radius: 10px;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 84, 160, 0.2) 0%,
+            rgba(0, 11, 48, 0.2) 100%
+          );
+          border: 1px solid #0272ce;
+        }
+      }
+      .process_box2 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 40px;
+        justify-content: center;
+        gap: 20px;
+        width: 400px;
+        height: 470px;
+        border-radius: 10px;
+        background: #ffffff;
+        h1 {
+          color: #000;
+        }
+        h2 {
+          color: #000;
+        }
+        p {
+          color: #000;
+        }
+
+        button {
+          font-family: Montserrat;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 19.5px;
+          background: #044076;
+          padding: 25px 70px;
+          border-radius: 10px;
+          border: none;
+        }
+      }
+    }
+  }
+}
