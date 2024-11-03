@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import scss from "./MasterClasses.module.scss";
+import { useRouter } from "next/navigation";
 
 const asim = [
   {
@@ -10,6 +12,7 @@ const asim = [
 ];
 
 const MasterClasses = () => {
+  const router = useRouter();
   return (
     <div id={scss.MasterClasses}>
       <div className="container">
@@ -19,7 +22,11 @@ const MasterClasses = () => {
           </div>
           <div className={scss.master_block}>
             {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className={scss.master_box}>
+              <div
+                onClick={() => router.push("/master_class/master_id")}
+                key={index}
+                className={scss.master_box}
+              >
                 <div className={scss.asim_box}>
                   <h1>{asim[0].title}</h1>
                   <p>{asim[0].dics}</p>
