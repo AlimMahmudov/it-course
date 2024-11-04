@@ -1,8 +1,9 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import scss from "./Part.module.scss";
 
 const Part = () => {
+  const router = useRouter();
   return (
     <div id={scss.Part}>
       <div className="container">
@@ -25,7 +26,9 @@ const Part = () => {
                 относительно нового подхода и почему сейчас он в тренде,
                 рассказал на конференции
               </h2>
-              <button>Купить мастер-класс за 46 $</button>
+              <button onClick={() => router.push("/reactivity")}>
+                Купить мастер-класс за 46 $
+              </button>
             </div>
             <div className={scss.aboutmaster_box2}>
               <div className={scss.d}>
