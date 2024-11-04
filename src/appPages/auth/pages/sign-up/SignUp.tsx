@@ -46,23 +46,105 @@ const SignUp = () => {
     <div id={scss.SignUp}>
       <div className="container">
         <div className={scss.signup}>
-          <Link href="/" className={scss.signin_logo}>
+          <Link href="/" className={scss.signup_logo}>
             <Image src={logo} alt="" />
           </Link>
+
           <form onSubmit={handleSubmit(onSubmit)} className={scss.form}>
-            {/* <input type="text" {...register("username", { required: true })} />
-            <input type="text" {...register("tel", { required: true })} /> */}
-            <input type="text" {...register("email", { required: true })} />
-            <input type="text" {...register("password", { required: true })} />
-            {/* <input type="text" {...register("photo", { required: true })} />
-            <input type="text" {...register("day", { required: true })} />
-            <input type="text" {...register("month", { required: true })} />
-            <input type="text" {...register("year", { required: true })} />
-            <input type="text" {...register("country", { required: true })} />
-            <input type="text" {...register("sity", { required: true })} />
-            <input type="text" {...register("Occupat", { required: true })} />
-            <input type="text" {...register("man", { required: true })} />
-            <input type="text" {...register("woman", { required: true })} /> */}
+            <div className={scss.input_block}>
+              <div className={scss.input_box}>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">ФИО*</label>
+                  <input type="text" {...register("tel", { required: true })} />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Номер телефон*</label>
+                  <input
+                    type="text"
+                    {...register("email", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Email*</label>
+                  <input
+                    type="text"
+                    {...register("username", { required: true })}
+                  />
+                </div>
+
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Email*</label>
+                  <input
+                    type="text"
+                    {...register("password", { required: true })}
+                  />
+                </div>
+                <div className={scss.pol}>
+                  <div className={scss.for_inp_woman}>
+                    <label htmlFor="email">Пол*</label>
+                    <input
+                      type="text"
+                      {...register("man", { required: true })}
+                    />
+                  </div>
+                  <div className={scss.for_inp_woman}>
+                    <label htmlFor="email">Пол*</label>
+                    <input
+                      type="text"
+                      {...register("woman", { required: true })}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className={scss.input_box}>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Email*</label>
+                  <input
+                    type="text"
+                    {...register("photo", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Дата рождения*</label>
+                  <input type="text" {...register("day", { required: true })} />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Дата рождения*</label>
+                  <input
+                    type="text"
+                    {...register("month", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Дата рождения*</label>
+                  <input
+                    type="text"
+                    {...register("year", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Страна*</label>
+                  <input
+                    type="text"
+                    {...register("country", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Город*</label>
+                  <input
+                    type="text"
+                    {...register("sity", { required: true })}
+                  />
+                </div>
+                <div className={scss.for_inp}>
+                  <label htmlFor="email">Email*</label>
+                  <input
+                    type="text"
+                    {...register("Occupat", { required: true })}
+                  />
+                </div>
+              </div>
+            </div>
             <button type="submit">create</button>
           </form>
         </div>
