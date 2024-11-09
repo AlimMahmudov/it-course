@@ -10,7 +10,7 @@ const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 		<section className={styles.course_about}>
 			<Animate className={`${styles['container']} container`}>
 				<span className={styles.first_span}>Что, как и почему</span>
-				<h3>О курсу</h3>
+				<h3>О курсе</h3>
 				<div className={`${styles['row']} ${styles.block}`}>
 					<div className={styles['left']}>
 						{course.course_about.descriptions.map((desc, idx) => (

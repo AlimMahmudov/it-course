@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import cardman from '@/shared/assets/cardman.svg'
-import styles from './course_reviews.module.scss'
+import styles from './CourseReviews.module.scss'
 import Image from 'next/image'
 const CourseReviews: React.FC<{ course: ICourse }> = memo(({}) => {
 	return (
@@ -8,7 +8,7 @@ const CourseReviews: React.FC<{ course: ICourse }> = memo(({}) => {
 			<div className='container'>
 				<div className={styles.review}>
 					<div className={styles.review_text}>
-						<h1></h1>
+						<h1>Отзывы наших студентов</h1>
 					</div>
 					<div className={styles.review_block}>
 						{Array.from({ length: 7 }).map((review, index) => (
