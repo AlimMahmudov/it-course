@@ -8,12 +8,13 @@ import userProfile from "@/shared/assets/article-user-profile.svg";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { articleComments } from "@/shared/const/article-comments";
+import { useGetUserAuthQuery } from "@/shared/redux/api/auth";
 interface Iform {
   userComment: string;
 }
 const Comments = () => {
-  const isLogged = false;
-  //if user will authorized isLogged will true and users can write your message
+  const { status } = useGetUserAuthQuery();
+  const isLogged = status === "fulfilled";
   const today = new Date();
   const { translate } = useLanguageStore();
   const {

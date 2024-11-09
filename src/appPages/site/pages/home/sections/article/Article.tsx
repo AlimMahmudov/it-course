@@ -1,10 +1,10 @@
 "use client";
-import card from "@/shared/assets/card.svg";
 import { useLanguageStore } from "@/shared/stores/Language";
 import Image from "next/image";
 import scss from "./Article.module.scss";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { articles } from "@/shared/const/articles";
 const Article = () => {
   const { translate } = useLanguageStore();
   const path = usePathname();
@@ -26,28 +26,25 @@ const Article = () => {
             </h1>
           </div>
           <div className={scss.article_block}>
-            {[...Array(6)].map((_, index) => (
+            {articles.map((article) => (
               <Link
-                href="/article/article-subscribe"
-                key={index}
+                href={`/article/${article.id}`}
+                key={article.id}
                 className={scss.article_box}
                 style={{
                   marginBottom:
-                    index === 0 || index === 1 || index === 2 ? "35px" : "",
+                    article.id === 1 || article.id === 2 || article.id === 3
+                      ? "35px"
+                      : "",
                 }}
               >
-                <Image src={card} alt="" />
+                <Image src={article.mainArticles.image} alt="" />
                 <div className={scss.article_box_text}>
                   <p>{translate("Макалалар", "Статьи")}</p>
-                  <h2>
-                    {translate(
-                      "Биз Java багыты боюнча эң популярдуу курстарды IBS Training Centerде даярдадык.",
-                      "Мы подготовили подборку самых популярных курсов по направлению Java в IBS Training Center."
-                    )}
-                  </h2>
+                  <h2>{article.mainArticles.description}</h2>
                   <div className={scss.article_data}>
                     <p>{translate("Окуу", "Читать")}</p>
-                    <p>01.02.2022</p>
+                    <p>{article.mainArticles.data}</p>
                   </div>
                 </div>
               </Link>
