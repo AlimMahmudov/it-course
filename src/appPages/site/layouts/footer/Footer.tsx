@@ -32,9 +32,9 @@ const Footer = () => {
 					</div>
 					<div className={scss.teg}>
 						<h1>{translate('Тез шилтемелер', 'Быстрые ссылки')}</h1>
-						<Link href=''>{translate('мектеп жонундо', 'о школе')}</Link>
-						<Link href=''>{translate('биздин мектеп', 'Наши курсы')}</Link>
-						<Link href=''>{translate('биз жонундо', 'О нас')}</Link>
+						<Link href=''>{translate('Мектеп жөнүндө', 'О школе')}</Link>
+						<Link href=''>{translate('Биздин курстар', 'Наши курсы')}</Link>
+						<Link href=''>{translate('Биз жөнүндө', 'О нас')}</Link>
 					</div>
 					<div className={scss.icon}>
 						<h1>{translate('Социалдык тармактар', 'Социальные сети')}</h1>

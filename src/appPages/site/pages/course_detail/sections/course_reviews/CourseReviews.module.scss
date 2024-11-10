@@ -5,12 +5,11 @@
 	.review {
 		display: flex;
 		flex-direction: column;
-		text-align: center;
-		gap: 50px;
+		text-align: left;
+		gap: 80px;
 
 		.review_text {
 			h1 {
-				font-family: Montserrat;
 				font-size: 36px;
 				font-weight: 700;
 				line-height: 35px;
@@ -20,10 +19,11 @@
 
 		.review_block {
 			display: flex;
-			overflow-x: auto;
+			overflow-x: scroll;
 			padding: 50px;
 			gap: 20px;
 			width: 100%;
+			padding-left: 0;
 
 			.review_box {
 				height: 272px;

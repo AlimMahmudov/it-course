@@ -27,12 +27,6 @@ const Reactivity = () => {
     <div id={scss.Reactivity}>
       <div className="container">
         <div className={scss.reactivity}>
-          <div className={scss.reactive_text}>
-            <p>
-              <span>Главная / Мастер классы / </span>Реактивное программирование
-              на Java
-            </p>
-          </div>
           <div className={scss.react_block}>
             <div className={scss.react_box}>
               <h1>Reactivity</h1>

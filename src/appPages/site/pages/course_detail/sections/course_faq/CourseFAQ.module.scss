@@ -1,0 +1,78 @@
+.course_faq {
+	padding: 50px;
+	padding-top: 150px;
+	height: 700px;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
+
+		.faq_text {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+
+			h6 {
+				font-size: 20px;
+				font-weight: 500;
+				line-height: 24.38px;
+				color: #a5a5a5;
+			}
+
+			h4 {
+				font-size: 36px;
+				font-weight: 700;
+				line-height: 43.88px;
+			}
+		}
+
+		.accordion {
+			width: 100%;
+			max-width: 700px;
+
+			.accordionItem {
+				border-bottom: 1px solid #2a2f3c;
+
+				.accordionHeader {
+					width: 100%;
+					border: none;
+					padding: 15px 0;
+					color: #ffffff;
+					font-size: 18px;
+					font-weight: 500;
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					&:hover {
+						color: #3498db;
+					}
+
+					.icon {
+						display: inline-flex;
+						align-items: center;
+						justify-content: center;
+						font-size: 20px;
+						padding: 4px;
+						transition: transform 0.3s;
+						svg {
+							fill: #3498db;
+						}
+					}
+				}
+
+				.accordionContent {
+					p {
+						padding: 0 0 15px;
+						font-size: 20px;
+						font-weight: 500;
+						line-height: 24.38px;
+						text-underline-position: from-font;
+						text-decoration-skip-ink: none;
+					}
+				}
+			}
+		}
+	}
+}

@@ -14,12 +14,14 @@ const CourseProgram: React.FC<{ course: ICourse }> = memo(({ course }) => {
 						{course.program.modules.map((module, idx) => (
 							<li key={idx}>
 								<span>Модуль {idx + 1}</span>
-								<span>{module}</span>
+								<span>{module.name}</span>
 							</li>
 						))}
 					</ul>
 					<button>
-						<Link href='/auth/signup'>Зарегистрироваться</Link>
+						<Link href={`/course_register?course_id=${course.id}`}>
+							Зарегистрироваться
+						</Link>
 					</button>
 				</div>
 				<div className={styles['right']}>
