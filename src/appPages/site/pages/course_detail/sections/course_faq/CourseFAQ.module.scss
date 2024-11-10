@@ -63,12 +63,13 @@
 				}
 
 				.accordionContent {
-					transition: max-height 0.3s ease, padding 0.3s ease;
-
 					p {
 						padding: 0 0 15px;
 						font-size: 20px;
-						color: #d1d3d8;
+						font-weight: 500;
+						line-height: 24.38px;
+						text-underline-position: from-font;
+						text-decoration-skip-ink: none;
 					}
 				}
 			}

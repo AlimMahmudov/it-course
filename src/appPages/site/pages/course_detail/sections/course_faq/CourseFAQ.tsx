@@ -63,12 +63,11 @@ type TAccordionProps = {
 }
 function Accordion({ item, toggle, activeFaq, idx }: TAccordionProps) {
 	return (
-		<Animate
-			onClick={() => toggle(item.id)}
-			idx={idx}
-			className={styles.accordionItem}
-		>
-			<button className={styles.accordionHeader}>
+		<Animate idx={idx} className={styles.accordionItem}>
+			<button
+				className={styles.accordionHeader}
+				onClick={() => toggle(item.id)}
+			>
 				<p>{item.question}</p>
 				<span className={styles.icon}>
 					{activeFaq === item.id ? <IoIosArrowUp /> : <IoIosArrowDown />}

@@ -1,17 +1,18 @@
-export const courses = [
+import { frontendMaterials } from './materials'
+
+export const courses: ICourse[] = [
 	{
 		id: 'cm300nsmq000008i57sntds1o',
 		title: 'Frontend-разработчик',
 		description:
 			'Мастер создания сайтов. Умеет делать их красивыми, интерактивными, с большим функционалом. Профессия отлично подойдет тем, кто хочет фрилансить и постоянно разрабатывать новые проекты',
-		isBy: false,
 		description2:
 			'Идея реактивного программирования появилась сравнительно недавно, лет 10 назад. Что вызвало популярность этого относительно нового подхода и почему сейчас он в тренде, рассказал на конференции ',
 		access: 'Навсегда',
 		price: 46,
 		duration: {
-			modules: 3,
-			materials: 60
+			modules: 5,
+			materials: 75
 		},
 		course_about: {
 			descriptions: [
@@ -40,12 +41,24 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Reactivity',
-				'Reactive approach',
-				'Observable example',
-				'Implementing and subscribing to an observer',
-				'Reactive Streams spec',
-				'Reactive Streams spec'
+				{ name: 'Reactivity', materials: frontendMaterials.Reactivity },
+				{
+					name: 'Reactive approach',
+					materials: frontendMaterials['Reactive approach']
+				},
+				{
+					name: 'Observable example',
+					materials: frontendMaterials['Observable example']
+				},
+				{
+					name: 'Implementing and subscribing to an observer',
+					materials:
+						frontendMaterials['Implementing and subscribing to an observer']
+				},
+				{
+					name: 'Reactive Streams spec',
+					materials: frontendMaterials['Reactive Streams spec']
+				}
 			]
 		},
 		master_class_leader: {
@@ -57,7 +70,6 @@ export const courses = [
 		id: 'cm300o6sh000108i5gbebddxj',
 		title: 'Backend-разработчик',
 		description: 'Специалист, создающий логику для воплощения любой идеи в IT.',
-		isBy: false,
 		description2: 'Освойте серверную разработку и базы данных.',
 		access: 'Навсегда',
 		price: 55,
@@ -91,11 +103,11 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы серверной архитектуры',
-				'SQL и базы данных',
-				'Создание REST API',
-				'Оптимизация производительности серверов',
-				'Безопасность и шифрование данных'
+				{ name: 'Основы серверной архитектуры', materials: [] },
+				{ name: 'SQL и базы данных', materials: [] },
+				{ name: 'Создание REST API', materials: [] },
+				{ name: 'Оптимизация производительности серверов', materials: [] },
+				{ name: 'Безопасность и шифрование данных', materials: [] }
 			]
 		},
 		master_class_leader: {
@@ -108,7 +120,6 @@ export const courses = [
 		title: 'UX / UI Дизайнер',
 		description:
 			'Креативный специалист, который придумывает дизайн и интерфейс продукта.',
-		isBy: true,
 		description2:
 			'Проектирование удобных и красивых интерфейсов для пользователей.',
 		access: 'Навсегда',
@@ -143,11 +154,11 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы дизайна',
-				'Работа с Figma',
-				'Прототипирование',
-				'Дизайн-системы',
-				'Создание пользовательских историй'
+				{ name: 'Основы дизайна', materials: [] },
+				{ name: 'Работа с Figma', materials: [] },
+				{ name: 'Прототипирование', materials: [] },
+				{ name: 'Дизайн-системы', materials: [] },
+				{ name: 'Создание пользовательских историй', materials: [] }
 			]
 		},
 		master_class_leader: {
@@ -160,7 +171,6 @@ export const courses = [
 		title: 'DevOps-инженер',
 		description:
 			'Специалист, объединяющий программирование и инфраструктуру для оптимизации бизнеса.',
-		isBy: false,
 		description2: 'Изучение инструментов CI/CD и администрирования серверов.',
 		access: 'Навсегда',
 		price: 70,
@@ -194,11 +204,11 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы DevOps',
-				'Контейнеризация',
-				'Автоматизация развертывания',
-				'Мониторинг',
-				'Настройка CI/CD пайплайнов'
+				{ name: 'Основы DevOps', materials: [] },
+				{ name: 'Контейнеризация', materials: [] },
+				{ name: 'Автоматизация развертывания', materials: [] },
+				{ name: 'Мониторинг', materials: [] },
+				{ name: 'Настройка CI/CD пайплайнов', materials: [] }
 			]
 		},
 		master_class_leader: {
@@ -211,7 +221,6 @@ export const courses = [
 		title: 'Android-разработчик',
 		description:
 			'Создает, обновляет, усовершенствует мобильные приложения для устройств на Android.',
-		isBy: false,
 		description2:
 			'Освоение разработки под Android, включая основы языка Kotlin и архитектуры приложений.',
 		access: 'Навсегда',
@@ -248,19 +257,17 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы Android',
-				'Работа с UI',
-				'Интеграция с API',
-				'Хранение данных',
-				'Продвинутая разработка',
-				'Оптимизация производительности'
+				{ name: 'Основы Android', materials: [] },
+				{ name: 'Работа с UI', materials: [] },
+				{ name: 'Интеграция с API', materials: [] },
+				{ name: 'Хранение данных', materials: [] },
+				{ name: 'Продвинутая разработка', materials: [] },
+				{ name: 'Оптимизация производительности', materials: [] }
 			]
 		},
 		master_class_leader: {
 			name: 'Александр Михайлов',
-			title: 'Android-разработчик',
-			experience:
-				'Опыт работы более 5 лет в мобильной разработке, включая реализацию успешных проектов в крупных компаниях.'
+			title: 'Android-разработчик'
 		}
 	},
 	{
@@ -268,7 +275,6 @@ export const courses = [
 		title: 'Java-разработчик',
 		description:
 			'Создает приложения разной сложности, используя язык программирования Java.',
-		isBy: false,
 		description2:
 			'Изучение Java для создания серверных приложений и крупномасштабных систем.',
 		access: 'Навсегда',
@@ -304,12 +310,12 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы Java',
-				'ООП в Java',
-				'Работа с базами данных',
-				'Фреймворки',
-				'Алгоритмы и структуры данных',
-				'Разработка REST API'
+				{ name: 'Основы Java', materials: [] },
+				{ name: 'ООП в Java', materials: [] },
+				{ name: 'Работа с базами данных', materials: [] },
+				{ name: 'Фреймворки', materials: [] },
+				{ name: 'Алгоритмы и структуры данных', materials: [] },
+				{ name: 'Разработка REST API', materials: [] }
 			]
 		},
 		master_class_leader: {
@@ -322,7 +328,6 @@ export const courses = [
 		title: 'C++ - разработчик',
 		description:
 			'Специалист по разработке высокопроизводительных систем, таких как поисковики и драйверы.',
-		isBy: false,
 		description2:
 			'Освоение C++ для создания высокопроизводительных приложений и систем.',
 		access: 'Навсегда',
@@ -354,18 +359,16 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы C++',
-				'Управление памятью',
-				'Многопоточность',
-				'Оптимизация',
-				'Алгоритмы и структуры данных'
+				{ name: 'Основы C++', materials: [] },
+				{ name: 'Управление памятью', materials: [] },
+				{ name: 'Многопоточность', materials: [] },
+				{ name: 'Оптимизация', materials: [] },
+				{ name: 'Алгоритмы и структуры данных', materials: [] }
 			]
 		},
 		master_class_leader: {
 			name: 'Сергей Павлов',
-			title: 'C++ разработчик',
-			experience:
-				'Более 6 лет опыта в разработке высокопроизводительных систем и приложений.'
+			title: 'C++ разработчик'
 		}
 	},
 	{
@@ -373,7 +376,6 @@ export const courses = [
 		title: 'iOS - разработчик',
 		description:
 			'Создает приложения для мобильных устройств на платформе iOS, используя Swift и Xcode.',
-		isBy: false,
 		description2:
 			'Изучение разработки под iOS для создания современных мобильных приложений.',
 		access: 'Навсегда',
@@ -405,17 +407,16 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы Swift',
-				'Разработка интерфейсов',
-				'Работа с данными',
-				'Интеграция API',
-				'Продвинутые техники'
+				{ name: 'Основы Swift', materials: [] },
+				{ name: 'Разработка интерфейсов', materials: [] },
+				{ name: 'Работа с данными', materials: [] },
+				{ name: 'Интеграция API', materials: [] },
+				{ name: 'Продвинутые техники', materials: [] }
 			]
 		},
 		master_class_leader: {
 			name: 'Анна Смирнова',
-			title: 'iOS-разработчик',
-			experience: 'Более 5 лет опыта в разработке мобильных приложений для iOS.'
+			title: 'iOS-разработчик'
 		}
 	},
 	{
@@ -423,7 +424,6 @@ export const courses = [
 		title: 'Python - разработчик',
 		description:
 			'Специалист, который применяет язык Python для разработки веб-приложений, автоматизации и анализа данных.',
-		isBy: true,
 		description2:
 			'Изучение Python для различных сфер, включая веб-разработку и научные вычисления.',
 		access: 'Навсегда',
@@ -454,18 +454,16 @@ export const courses = [
 		},
 		program: {
 			modules: [
-				'Основы Python',
-				'Создание веб-приложений',
-				'Работа с библиотеками',
-				'Анализ данных',
-				'Автоматизация процессов'
+				{ name: 'Основы Python', materials: [] },
+				{ name: 'Создание веб-приложений', materials: [] },
+				{ name: 'Работа с библиотеками', materials: [] },
+				{ name: 'Анализ данных', materials: [] },
+				{ name: 'Автоматизация процессов', materials: [] }
 			]
 		},
 		master_class_leader: {
 			name: 'Иван Кузнецов',
-			title: 'Python-разработчик',
-			experience:
-				'Более 3 лет опыта в разработке веб-приложений и аналитике данных.'
+			title: 'Python-разработчик'
 		}
 	}
 ]

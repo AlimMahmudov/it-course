@@ -6,9 +6,6 @@ const Subscribe = () => {
       <div className="container">
         <div className={scss.subscribe}>
           <div className={scss.p}>
-            <p>
-              <span>Главная / </span> Пакет участия
-            </p>
             <h1>Выберите свой пакет участия</h1>
           </div>
 

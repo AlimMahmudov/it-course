@@ -14,7 +14,6 @@ interface ICourse {
 	id: string
 	title: string
 	description: string
-	isBy: boolean
 	description2: string
 	access: string
 	price: number
@@ -32,18 +31,32 @@ interface ICourse {
 		outcomes: string
 	}
 	program: {
-		modules: string[]
+		modules: IModule[]
 	}
 	master_class_leader: {
 		name: string
 		title: string
 	}
-	student_reviews: {
-		name: string
-		review: string
+}
+interface IModule {
+	name: string
+	materials: {
+		video_url: string
+		title: string
+		id: string
 	}[]
-	faq: {
-		question: string
-		answer: string
-	}[]
+}
+
+interface IUser {
+	purchased_courses: IPuschasedCourse[]
+}
+
+interface IPuschasedCourse {
+	id: string
+	materials: {
+		completeds: string[]
+	}
+	modules: {
+		completeds: string[]
+	}
 }
