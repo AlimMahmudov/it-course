@@ -4,13 +4,13 @@
     h1 {
       max-width: 1000px;
       font-family: Montserrat;
-      font-size: 36px;
+      font-size: clamp(26px, 5vw, 36px);
       font-weight: 700;
-      line-height: 43.88px;
+      line-height: clamp(40px, 5vw, 43px);
     }
     p {
       font-family: Montserrat;
-      font-size: 20px;
+      font-size: clamp(16px, 3vw, 20px);
       font-weight: 500;
       line-height: 24.38px;
       max-width: 854px;
@@ -43,6 +43,10 @@
         font-weight: 500;
         line-height: 18.45px;
       }
+    }
+  }
+  @media (max-width: 768px) {
+    .content {
     }
   }
 }

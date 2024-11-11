@@ -5,16 +5,19 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding-top: 16px;
     padding-bottom: 48px;
     .Subscribe__left {
       display: flex;
+      img {
+        margin-right: 49px;
+      }
       .Subscribe__left__content {
         max-width: 600px;
-        margin-left: 49px;
         h3 {
           color: #000;
-          font-size: 28px;
+          font-size: clamp(20px, 5vw, 28px);
           font-weight: 700;
           line-height: 34.13px;
           padding-bottom: 20px;
@@ -45,7 +48,7 @@
   h2 {
     padding-top: 70px;
     padding-bottom: 50px;
-    font-size: 36px;
+    font-size: clamp(26px, 5vw, 36px);
     font-weight: 700;
     line-height: 43.88px;
     color: #fff;
@@ -110,5 +113,31 @@
     background-color: rgba(27, 41, 89, 0.4);
     padding: 25px 75px;
     border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    .Subscribe__content {
+      .Subscribe__left {
+        padding: 0 20px;
+        .Subscribe__left__content {
+          p {
+            font-size: 14px;
+          }
+        }
+        img {
+          display: none;
+        }
+      }
+    }
+    h2 {
+      padding-top: 0;
+    }
+    .user__comments {
+      .comments {
+        img {
+          width: 54px;
+          height: 54px;
+        }
+      }
+    }
   }
 }
