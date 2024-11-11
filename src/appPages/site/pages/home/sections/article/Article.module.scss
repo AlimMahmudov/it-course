@@ -7,99 +7,91 @@
     text-align: center;
     gap: 100px;
     padding-top: 100px;
-    .article {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 100px;
-
-      .article_text {
-        h1 {
-          width: 359px;
-          height: 41px;
-          font-family: Montserrat;
-          font-size: 36px;
-          font-weight: 700;
-          line-height: 35px;
-          color: #ffffff;
-        }
+    .article_text {
+      h1 {
+        width: 359px;
+        height: 41px;
+        font-family: Montserrat;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 35px;
+        color: #ffffff;
       }
-      .article_block {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
+    }
+    .article_block {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 19px;
 
-        .article_box {
-          width: 377px;
-          height: 355.44px;
-          border-radius: 20px;
-          background: #ffffff;
-          transition: all 0.25s;
-          will-change: transform;
-          .article_box_text {
-            padding: 20px;
+      .article_box {
+        width: 377px;
+        height: 355.44px;
+        border-radius: 20px;
+        background: #ffffff;
+        transition: all 0.25s;
+        will-change: transform;
+        .article_box_text {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+          p {
+            width: 50px;
+            height: 17px;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 17.07px;
+            color: #898989;
+            text-align: left;
+          }
+          h2 {
+            width: 322px;
+            height: 60px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 19.5px;
+            color: #000;
+          }
+          .article_data {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
             p {
-              width: 50px;
-              height: 17px;
-              font-family: Montserrat;
-              font-size: 14px;
+              width: 77px;
+              height: 18px;
+              font-size: 15px;
               font-weight: 500;
-              line-height: 17.07px;
-              color: #898989;
-              text-align: left;
-            }
-            h2 {
-              width: 322px;
-              height: 60px;
-              font-size: 16px;
-              font-weight: 600;
-              line-height: 19.5px;
-              color: #000;
-            }
-            .article_data {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-              p {
-                width: 77px;
-                height: 18px;
-                font-size: 15px;
-                font-weight: 500;
-                line-height: 18.29px;
-                color: #044176;
-              }
+              line-height: 18.29px;
+              color: #044176;
             }
           }
         }
-        .article_box:hover {
-          margin-top: -5px;
-          transform: scale(1.01);
-        }
-        .article_box:active {
-          transform: scale(0.99);
-        }
       }
-      .article_button {
-        button {
-          padding: 20px 55px;
-          font-family: Montserrat;
-          font-size: 18px;
-          background: #034078;
-          color: #ffffff;
-          border-radius: 5px;
-          border: none;
-          transition: all 0.3s;
-        }
-        button:hover {
-          background: #0455a0;
-          transform: scale(1.05);
-          transition: all 0.3s;
-        }
+      .article_box:hover {
+        margin-top: -5px;
+        transform: scale(1.01);
+      }
+      .article_box:active {
+        transform: scale(0.99);
+      }
+    }
+    .article_button {
+      button {
+        padding: 20px 55px;
+        font-family: Montserrat;
+        font-size: 18px;
+        background: #034078;
+        color: #ffffff;
+        border-radius: 5px;
+        border: none;
+        transition: all 0.3s;
+      }
+      button:hover {
+        background: #0455a0;
+        transform: scale(1.05);
+        transition: all 0.3s;
       }
     }
   }
