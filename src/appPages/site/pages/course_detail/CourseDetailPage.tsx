@@ -1,8 +1,9 @@
 'use client'
 import { courses } from '@/shared/const/courses'
+import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import React, { Suspense, useState } from 'react'
-import dynamic from 'next/dynamic'
+import { useSelector } from 'react-redux'
 import AfterPurchase from './components/after_purchase/AfterPurchase'
 import BeforePurchase from './components/before_purchase/BeforePurchase'
 
@@ -13,22 +14,9 @@ const Breadcrumbs = dynamic(
 
 const CourseDetailPage: React.FC = () => {
 	const { courseId } = useParams()
+	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
 	const findCourse = courses.find(course => course.id === courseId)
-
-	// const _user: IUser = {
-	// 	purchased_courses: [
-	// 		{
-	// 			id: 'cm300nsmq000008i57sntds1o',
-	// 			materials: {
-	// 				completeds: ['material-1', 'material-2', 'material-3', 'material-4']
-	// 			},
-	// 			modules: {
-	// 				completeds: []
-	// 			}
-	// 		}
-	// 	]
-	// }
-	const [user] = useState<IUser | null>(null)
+	const [user] = useState<UserTypes.User | null>(null)
 
 	const isPurchased = user?.purchased_courses.find(v => v.id == courseId)
 	const purchased_course = user?.purchased_courses.find(
@@ -41,7 +29,7 @@ const CourseDetailPage: React.FC = () => {
 	const breadcrumbs = [
 		{ label: 'Главная', href: '/' },
 		{ label: 'Наши курсы', href: '/our_courses' },
-		{ label: findCourse.title, href: '#' }
+		{ label: findCourse.title, href: '#this' }
 	]
 
 	return (

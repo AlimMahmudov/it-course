@@ -1,12 +1,12 @@
 'use client'
+import { courses } from '@/shared/const/courses'
 import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
+import { useSearchParams } from 'next/navigation'
 import React from 'react'
 import Register from './sections/register/Register'
-import { courses } from '@/shared/const/courses'
-import { useSearchParams } from 'next/navigation'
 const breadcrumbs = [
 	{ label: 'Главная', href: '/' },
-	{ label: 'Зарегистрироваться на курс', href: '#' }
+	{ label: 'Зарегистрироваться на курс', href: '#this' }
 ]
 const CourseRegisterPage: React.FC = () => {
 	const searchParams = useSearchParams()

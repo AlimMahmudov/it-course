@@ -11,9 +11,9 @@ interface SiteLayoutProps {
 const SiteLayout: FC<SiteLayoutProps> = ({ children }) => {
   return (
     <div id={scss.SiteLayout}>
-      {/* <Header /> */}
+      <Header />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

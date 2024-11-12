@@ -1,10 +1,10 @@
+import Courses from '@/shared/components/courses/Courses'
+import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
 import React from 'react'
 import styles from './OurCoursesPage.module.scss'
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
-import Courses from '@/shared/components/courses/Courses'
 const breadcrumbs = [
 	{ label: 'Главная', href: '/' },
-	{ label: 'Наши курсы', href: '#' }
+	{ label: 'Наши курсы', href: '#this' }
 ]
 const OurCoursesPage: React.FC = () => {
 	return (

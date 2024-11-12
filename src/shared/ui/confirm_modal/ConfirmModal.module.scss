@@ -1,0 +1,50 @@
+.confirm_modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: var(--viewport-width);
+	height: var(--viewport-height);
+	background: #00000080;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	padding-top: 200px;
+	.content {
+		width: 360px;
+		height: min-content;
+		border-radius: 15px;
+		background: rgba(10, 17, 40, 1);
+		padding: 21px;
+		p {
+			text-align: center;
+			&.error {
+				margin-top: 15px;
+			}
+		}
+		.actions {
+			margin-top: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			button {
+				width: 100%;
+				background: rgba(3, 64, 120, 1);
+				width: 150px;
+				height: 40px;
+				border-radius: 10px;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 19.5px;
+				color: rgba(255, 255, 255, 1);
+				transition: all 0.25s;
+				will-change: transform;
+				&:hover {
+					transform: scale(1.015) !important;
+				}
+				&:active {
+					transform: scale(0.99) !important;
+				}
+			}
+		}
+	}
+}

@@ -2,13 +2,6 @@ import { api as index } from '..'
 
 const api = index.injectEndpoints({
 	endpoints: build => ({
-		getMe: build.query<AUTH.GetAuthResponse, AUTH.GetAuthRequest>({
-			query: () => ({
-				url: '/user/me',
-				method: 'GET'
-			}),
-			providesTags: ['auth']
-		}),
 		login: build.mutation({
 			query: newData => {
 				const formData = new FormData()
@@ -24,7 +17,7 @@ const api = index.injectEndpoints({
 			invalidatesTags: ['auth']
 		}),
 		forgotPass: build.mutation<
-			{ message: string },
+			Record<'message', string>,
 			Record<'clientUrl' | 'email', string>
 		>({
 			query(arg) {
@@ -41,7 +34,7 @@ const api = index.injectEndpoints({
 			}
 		}),
 		resetPass: build.mutation<
-			{ message: string },
+			Record<'message', string>,
 			Record<'newPass' | 'resetToken', string>
 		>({
 			query(arg) {
@@ -80,14 +73,34 @@ const api = index.injectEndpoints({
 				}
 			},
 			invalidatesTags: ['auth']
+		}),
+		logout: build.mutation<Record<'message', string>, void>({
+			query() {
+				const refreshToken = JSON.parse(
+					String(localStorage.getItem('refreshToken'))
+				)
+				return {
+					url: '/auth/logout',
+					method: 'PATCH',
+					body: { refreshToken }
+				}
+			},
+			transformResponse(baseQueryReturnValue: Record<'message', string>) {
+				localStorage.removeItem('refreshToken')
+				localStorage.removeItem('accessToken')
+				localStorage.removeItem('retry')
+				return baseQueryReturnValue
+			},
+			invalidatesTags: ['auth']
 		})
-	})
+	}),
+	overrideExisting: true
 })
 
 export const {
-	useGetMeQuery,
 	useLoginMutation,
 	useRegisterMutation,
 	useForgotPassMutation,
-	useResetPassMutation
+	useResetPassMutation,
+	useLogoutMutation
 } = api
