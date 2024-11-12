@@ -1,18 +1,18 @@
-#SignIn {
+#Auth {
 	padding: 50px;
 
 	p {
 		color: #ffffff;
 		font-size: 16px;
 	}
-	.signin {
+	.Auth {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 50px;
 		padding: 50px;
 
-		.signin_logo {
+		.logo {
 			img {
 				width: 150px;
 				height: 100%;
@@ -23,6 +23,15 @@
 			flex-direction: column;
 			align-items: center;
 			gap: 20px;
+			.input_block {
+				display: flex;
+				gap: 10px;
+				.input_box {
+					display: flex;
+					flex-direction: column;
+					gap: 20px;
+				}
+			}
 			.for_inp {
 				display: flex;
 				flex-direction: column;
@@ -41,6 +50,30 @@
 					background-color: #0a1128;
 					padding: 0 6px;
 				}
+				select {
+					width: 480px;
+					height: 50px;
+					color: #ffffff;
+					border-radius: 10px;
+					border: solid 1px #ffffff;
+					padding: 0 20px;
+					font-size: 16px;
+					-webkit-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					option {
+						color: black;
+					}
+				}
+				input:-webkit-autofill,
+				input:-webkit-autofill:hover,
+				input:-webkit-autofill:focus,
+				input:-webkit-autofill:active {
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: #fff;
+					transition: background-color 5000s ease-in-out 0s;
+					box-shadow: inset 0 0 20px 20px transparent;
+				}
 				input {
 					width: 480px;
 					height: 50px;
@@ -53,21 +86,26 @@
 					font-size: 16px;
 				}
 			}
-
+			.cn {
+				margin-top: 8px;
+				a:hover {
+					text-decoration: underline;
+				}
+			}
+			button[type='submit'] {
+				padding: 17px 90px 17px 90px;
+				border-radius: 10px;
+				background: #034078;
+				border: none;
+				color: #ffffff;
+				font-size: 12px;
+			}
 			.buttons {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
 				width: 100%;
 
-				.sign_btn {
-					padding: 17px 90px 17px 90px;
-					border-radius: 10px;
-					background: #034078;
-					border: none;
-					color: #ffffff;
-					font-size: 12px;
-				}
 				.sign_btn2 {
 					font-family: Montserrat;
 					font-size: 16px;

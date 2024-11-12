@@ -4,148 +4,188 @@ import axios, { AxiosError } from 'axios'
 import Image from 'next/image'
 import { useRouter } from 'next-nprogress-bar'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import scss from './SignUp.module.scss'
 import Link from 'next/link'
+import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRegisterMutation } from '@/shared/redux/api/auth'
 
-interface IInputComponentProps {
-	username: string
-	tel: string
-	email: string
-	password: string
-	photo: string
-	day: number
-	month: string
-	year: number
-	country: string
-	sity: string
-	Occupat: string
-	man: string
-	woman: string
-}
+const schema = z.object({
+	fullname: z.string().min(1, { message: 'ФИО обязательно' }),
+	tel: z.string().min(1, { message: 'Номер телефона обязателен' }),
+	email: z
+		.string()
+		.min(1, { message: 'Email обязателен' })
+		.email({ message: 'Неверный формат email' }),
+	password: z
+		.string()
+		.min(8, { message: 'Пароль должен содержать минимум 8 символов' }),
+	profile_pic: z.string().min(1, { message: 'Фото профиля обязательно' }),
+	birthdate: z.string().min(1, { message: 'Дата рождения обязательна' }),
+	country: z.string().min(1, { message: 'Страна обязательна' }),
+	city: z.string().min(1, { message: 'Город обязателен' }),
+	occupation: z.string().min(1, { message: 'Профессия обязательна' }),
+	gender: z.enum(['мужской', 'женский'])
+})
+
+type IInputComponentProps = z.infer<typeof schema>
 
 const SignUp = () => {
 	const route = useRouter()
-	const { register, handleSubmit, reset } = useForm<IInputComponentProps>()
+	const {
+		register,
+		handleSubmit,
+		reset,
+		setValue,
+		watch,
+		formState: { errors }
+	} = useForm<IInputComponentProps>({
+		resolver: zodResolver(schema),
+		defaultValues: {
+			gender: 'мужской'
+		}
+	})
+	const [registration, { error }] = useRegisterMutation()
+	const response = error as unknown as { data: any }
 
 	const onSubmit: SubmitHandler<IInputComponentProps> = async data => {
-		try {
-			const { data: responseData } = await axios.post(
-				`${process.env.NEXT_PUBLIC_API}/auth/sign-up`,
-				data
-			)
-			console.log(responseData)
-			reset()
-			alert('Пользователь успешно за регицтраван')
-		} catch (e) {
-			const error = e as AxiosError
-			console.log(error.response?.data)
+		const { data: responseData } = await registration(data)
+		if (responseData) {
+			if (responseData?.accessToken && responseData?.refreshToken) {
+				localStorage.setItem(
+					'accessToken',
+					JSON.stringify(responseData?.accessToken)
+				)
+				localStorage.setItem(
+					'refreshToken',
+					JSON.stringify(responseData?.refreshToken)
+				)
+				reset()
+				route.push("/")
+			}
 		}
 	}
 
 	return (
-		<div id={scss.SignUp}>
+		<div id={"Auth"}>
 			<div className='container'>
-				<div className={scss.signup}>
-					<Link href='/' className={scss.signup_logo}>
+				<div className={"Auth"}>
+					<Link href='/' className={"logo"}>
 						<Image src={logo} alt='' />
 					</Link>
 
-					<form onSubmit={handleSubmit(onSubmit)} className={scss.form}>
-						<div className={scss.input_block}>
-							<div className={scss.input_box}>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>ФИО*</label>
-									<input type='text' {...register('tel', { required: true })} />
-								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Номер телефон*</label>
-									<input
-										type='text'
-										{...register('email', { required: true })}
-									/>
-								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Email*</label>
-									<input
-										type='text'
-										{...register('username', { required: true })}
-									/>
+					<form onSubmit={handleSubmit(onSubmit)} className={"form"}>
+						<div className={"input_block"}>
+							<div className={"input_box"}>
+								<div className={"for_inp"}>
+									<label htmlFor='fullname'>ФИО*</label>
+									<input type='text' {...register('fullname')} />
+									{errors.fullname && (
+										<span className={"error"}>
+											{errors.fullname.message}
+										</span>
+									)}
 								</div>
 
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Email*</label>
-									<input
-										type='text'
-										{...register('password', { required: true })}
-									/>
+								<div className={"for_inp"}>
+									<label htmlFor='tel'>Номер телефона*</label>
+									<input type='text' {...register('tel')} />
+									{errors.tel && (
+										<span className={"error"}>{errors.tel.message}</span>
+									)}
 								</div>
-								<div className={scss.pol}>
-									<div className={scss.for_inp_woman}>
-										<label htmlFor='email'>Пол*</label>
-										<input
-											type='text'
-											{...register('man', { required: true })}
-										/>
-									</div>
-									<div className={scss.for_inp_woman}>
-										<label htmlFor='email'>Пол*</label>
-										<input
-											type='text'
-											{...register('woman', { required: true })}
-										/>
-									</div>
+
+								<div className={"for_inp"}>
+									<label htmlFor='email'>Email*</label>
+									<input type='text' {...register('email')} />
+									{errors.email && (
+										<span className={"error"}>{errors.email.message}</span>
+									)}
+								</div>
+
+								<div className={"for_inp"}>
+									<label htmlFor='password'>Пароль*</label>
+									<input type='password' {...register('password')} />
+									{errors.password && (
+										<span className={"error"}>
+											{errors.password.message}
+										</span>
+									)}
+								</div>
+
+								<div className={"for_inp"}>
+									<label htmlFor='gender'>Пол*</label>
+									<select
+										{...register('gender')}
+										value={watch('gender')}
+										onChange={e =>
+											setValue(
+												'gender',
+												e.target.value as 'мужской' | 'женский'
+											)
+										}
+									>
+										<option value='мужской'>Мужской</option>
+										<option value='женский'>Женский</option>
+									</select>
+									{errors.gender && (
+										<span className={"error"}>{errors.gender.message}</span>
+									)}
 								</div>
 							</div>
-							<div className={scss.input_box}>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Email*</label>
-									<input
-										type='text'
-										{...register('photo', { required: true })}
-									/>
+
+							<div className={"input_box"}>
+								<div className={"for_inp"}>
+									<label htmlFor='profile_pic'>Фото профиля*</label>
+									<input type='text' {...register('profile_pic')} />
+									{errors.profile_pic && (
+										<span className={"error"}>{errors.profile_pic.message}</span>
+									)}
 								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Дата рождения*</label>
-									<input type='text' {...register('day', { required: true })} />
+
+								<div className={"for_inp"}>
+									<label htmlFor='birthdate'>Дата рождения*</label>
+									<input type='date' {...register('birthdate')} />
+									{errors.birthdate && (
+										<span className={"error"}>
+											{errors.birthdate.message}
+										</span>
+									)}
 								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Дата рождения*</label>
-									<input
-										type='text'
-										{...register('month', { required: true })}
-									/>
+
+								<div className={"for_inp"}>
+									<label htmlFor='country'>Страна*</label>
+									<input type='text' {...register('country')} />
+									{errors.country && (
+										<span className={"error"}>{errors.country.message}</span>
+									)}
 								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Дата рождения*</label>
-									<input
-										type='text'
-										{...register('year', { required: true })}
-									/>
+
+								<div className={"for_inp"}>
+									<label htmlFor='city'>Город*</label>
+									<input type='text' {...register('city')} />
+									{errors.city && (
+										<span className={"error"}>{errors.city.message}</span>
+									)}
 								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Страна*</label>
-									<input
-										type='text'
-										{...register('country', { required: true })}
-									/>
-								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Город*</label>
-									<input
-										type='text'
-										{...register('sity', { required: true })}
-									/>
-								</div>
-								<div className={scss.for_inp}>
-									<label htmlFor='email'>Email*</label>
-									<input
-										type='text'
-										{...register('Occupat', { required: true })}
-									/>
+
+								<div className={"for_inp"}>
+									<label htmlFor='occupation'>Профессия*</label>
+									<input type='text' {...register('occupation')} />
+									{errors.occupation && (
+										<span className={"error"}>
+											{errors.occupation.message}
+										</span>
+									)}
 								</div>
 							</div>
 						</div>
-						<button type='submit'>create</button>
+						<button className={"sign_btn"} type='submit'>
+							Создать аккаунт
+						</button>
+						{response?.data?.detail && <p>{response.data.detail}</p>}
+						<p className={"cn"}>
+							Уже есть учетный запис? <Link href='/auth/signin'>Войти</Link>
+						</p>
 					</form>
 				</div>
 			</div>

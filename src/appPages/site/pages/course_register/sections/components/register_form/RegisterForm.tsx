@@ -9,7 +9,7 @@ type TRegisterFormProps = {
 }
 const register_schema = z.object({
 	fullname: z.string().nonempty('ФИО обязательно'),
-	phone_number: z
+	tel: z
 		.string()
 		.nonempty('Телефон обязателен')
 		.regex(
@@ -71,12 +71,12 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 				)}
 			</div>
 			<div className={styles.for_inp}>
-				<label className={styles.label} htmlFor='phone_number'>
+				<label className={styles.label} htmlFor='tel'>
 					Телефон*
 				</label>
-				<input {...register('phone_number')} type='text' id='phone_number' />
-				{errors.phone_number && (
-					<span className={styles.error}>{errors.phone_number.message}</span>
+				<input {...register('tel')} type='text' id='tel' />
+				{errors.tel && (
+					<span className={styles.error}>{errors.tel.message}</span>
 				)}
 			</div>
 			<div className={styles.for_inp}>

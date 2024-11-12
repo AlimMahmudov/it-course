@@ -15,7 +15,7 @@ const CourseDetailPage: React.FC = () => {
 	const { courseId } = useParams()
 	const findCourse = courses.find(course => course.id === courseId)
 
-	// const user: IUser = {
+	// const _user: IUser = {
 	// 	purchased_courses: [
 	// 		{
 	// 			id: 'cm300nsmq000008i57sntds1o',
