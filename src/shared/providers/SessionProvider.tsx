@@ -1,8 +1,8 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import { useRouter } from 'next-nprogress-bar'
+import { usePathname } from 'next/navigation'
 import { FC, ReactNode, useCallback, useEffect } from 'react'
-import { useGetMeQuery } from '../redux/api/auth'
+import { useGetMeQuery } from '../redux/api/user'
 
 interface SessionProviderProps {
 	children: ReactNode
@@ -22,9 +22,11 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 					router.push('/')
 				}
 				break
-			case '/service/servicepage/advancedsettings':
-			case '/service/servicepage/basicsettings':
-			case '/service/servicepage/onlinebooking':
+			case '/profile/personal':
+			case '/profile/payment_cards':
+			case '/profile/subscriptions':
+			case '/profile/comments':
+			case '/profile/my_purchases':
 			case '/':
 				if (status === 'rejected') {
 					router.push('/auth/signin')
@@ -39,5 +41,5 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 		handleNavigation()
 	}, [handleNavigation])
 
-	return <>{isLoading ? <span>Loading...</span> : children}</>
+	return <>{isLoading ? <span>Загрузка...</span> : children}</>
 }

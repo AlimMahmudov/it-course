@@ -42,8 +42,7 @@ const SignIn = () => {
 					'refreshToken',
 					JSON.stringify(responseData?.refreshToken)
 				)
-				reset()
-				route.push('/')
+				route.push('/profile/personal')
 			}
 		}
 	}

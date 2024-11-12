@@ -5,11 +5,11 @@ import Image from 'next/image'
 import scss from './Header.module.scss'
 import { useRouter } from 'next-nprogress-bar'
 import Link from 'next/link'
-import { useGetMeQuery } from '@/shared/redux/api/auth'
+import { useSelector } from 'react-redux'
 const Header = () => {
 	const { translate } = useLanguageStore()
 	const router = useRouter()
-	const { data } = useGetMeQuery()
+	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
 
 	return (
 		<header id={scss.Header} data-header='true'>
@@ -26,7 +26,7 @@ const Header = () => {
 						<Link href='/us'>{translate('Биз жөнүндө', 'О нас')}</Link>
 					</div>
 					<div className={scss.header_button}>
-						{!data ? (
+						{!state?.data ? (
 							<>
 								<button
 									onClick={() => router.push('/auth/signin')}
@@ -36,7 +36,7 @@ const Header = () => {
 								</button>
 								<button
 									className={scss.subscribe}
-									onClick={() => router.push('/subscribe')}
+									onClick={() => router.push('/subscription')}
 								>
 									{translate('Катталуу', 'Подписаться')}
 								</button>
@@ -72,7 +72,7 @@ const Header = () => {
 								</button>
 								<button
 									className={scss.profile}
-									onClick={() => router.push('/subscribe')}
+									onClick={() => router.push('/profile/personal')}
 								>
 									Профиль
 								</button>
