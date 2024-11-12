@@ -4,6 +4,6 @@
 // }
 
 namespace AUTH {
-  type GetAuthResponse = User[];
-  type GetAuthRequest = void;
+	type GetAuthResponse = User[]
+	type GetAuthRequest = void
 }

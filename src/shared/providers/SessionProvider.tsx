@@ -1,15 +1,15 @@
-'use client';
-import { useGetUserAuthQuery } from '@/shared/redux/api/auth'
+'use client'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next-nprogress-bar'
 import { FC, ReactNode, useCallback, useEffect } from 'react'
+import { useGetMeQuery } from '../redux/api/auth'
 
 interface SessionProviderProps {
 	children: ReactNode
 }
 
 export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
-	const { status } = useGetUserAuthQuery()
+	const { status, isLoading } = useGetMeQuery()
 	const pathname = usePathname()
 	const router = useRouter()
 
@@ -39,5 +39,5 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 		handleNavigation()
 	}, [handleNavigation])
 
-	return <>{children}</>
+	return <>{isLoading ? <span>Loading...</span> : children}</>
 }

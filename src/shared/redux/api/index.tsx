@@ -1,3 +1,4 @@
+import { API_URL } from '@/shared/const/export-env'
 import {
 	BaseQueryFn,
 	createApi,
@@ -5,17 +6,20 @@ import {
 } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: `${process.env.NEXT_PUBLIC_API}`,
+	baseUrl: API_URL + '/api',
 	prepareHeaders: headers => {
-		let token = JSON.parse(String(localStorage.getItem('user')))
-		if (!token) {
-			token = JSON.parse(String(sessionStorage.getItem('user')))
-		}
-		if (token) {
+		let token = JSON.parse(
+			String(localStorage.getItem('accessToken')) !== 'undefined'
+				? String(localStorage.getItem('accessToken'))
+				: '{}'
+		)
+		if (token && typeof token === 'string') {
 			headers.set('Authorization', `Bearer ${token}`)
 		}
+
 		return headers
-	}
+	},
+	credentials: 'include'
 })
 
 const baseQueryExtended: BaseQueryFn = async (args, api, extraOptions) => {
