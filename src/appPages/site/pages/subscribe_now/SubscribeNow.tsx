@@ -19,7 +19,7 @@ const SubscribeNow: React.FC = () => {
 		return <div>{JSON.stringify(error)}</div>
 	}
 	if (!plan_id || !findPlan) {
-		return <></>
+		return <div className='centered-container none'>Несоответсие данных</div>
 	}
 	return (
 		<>
@@ -30,7 +30,7 @@ const SubscribeNow: React.FC = () => {
 				) : (
 					<div className={styles.cn}>
 						<h1>{findPlan.name}</h1>
-						<SubscribeForm />
+						<SubscribeForm subscription={findPlan} />
 						<div className={styles['info']}>
 							<ul>
 								{findPlan.subscription_benefits.map((benefit, idx) => (
@@ -56,6 +56,18 @@ const SubscribeNow: React.FC = () => {
 										)
 									})}
 							</ul>
+							<p>
+								Отменить можно в любой <br /> момент!
+							</p>
+							<p>
+								При оплате через Fondy, с Вашей карты автоматически будут
+								списываться 225,00 $/год, которые являются стандартной ценой
+								участия.
+							</p>
+							<p>
+								Вы всегда можете отменить подписку в Вашем личном кабинете и
+								больше списаний не будет.
+							</p>
 						</div>
 					</div>
 				)}

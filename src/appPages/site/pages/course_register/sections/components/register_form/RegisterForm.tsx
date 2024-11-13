@@ -88,7 +88,7 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					<span className={styles.error}>{errors.email.message}</span>
 				)}
 			</div>
-			<div className={styles['select']}>
+			<div className={styles['payment_card']}>
 				<label className={styles.label}>Выберите платежную карту</label>
 				<div className={styles['row']}>
 					<button
@@ -133,7 +133,12 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					<label className={styles.label} htmlFor='card_cvc'>
 						CVC *
 					</label>
-					<input {...register('card_cvc')} type='text' id='card_cvc' />
+					<input
+						{...register('card_cvc')}
+						autoComplete='off'
+						type='text'
+						id='card_cvc'
+					/>
 					{errors.card_cvc && (
 						<span className={styles.error}>{errors.card_cvc.message}</span>
 					)}
