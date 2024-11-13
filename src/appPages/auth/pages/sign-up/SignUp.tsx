@@ -1,16 +1,16 @@
 'use client'
 import logo from '@/shared/assets/logo.svg'
-import Image from 'next/image'
-import { useRouter } from 'next-nprogress-bar'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import Link from 'next/link'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useRegisterMutation } from '@/shared/redux/api/auth'
 import DateSelect from '@/shared/ui/date_select/DateSelect'
-import clsx from 'clsx'
-import { useCallback } from 'react'
 import { formatPhoneNumber } from '@/shared/utils/formatPhoneNumber'
+import { zodResolver } from '@hookform/resolvers/zod'
+import clsx from 'clsx'
+import { useRouter } from 'next-nprogress-bar'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useCallback } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { z } from 'zod'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -36,8 +36,7 @@ type IInputComponentProps = z.infer<typeof schema>
 const SignUp = () => {
 	const route = useRouter()
 	const methods = useForm<IInputComponentProps>({
-		resolver: zodResolver(schema),
-		defaultValues: { gender: 'мужской', tel: '+996' }
+		resolver: zodResolver(schema)
 	})
 	const {
 		handleSubmit,
@@ -82,9 +81,9 @@ const SignUp = () => {
 	}
 
 	return (
-		<div id={'Auth'}>
+		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={'Auth'}>
+				<div className={'BaseForm'}>
 					<Link href='/' className={'logo'}>
 						<Image src={logo} alt='' />
 					</Link>
@@ -102,6 +101,9 @@ const SignUp = () => {
 
 								<div className={'for_inp'}>
 									<label htmlFor='tel'>Номер телефона*</label>
+									<label htmlFor='tel' className={'tel-c'}>
+										+996
+									</label>
 									<input
 										type='text'
 										{...register('tel')}

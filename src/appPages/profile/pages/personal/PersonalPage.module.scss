@@ -26,7 +26,16 @@
 			gap: 4px;
 			position: relative;
 			width: 314px;
-
+			.tel-c {
+				position: absolute;
+				left: 0;
+				height: 44px;
+				bottom: 0;
+				border-right: 1px solid rgba(164, 164, 164, 1);
+				display: flex;
+				align-items: center;
+				padding: 0 10px;
+			}
 			.gender {
 				display: flex;
 				align-items: center;
@@ -59,7 +68,7 @@
 				font-size: 14px;
 			}
 
-			label {
+			label:not(.tel-c) {
 				position: static;
 				padding: 0;
 				margin-bottom: 2px;
@@ -72,7 +81,6 @@
 				gap: 15px;
 				width: 100%;
 				select {
-					// width: auto;
 					width: 100%;
 				}
 			}
@@ -81,7 +89,6 @@
 				background: url('/svg_icons/arrow.svg') no-repeat right;
 				background-position-x: calc(100% - 10px);
 				background-size: 12.5px;
-				// width: 100%;
 			}
 			select {
 				height: 44px;
@@ -126,6 +133,9 @@
 				background: rgba(27, 41, 89, 0.4);
 				font-size: 15px;
 				font-weight: 400;
+				&[name='tel'] {
+					padding-left: 70px;
+				}
 			}
 		}
 	}

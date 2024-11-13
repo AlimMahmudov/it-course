@@ -1,14 +1,14 @@
 'use client'
 import logo from '@/shared/assets/logo.svg'
+import { useResetPassMutation } from '@/shared/redux/api/auth'
 import { useLanguageStore } from '@/shared/stores/Language'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next-nprogress-bar'
 import Image from 'next/image'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import Link from 'next/link'
-import { useRouter } from 'next-nprogress-bar'
-import { useResetPassMutation } from '@/shared/redux/api/auth'
-import { useSearchParams } from 'next/navigation'
 
 const resetPassSchema = z
 	.object({
@@ -54,9 +54,9 @@ const ResetPassPage = () => {
 	}
 
 	return (
-		<div id={'Auth'}>
+		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={'Auth'}>
+				<div className={'BaseForm'}>
 					<Link href='/' className={'signin_logo'}>
 						<Image src={logo} alt='' />
 					</Link>

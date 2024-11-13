@@ -1,13 +1,13 @@
 'use client'
 import logo from '@/shared/assets/logo.svg'
+import { useForgotPassMutation } from '@/shared/redux/api/auth'
 import { useLanguageStore } from '@/shared/stores/Language'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next-nprogress-bar'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import Link from 'next/link'
-import { useRouter } from 'next-nprogress-bar'
-import { useForgotPassMutation } from '@/shared/redux/api/auth'
 
 const forgotPassSchema = z.object({
 	email: z.string().nonempty('Email обязателен').email('Неверный формат email')
@@ -39,7 +39,7 @@ const ForgotPassPage = () => {
 	}
 
 	return (
-		<div id={'Auth'}>
+		<div id={'BaseForm'}>
 			<div className='container'>
 				<div className={'Auth'}>
 					<Link href='/' className={'signin_logo'}>

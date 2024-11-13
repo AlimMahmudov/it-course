@@ -81,6 +81,7 @@ const PersonalPage: React.FC = () => {
 
 						<div className={styles['for_inp']}>
 							<label htmlFor='tel'>Номер телефона*</label>
+							<label htmlFor='tel' className={styles['tel-c']}>+996</label>
 							<input
 								type='text'
 								{...register('tel')}
