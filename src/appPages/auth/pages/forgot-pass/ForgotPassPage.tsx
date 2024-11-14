@@ -41,7 +41,7 @@ const ForgotPassPage = () => {
 	return (
 		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={'Auth'}>
+				<div className={'BaseForm auth'}>
 					<Link href='/' className={'signin_logo'}>
 						<Image src={logo} alt='' />
 					</Link>

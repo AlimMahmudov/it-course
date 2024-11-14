@@ -1,13 +1,14 @@
 'use client'
 import React from 'react'
 import styles from './Courses.module.scss'
-import { courses } from '@/shared/const/courses'
 import Link from 'next/link'
 import Animate from '@/shared/ui/animate/Animate'
+import { useGetCoursesQuery } from '@/shared/redux/api/courses'
 const Courses: React.FC = () => {
+	const {data} = useGetCoursesQuery()
 	return (
 		<div className={styles.courses_list}>
-			{courses.map((course, idx) => {
+			{data?.map((course, idx) => {
 				return (
 					<Animate idx={idx} key={course.id} className={styles.course_item}>
 						<div>

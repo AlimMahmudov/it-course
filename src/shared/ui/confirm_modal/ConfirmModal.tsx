@@ -34,7 +34,7 @@ const ConfirmModal: React.FC<TProps> = ({
 						Нет
 					</button>
 				</div>
-				<p className={styles.error}>{JSON.stringify(error)}</p>
+				{error && <p className={styles.error}>{JSON.stringify(error)}</p>}
 			</Animate>
 		</div>,
 		document.body

@@ -1,0 +1,52 @@
+.card_list {
+	margin-top: 33px;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	.card {
+		width: 355px;
+		height: 225px;
+		border-radius: 10px;
+		border: 1px solid rgba(2, 114, 206, 1);
+		background: rgba(10, 17, 40, 0.1);
+		backdrop-filter: blur(14px);
+		padding: 20px 40px;
+		position: relative;
+		.visa_type{
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+		}
+		h4 {
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 31.06px;
+		}
+		.nfc {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 15px;
+			margin: 20px 0;
+			img:nth-child(1) {
+				width: 39px;
+				height: 39px;
+			}
+			img:nth-child(2) {
+				width: 21.5px;
+				height: 27.5px;
+			}
+		}
+		p {
+			margin-bottom: 5px;
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 31.06px;
+		}
+		span {
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 19.5px;
+		}
+	}
+}

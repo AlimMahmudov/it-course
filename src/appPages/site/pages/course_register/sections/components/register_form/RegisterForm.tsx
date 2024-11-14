@@ -1,11 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import React from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Schema, z } from 'zod'
+import { z } from 'zod'
 import styles from './RegisterForm.module.scss'
 import clsx from 'clsx'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
+import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
 type TRegisterFormProps = {
-	course: ICourse
+	price: string
 }
 const register_schema = z.object({
 	fullname: z.string().nonempty('ФИО обязательно'),
@@ -17,26 +19,19 @@ const register_schema = z.object({
 			'Некорректный номер телефона. Формат: xxx xxx xxx'
 		),
 	email: z.string().nonempty('Email обязателен').email('Некорректный email'),
-	payment_card: z
-		.string()
-		.nonempty('Тип карты обязателен')
-		.refine(val => val === 'Visa' || val === 'MasterCard', {
-			message: 'Поддерживаются только VISA или MasterCard'
-		}),
 	card_number: z
 		.string()
-		.regex(
-			/^\d{4}-\d{4}-\d{4}-\d{4}$/,
-			'Номер карты должен быть в формате xxxx-xxxx-xxxx-xxxx'
-		),
-	card_date: z
+		.min(1, 'Введите номер карты')
+		.regex(/^(\d{4} \d{4} \d{4} \d{4})$/, '16 цифр'),
+	expiration_date: z
 		.string()
-		.regex(
-			/^(0[1-9]|1[0-2])\/\d{2}$/,
-			'Дата карты должна быть в формате MM/ГГ'
-		),
-
-	card_cvc: z.string().regex(/^\d{3}$/, 'CVC код должен содержать 3 цифры'),
+		.min(1, 'Введите срок действия')
+		.regex(/^(0[1-9]|1[0-2])\/\d{2}$/, 'Формат MM/YY'),
+	card_cvc: z
+		.string()
+		.min(1, 'Введите CVC')
+		.regex(/^\d{3}$/, '3 цифры'),
+	card_type: z.enum(['Visa', 'MasterCard'], { message: 'Выберите тип карты' }),
 	agree: z.boolean().refine(val => val === true, {
 		message: 'Необходимо согласие с условиями'
 	})
@@ -44,21 +39,50 @@ const register_schema = z.object({
 
 type TRegisterSchema = z.infer<typeof register_schema>
 
-const RegisterForm: React.FC<TRegisterFormProps> = () => {
+const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
+	const { data } = useGetMeInfoQuery('payment_cards')
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		watch
+		watch,
+		setValue
 	} = useForm<TRegisterSchema>({
-		resolver: zodResolver(register_schema)
+		resolver: zodResolver(register_schema),
+		defaultValues: {
+			card_number: data ? data[0].card_number : '',
+			expiration_date: data ? formatExpiryDate(data[0].expiration_date) : '',
+			card_type: data ? data[0].card_type : 'Visa'
+		}
 	})
 
 	const onSubmit: SubmitHandler<TRegisterSchema> = async data => {
 		try {
 		} catch (e) {}
 	}
-	const payment_card = watch('payment_card')
+
+	useEffect(() => {
+		if (data) {
+			setValue('card_number', data[0].card_number)
+			setValue('expiration_date', formatExpiryDate(data[0].expiration_date))
+			setValue('card_type', data[0].card_type)
+		}
+	}, [data, setValue])
+
+	const card_type = watch('card_type')
+	const changeCardType = useCallback(
+		(type: 'Visa' | 'MasterCard') => setValue('card_type', type),
+		[setValue]
+	)
+	const changePhone = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const formattedPhone = formatPhoneNumber(e.target.value)
+			setValue('tel', formattedPhone)
+		},
+		[setValue]
+	)
+
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 			<div className={styles.for_inp}>
@@ -70,11 +94,14 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					<span className={styles.error}>{errors.fullname.message}</span>
 				)}
 			</div>
-			<div className={styles.for_inp}>
-				<label className={styles.label} htmlFor='tel'>
-					Телефон*
-				</label>
-				<input {...register('tel')} type='text' id='tel' />
+			<div className={styles['for_inp']}>
+				<label htmlFor='tel'>Номер телефона*</label>
+				<div className={styles['row']}>
+					<label htmlFor='tel' className={styles['tel-c']}>
+						+996
+					</label>
+					<input type='text' {...register('tel')} onChange={changePhone} />
+				</div>
 				{errors.tel && (
 					<span className={styles.error}>{errors.tel.message}</span>
 				)}
@@ -88,26 +115,28 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					<span className={styles.error}>{errors.email.message}</span>
 				)}
 			</div>
-			<div className={styles['payment_card']}>
+			<div className={styles['card_type']}>
 				<label className={styles.label}>Выберите платежную карту</label>
 				<div className={styles['row']}>
 					<button
 						type='button'
-						className={clsx({ [styles.active]: payment_card === 'Visa' })}
+						onClick={() => changeCardType('Visa')}
+						className={clsx({ [styles.active]: card_type === 'Visa' })}
 					>
 						<span></span>
 						Visa
 					</button>
 					<button
 						type='button'
-						className={clsx({ [styles.active]: payment_card === 'MasterCard' })}
+						onClick={() => changeCardType('MasterCard')}
+						className={clsx({ [styles.active]: card_type === 'MasterCard' })}
 					>
 						<span></span>
 						MasterCard
 					</button>
 				</div>
-				{errors.payment_card && (
-					<span className={styles.error}>{errors.payment_card.message}</span>
+				{errors.card_type && (
+					<span className={styles.error}>{errors.card_type.message}</span>
 				)}
 			</div>
 			<div className={styles.for_inp}>
@@ -121,12 +150,18 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 			</div>
 			<div className={styles['for_inps']}>
 				<div className={styles.for_inp}>
-					<label className={styles.label} htmlFor='card_date'>
+					<label className={styles.label} htmlFor='expiration_date'>
 						ММ/ГГ *
 					</label>
-					<input {...register('card_date')} type='text' id='card_date' />
-					{errors.card_date && (
-						<span className={styles.error}>{errors.card_date.message}</span>
+					<input
+						{...register('expiration_date')}
+						type='text'
+						id='expiration_date'
+					/>
+					{errors.expiration_date && (
+						<span className={styles.error}>
+							{errors.expiration_date.message}
+						</span>
 					)}
 				</div>
 				<div className={styles.for_inp}>
@@ -136,7 +171,7 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					<input
 						{...register('card_cvc')}
 						autoComplete='off'
-						type='text'
+						type='password'
 						id='card_cvc'
 					/>
 					{errors.card_cvc && (
@@ -144,10 +179,22 @@ const RegisterForm: React.FC<TRegisterFormProps> = () => {
 					)}
 				</div>
 			</div>
-			<div className={styles.buttons}>
-				<button className={styles.sign_btn} type='submit'>
-					Оплатит
-				</button>
+			<button className={styles.sign_btn} type='submit'>
+				Оплатит {price} $
+			</button>
+			<div className={styles.agree}>
+				<div className={styles.row}>
+					<button
+						type='button'
+						onClick={() => setValue('agree', !watch('agree'))}
+						className={clsx(styles.checkbox, watch('agree') && styles.checked)}
+					></button>
+
+					<p>Я ознакомился и согласен с Условиями оказания услуг</p>
+				</div>
+				{errors.agree && (
+					<span className={styles.error}>{errors.agree.message}</span>
+				)}
 			</div>
 		</form>
 	)

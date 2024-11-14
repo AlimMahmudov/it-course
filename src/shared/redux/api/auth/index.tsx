@@ -27,7 +27,7 @@ const api = index.injectEndpoints({
 				})
 
 				return {
-					url: '/auth/forgot-password',
+					url: '/auth/forgot_password',
 					method: 'POST',
 					body: formData
 				}
@@ -44,7 +44,7 @@ const api = index.injectEndpoints({
 				})
 
 				return {
-					url: '/auth/reset-password',
+					url: '/auth/reset_password',
 					method: 'POST',
 					body: formData
 				}
