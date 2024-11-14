@@ -1,11 +1,12 @@
 'use client'
-import { courses } from '@/shared/const/courses'
 import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
 import React, { Suspense, useState } from 'react'
 import { useSelector } from 'react-redux'
 import AfterPurchase from './components/after_purchase/AfterPurchase'
 import BeforePurchase from './components/before_purchase/BeforePurchase'
+import { useGetCourseByIdQuery } from '@/shared/redux/api/courses'
+import { useGetMyPurchasesQuery } from '@/shared/redux/api/user'
 
 const Breadcrumbs = dynamic(
 	() => import('@/shared/ui/breadcrumbs/Breadcrumbs'),
@@ -15,17 +16,18 @@ const Breadcrumbs = dynamic(
 const CourseDetailPage: React.FC = () => {
 	const { courseId } = useParams()
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
-	const findCourse = courses.find(course => course.id === courseId)
-	const [user] = useState<UserTypes.User | null>(null)
-
-	const isPurchased = user?.purchased_courses.find(v => v.id == courseId)
-	const purchased_course = user?.purchased_courses.find(
-		v => v.id == findCourse?.id
-	)
+	const { data: findCourse } = useGetCourseByIdQuery({
+		course_id: String(courseId)
+	})
+	const { data } = useGetMyPurchasesQuery('courses')
 
 	if (!findCourse) {
 		return <div>Курс не найден</div>
 	}
+
+	const isPurchased = data?.find(v => v.id == courseId)
+	const purchased_course = data?.find(v => v.id == findCourse?.id)
+
 	const breadcrumbs = [
 		{ label: 'Главная', href: '/' },
 		{ label: 'Наши курсы', href: '/our_courses' },
@@ -36,7 +38,7 @@ const CourseDetailPage: React.FC = () => {
 		<>
 			<Suspense fallback={<div>Загрузка данных...</div>}>
 				<Breadcrumbs items={breadcrumbs} />
-				{isPurchased && user ? (
+				{isPurchased && state.data ? (
 					<AfterPurchase
 						purchased_course={purchased_course}
 						course={findCourse}

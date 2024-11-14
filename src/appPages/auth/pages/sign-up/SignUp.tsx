@@ -2,7 +2,7 @@
 import logo from '@/shared/assets/logo.svg'
 import { useRegisterMutation } from '@/shared/redux/api/auth'
 import DateSelect from '@/shared/ui/date_select/DateSelect'
-import { formatPhoneNumber } from '@/shared/utils/formatPhoneNumber'
+import { formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { useRouter } from 'next-nprogress-bar'
@@ -83,7 +83,7 @@ const SignUp = () => {
 	return (
 		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={'BaseForm'}>
+				<div className={'BaseForm '}>
 					<Link href='/' className={'logo'}>
 						<Image src={logo} alt='' />
 					</Link>

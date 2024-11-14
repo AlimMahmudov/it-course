@@ -1,6 +1,6 @@
 'use client'
 import DateSelect from '@/shared/ui/date_select/DateSelect'
-import { formatPhoneNumber } from '@/shared/utils/formatPhoneNumber'
+import { formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import React, { useCallback } from 'react'
@@ -81,7 +81,9 @@ const PersonalPage: React.FC = () => {
 
 						<div className={styles['for_inp']}>
 							<label htmlFor='tel'>Номер телефона*</label>
-							<label htmlFor='tel' className={styles['tel-c']}>+996</label>
+							<label htmlFor='tel' className={styles['tel-c']}>
+								+996
+							</label>
 							<input
 								type='text'
 								{...register('tel')}

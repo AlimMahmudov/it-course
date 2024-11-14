@@ -7,9 +7,11 @@ import CourseLP from '../../sections/course_lp/CourseLP'
 import CourseReviews from '../../sections/course_reviews/CourseReviews'
 import CourseFAQ from '../../sections/course_faq/CourseFAQ'
 interface IBeforePurchaseProps {
-	course: ICourse
+	course: CoursesTypes.Course
 }
 const BeforePurchase: React.FC<IBeforePurchaseProps> = ({ course }) => {
+	console.log(course);
+	
 	return (
 		<>
 			<CourseInfo course={course} />

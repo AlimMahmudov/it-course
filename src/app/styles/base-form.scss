@@ -17,6 +17,10 @@
 		align-items: center;
 		gap: 50px;
 		padding: 50px;
+		&.auth {
+			width: 560px;
+			margin: 0 auto;
+		}
 
 		.logo {
 			img {
@@ -30,12 +34,29 @@
 			align-items: center;
 			gap: 20px;
 			width: 100%;
+			.input_block {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 30px;
+			}
+			.input_box {
+				display: flex;
+				align-items: center;
+				flex-direction: column;
+				gap: 15px;
+				width: 400px;
+			}
 			.for_inps {
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
 				width: 100%;
 				gap: 100px;
+			}
+			.error {
+				color: red;
+				font-size: 14px;
 			}
 			.for_inp {
 				display: flex;
@@ -81,10 +102,12 @@
 					align-items: center;
 					padding: 0 15px;
 				}
-				.error {
-					color: red;
-					font-size: 14px;
+				.row {
+					display: flex;
+					position: relative;
+					width: 100%;
 				}
+
 				label:not(.tel-c) {
 					color: #fff;
 					position: absolute;
@@ -92,6 +115,7 @@
 					left: 14px;
 					background-color: #0a1128;
 					padding: 0 6px;
+					z-index: 10;
 				}
 				.date-selects {
 					display: flex;

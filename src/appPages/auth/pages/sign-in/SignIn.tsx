@@ -50,7 +50,7 @@ const SignIn = () => {
 	return (
 		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={'BaseForm'}>
+				<div className={'BaseForm auth'}>
 					<Link href='/' className={'signin_logo'}>
 						<Image src={logo} alt='' />
 					</Link>

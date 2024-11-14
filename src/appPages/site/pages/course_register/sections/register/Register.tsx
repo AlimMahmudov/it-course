@@ -4,7 +4,7 @@ import RegisterForm from '../components/register_form/RegisterForm'
 import clsx from 'clsx'
 
 type TRegisterProps = {
-	course: ICourse | undefined
+	course: CoursesTypes.Course | undefined
 }
 
 const Register: React.FC<TRegisterProps> = ({ course }) => {
@@ -20,12 +20,12 @@ const Register: React.FC<TRegisterProps> = ({ course }) => {
 						<div className={styles['sections']}>
 							<h3>Курс</h3>
 							<h4>{course.title}</h4>
-							<p>{course.description2.split('.')[0]}.</p>
+							<p>{course.description.split('.').slice(0, 2).join('.')}.</p>
 						</div>
 						<div className={clsx(styles['sections'], styles['pt'])}>
 							<h3>Лектор</h3>
-							<h4>{course.master_class_leader.name}</h4>
-							<span>{course.master_class_leader.title}</span>
+							<h4>{course.instructor.fullname}</h4>
+							<span>{course.instructor.specialization}</span>
 						</div>
 						<div className={clsx(styles['sections'], styles.row, styles['pt'])}>
 							<div className={styles['col']}>
@@ -35,7 +35,7 @@ const Register: React.FC<TRegisterProps> = ({ course }) => {
 							</div>
 							<div className={styles['col']}>
 								<h5>Доступ</h5>
-								<span>{course.access}</span>
+								<span>{course.access_level}</span>
 							</div>
 						</div>
 						<div className={clsx(styles['sections'], styles.last)}>
@@ -45,7 +45,7 @@ const Register: React.FC<TRegisterProps> = ({ course }) => {
 							</p>
 						</div>
 					</div>
-					<RegisterForm course={course} />
+					<RegisterForm price={course.price} />
 				</div>
 			</div>
 		</section>

@@ -1,14 +1,13 @@
 'use client'
-import React from 'react'
-import { useRouter } from 'next-nprogress-bar'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
-import { useCallback } from 'react'
-import { formatPhoneNumber } from '@/shared/utils/formatPhoneNumber'
+import React, { useCallback, useEffect } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
+import { z } from 'zod'
 import styles from './SubscribeForm.module.scss'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -17,27 +16,20 @@ const schema = z.object({
 		.string()
 		.nonempty('Email обязателен')
 		.email({ message: 'Неверный формат email' }),
-	password: z.string().min(8, 'Пароль должен содержать минимум 8 символов'),
-	payment_card: z
-		.string()
-		.nonempty('Тип карты обязателен')
-		.refine(val => val === 'Visa' || val === 'MasterCard', {
-			message: 'Поддерживаются только VISA или MasterCard'
-		}),
+	password: z.string().min(1, 'Введите свой пароль'),
 	card_number: z
 		.string()
-		.regex(
-			/^\d{4}-\d{4}-\d{4}-\d{4}$/,
-			'Номер карты должен быть в формате xxxx-xxxx-xxxx-xxxx'
-		),
-	card_date: z
+		.min(1, 'Введите номер карты')
+		.regex(/^(\d{4} \d{4} \d{4} \d{4})$/, '16 цифр'),
+	expiration_date: z
 		.string()
-		.regex(
-			/^(0[1-9]|1[0-2])\/\d{2}$/,
-			'Дата карты должна быть в формате MM/ГГ'
-		),
-
-	card_cvc: z.string().regex(/^\d{3}$/, 'CVC код должен содержать 3 цифры'),
+		.min(1, 'Введите срок действия')
+		.regex(/^(0[1-9]|1[0-2])\/\d{2}$/, 'Формат MM/YY'),
+	card_cvc: z
+		.string()
+		.min(1, 'Введите CVC')
+		.regex(/^\d{3}$/, '3 цифры'),
+	card_type: z.enum(['Visa', 'MasterCard'], { message: 'Выберите тип карты' }),
 	agree: z.boolean().refine(val => val === true, {
 		message: 'Необходимо согласие с условиями'
 	})
@@ -49,12 +41,14 @@ type TProps = {
 }
 
 const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
-	const route = useRouter()
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
+	const { data } = useGetMeInfoQuery('payment_cards')
 
 	const methods = useForm<ISchema>({
 		resolver: zodResolver(schema),
-		defaultValues: { ...state?.data }
+		defaultValues: {
+			...state?.data
+		}
 	})
 	const {
 		handleSubmit,
@@ -71,6 +65,13 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 		},
 		[setValue]
 	)
+	useEffect(() => {
+		if (data) {
+			setValue('card_number', data[0].card_number)
+			setValue('expiration_date', formatExpiryDate(data[0].expiration_date))
+			setValue('card_type', data[0].card_type)
+		}
+	}, [data, setValue])
 
 	const onSubmit: SubmitHandler<ISchema> = async data => {}
 	return (
@@ -88,14 +89,16 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 
 						<div className={'for_inp'}>
 							<label htmlFor='tel'>Номер телефона*</label>
-							<label htmlFor='tel' className={'tel-c'}>
-								+996
-							</label>
-							<input
-								type='text'
-								{...register('tel')}
-								onChange={handlePhoneChange}
-							/>
+							<div className='row'>
+								<label htmlFor='tel' className={'tel-c'}>
+									+996
+								</label>
+								<input
+									type='text'
+									{...register('tel')}
+									onChange={handlePhoneChange}
+								/>
+							</div>
 							{errors.tel && (
 								<span className={'error'}>{errors.tel.message}</span>
 							)}
@@ -122,9 +125,9 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 								<button
 									type='button'
 									className={clsx({
-										[styles.active]: watch('payment_card') === 'Visa'
+										[styles.active]: watch('card_type') === 'Visa'
 									})}
-									onClick={() => setValue('payment_card', 'Visa')}
+									onClick={() => setValue('card_type', 'Visa')}
 								>
 									<span></span>
 									Visa
@@ -132,16 +135,16 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 								<button
 									type='button'
 									className={clsx({
-										[styles.active]: watch('payment_card') === 'MasterCard'
+										[styles.active]: watch('card_type') === 'MasterCard'
 									})}
-									onClick={() => setValue('payment_card', 'MasterCard')}
+									onClick={() => setValue('card_type', 'MasterCard')}
 								>
 									<span></span>
 									MasterCard
 								</button>
 							</div>
-							{errors.payment_card && (
-								<span className={'error'}>{errors.payment_card.message}</span>
+							{errors.card_type && (
+								<span className={'error'}>{errors.card_type.message}</span>
 							)}
 						</div>
 						<div className={'for_inp'}>
@@ -159,12 +162,18 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 						</div>
 						<div className={'for_inps'}>
 							<div className={'for_inp'}>
-								<label className={'label'} htmlFor='card_date'>
+								<label className={'label'} htmlFor='expiration_date'>
 									ММ/ГГ *
 								</label>
-								<input {...register('card_date')} type='text' id='card_date' />
-								{errors.card_date && (
-									<span className={'error'}>{errors.card_date.message}</span>
+								<input
+									{...register('expiration_date')}
+									type='text'
+									id='expiration_date'
+								/>
+								{errors.expiration_date && (
+									<span className={'error'}>
+										{errors.expiration_date.message}
+									</span>
 								)}
 							</div>
 							<div className={'for_inp'}>
