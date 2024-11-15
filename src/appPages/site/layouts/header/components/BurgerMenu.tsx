@@ -1,32 +1,30 @@
 import React, { FC } from "react";
 import scss from "./BurgerMenu.module.scss";
+import Link from "next/link";
 
-interface LinksType {
+interface BurgerMenuType {
+  id: number;
   name: string;
-  link: string;
+  href: string;
 }
 
-interface BurgerMenuProps {
-  links: LinksType[];
+interface NavbarType {
+  navbar: BurgerMenuType[];
   isOpen: boolean;
 }
 
-const BurgerMenu: FC<BurgerMenuProps> = ({ links, isOpen }) => {
+const BurgerMenu: FC<NavbarType> = ({ navbar, isOpen }) => {
   return (
     <div
       className={
-        isOpen ? ` ${scss.burger_menu} ${scss.active}` : `${scss.burger_menu}`
+        isOpen ? `${scss.burger_menu} ${scss.active}` : `${scss.burger_menu}`
       }
     >
-      <div className={scss.content}>
-        <div className={scss.nav}>
-          <ul>
-            {links.map((item, index) => (
-              <li key={index}></li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      {navbar.map((item) => (
+        <Link href={item.href} key={item.id}>
+          {item.name}
+        </Link>
+      ))}
     </div>
   );
 };
