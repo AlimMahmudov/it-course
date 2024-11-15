@@ -2,12 +2,13 @@
 import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { z } from 'zod'
 import styles from './SubscribeForm.module.scss'
-import { useGetMeInfoQuery } from '@/shared/redux/api/user'
+import { parseAsBoolean, useQueryState } from 'nuqs'
+import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -42,7 +43,6 @@ type TProps = {
 
 const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
-	const { data } = useGetMeInfoQuery('payment_cards')
 
 	const methods = useForm<ISchema>({
 		resolver: zodResolver(schema),
@@ -57,6 +57,10 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 		formState: { errors },
 		register
 	} = methods
+	const [open, setOpen] = useQueryState(
+		'is_choise',
+		parseAsBoolean.withDefault(true)
+	)
 	// const response = error as unknown as { data: any }
 	const handlePhoneChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,13 +69,13 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 		},
 		[setValue]
 	)
-	useEffect(() => {
-		if (data) {
-			setValue('card_number', data[0].card_number)
-			setValue('expiration_date', formatExpiryDate(data[0].expiration_date))
-			setValue('card_type', data[0].card_type)
-		}
-	}, [data, setValue])
+
+	const choisePaymentCard = useCallback((card_data: UserTypes.PaymentCard) => {
+		setValue('card_number', card_data.card_number)
+		setValue('expiration_date', formatExpiryDate(card_data.expiration_date))
+		setValue('card_type', card_data.card_type)
+		setOpen(false)
+	}, [])
 
 	const onSubmit: SubmitHandler<ISchema> = async data => {}
 	return (
@@ -120,7 +124,10 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 							)}
 						</div>
 						<div className={styles.payment_card}>
-							<label className={'label'}>Выберите платежную карту</label>
+							<label onClick={() => setOpen(!open)} className={'label'}>
+								Выберите платежную карту
+							</label>
+							{open && <ChoicePaymentCards choise={choisePaymentCard} />}
 							<div className={styles.row}>
 								<button
 									type='button'

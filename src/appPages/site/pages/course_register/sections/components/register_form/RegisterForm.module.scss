@@ -7,7 +7,7 @@
 
 	.for_inps {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		width: 100%;
 		gap: 100px;
@@ -16,6 +16,7 @@
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		position: relative;
 		label {
 			font-size: 16px;
 			font-weight: 400;
@@ -24,7 +25,7 @@
 		}
 		.row {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: space-between;
 			gap: 100px;
 			margin-bottom: 28px;
@@ -54,6 +55,12 @@
 			}
 		}
 	}
+	.agree-error {
+		color: red;
+		font-size: 14px;
+		margin-top: 3px;
+	}
+
 	.for_inp {
 		display: flex;
 		flex-direction: column;
@@ -65,14 +72,15 @@
 		margin-bottom: 28px;
 		.row {
 			display: flex;
+			align-items: flex-start;
 			position: relative;
 			width: 100%;
 		}
 		.error {
 			color: red;
 			font-size: 14px;
+			margin-top: 3px;
 		}
-
 		.tel-c {
 			position: absolute;
 			left: 0;
@@ -129,13 +137,14 @@
 			display: flex;
 			align-items: flex-start;
 			gap: 15px;
+			margin-bottom: 10px;
 			p {
 				font-size: 19px;
 				font-weight: 400;
 			}
 			.checkbox {
-				width: 35px;
-				height: 35px;
+				width: 40px;
+				height: 40px;
 				border-radius: 5px;
 				border: 1px solid rgba(255, 255, 255, 1);
 				position: relative;

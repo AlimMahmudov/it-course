@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react'
-import styles from './CourseMaterials.module.scss'
+import Animate from '@/shared/components/animate/Animate'
 import clsx from 'clsx'
+import React, { useCallback, useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import Animate from '@/shared/ui/animate/Animate'
+import styles from './CourseMaterials.module.scss'
 
 interface ICourseMaterialsProps {
 	course: ICourse

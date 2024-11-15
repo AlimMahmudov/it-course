@@ -1,15 +1,15 @@
 'use client'
+import { useGetCourseByIdQuery } from '@/shared/redux/api/courses'
+import { useGetMyPurchasesQuery } from '@/shared/redux/api/user'
 import dynamic from 'next/dynamic'
 import { useParams } from 'next/navigation'
-import React, { Suspense, useState } from 'react'
+import React, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import AfterPurchase from './components/after_purchase/AfterPurchase'
 import BeforePurchase from './components/before_purchase/BeforePurchase'
-import { useGetCourseByIdQuery } from '@/shared/redux/api/courses'
-import { useGetMyPurchasesQuery } from '@/shared/redux/api/user'
 
 const Breadcrumbs = dynamic(
-	() => import('@/shared/ui/breadcrumbs/Breadcrumbs'),
+	() => import('@/shared/components/breadcrumbs/Breadcrumbs'),
 	{ ssr: false }
 )
 

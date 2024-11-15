@@ -1,7 +1,7 @@
+import Animate from '@/shared/components/animate/Animate'
 import React, { useCallback, useState } from 'react'
-import styles from './CourseFAQ.module.scss'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
-import Animate from '@/shared/ui/animate/Animate'
+import styles from './CourseFAQ.module.scss'
 
 const faq = [
 	{

@@ -1,5 +1,5 @@
 'use client'
-import DateSelect from '@/shared/ui/date_select/DateSelect'
+import DateSelect from '@/shared/components/date_select/DateSelect'
 import { formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { z } from 'zod'
 import styles from './PersonalPage.module.scss'
+import useCSC from '@/shared/hooks/useCSC'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -29,6 +30,7 @@ type TSchema = z.infer<typeof schema>
 
 const PersonalPage: React.FC = () => {
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
+
 	const methods = useForm<TSchema>({
 		resolver: zodResolver(schema),
 		defaultValues: {
@@ -44,6 +46,8 @@ const PersonalPage: React.FC = () => {
 		register
 	} = methods
 
+	const { countries, cities, changeCountryISO } = useCSC({ state })
+
 	const handleDateChange = useCallback(
 		(date: string) => {
 			setValue('birthdate', date)
@@ -53,6 +57,15 @@ const PersonalPage: React.FC = () => {
 
 	const onSubmit: SubmitHandler<TSchema> = async data => {}
 
+	const handleCountryChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			const selectedOption = e.target.selectedOptions[0]
+			const selectedCountryIso = selectedOption?.getAttribute('data-iso')
+			setValue('country', e.target.value)
+			changeCountryISO(String(selectedCountryIso))
+		},
+		[String]
+	)
 	const handlePhoneChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
 			const formattedPhone = formatPhoneNumber(e.target.value)
@@ -101,7 +114,6 @@ const PersonalPage: React.FC = () => {
 								<span className={styles['error']}>{errors.email.message}</span>
 							)}
 						</div>
-
 						<div className={styles['for_inp']}>
 							<label htmlFor='gender'>Пол*</label>
 							<div className={styles['gender']}>
@@ -152,7 +164,29 @@ const PersonalPage: React.FC = () => {
 
 						<div className={styles['for_inp']}>
 							<label htmlFor='country'>Страна*</label>
-							<input type='text' {...register('country')} />
+							<div className={styles['select-wr']}>
+								<select
+									{...register('country')}
+									name='country'
+									value={watch('country')}
+									id='country'
+									onChange={handleCountryChange}
+								>
+									{countries.isLoading && (
+										<option value=''>{'Загрузка...'}</option>
+									)}
+									{Array.isArray(countries.data) &&
+										countries.data?.map(country => (
+											<option
+												value={country.name}
+												data-iso={country.iso2}
+												key={country.id}
+											>
+												{country.name}
+											</option>
+										))}
+								</select>
+							</div>
 							{errors.country && (
 								<span className={styles['error']}>
 									{errors.country.message}
@@ -162,7 +196,26 @@ const PersonalPage: React.FC = () => {
 
 						<div className={styles['for_inp']}>
 							<label htmlFor='city'>Город*</label>
-							<input type='text' {...register('city')} />
+
+							<div className={styles['select-wr']}>
+								<select
+									{...register('city')}
+									name='city'
+									value={watch('city')}
+									id='city'
+								>
+									{cities.isLoading && (
+										<option value=''>{'Загрузка...'}</option>
+									)}
+									{Array.isArray(cities?.data) &&
+										cities.data?.map(city => (
+											<option value={city.name} key={city.id}>
+												{city.name}
+											</option>
+										))}
+								</select>
+							</div>
+
 							{errors.city && (
 								<span className={styles['error']}>{errors.city.message}</span>
 							)}

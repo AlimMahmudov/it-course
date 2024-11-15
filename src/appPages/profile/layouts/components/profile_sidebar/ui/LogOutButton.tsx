@@ -1,6 +1,6 @@
 'use client'
 import { useLogoutMutation } from '@/shared/redux/api/auth'
-import ConfirmModal from '@/shared/ui/confirm_modal/ConfirmModal'
+import ConfirmModal from '@/shared/components/confirm_modal/ConfirmModal'
 import { useRouter } from 'next-nprogress-bar'
 import React, { useCallback } from 'react'
 import { useToggle } from 'usehooks-ts'

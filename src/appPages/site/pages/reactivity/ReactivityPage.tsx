@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
 import Faq from '../master_class/sections/faq/Faq'
 import Reactivity from './sections/Reactivity'
 const breadcrumbs = [

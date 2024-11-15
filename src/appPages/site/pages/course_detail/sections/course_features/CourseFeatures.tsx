@@ -1,11 +1,11 @@
 import Material100 from '@/shared/assets/features/100materials.svg'
 import Persent100 from '@/shared/assets/features/100persent.svg'
 import AnyTime from '@/shared/assets/features/any_time.svg'
-import Animate from '@/shared/ui/animate/Animate'
+import Animate from '@/shared/components/animate/Animate'
+import { profile_picture } from '@/shared/config/api'
 import Image from 'next/image'
 import React, { memo } from 'react'
 import styles from './CourseFeatures.module.scss'
-import { profile_picture } from '@/shared/config/api'
 const CourseFeatures: React.FC<{ course: CoursesTypes.Course }> = memo(
 	({ course }) => {
 		return (
