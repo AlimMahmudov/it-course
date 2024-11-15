@@ -9,6 +9,9 @@ interface IFormTelegram {
   number: number;
 }
 
+// NEXT_PUBLIC_TG_TOKEN=7350084863:AAGNHWJpQ7qif2WAAinzTBqVX3nwE-0sgbk
+// NEXT_PUBLIC_TG_CHAT_ID=-1002178370559
+
 const Telegram = () => {
   const { register, handleSubmit, reset } = useForm<IFormTelegram>();
   const { translate } = useLanguageStore();
@@ -25,9 +28,9 @@ const Telegram = () => {
     const axios = axiosModule.default;
 
     await axios.post(
-      `https://api.telegram.org/bot${process.env.NEXT_PUBLIC_TG_TOKEN}/sendMessage`,
+      `https://api.telegram.org/bot${`7350084863:AAGNHWJpQ7qif2WAAinzTBqVX3nwE-0sgbk`}/sendMessage`,
       {
-        chat_id: process.env.NEXT_PUBLIC_TG_CHAT_ID,
+        chat_id: -1002178370559,
         parse_mode: "html",
         text: messageModel(data),
       }
