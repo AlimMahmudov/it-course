@@ -32,7 +32,7 @@ const Subscribe = () => {
 										</span>
 										<ul>
 											{subscription.subscription_benefits.map(
-												(benefits, idx) => (
+												(benefit, idx) => (
 													<li key={`${idx}`}>
 														<svg
 															width='18'
@@ -50,7 +50,7 @@ const Subscribe = () => {
 															/>
 														</svg>
 
-														{benefits}
+														{benefit}
 													</li>
 												)
 											)}

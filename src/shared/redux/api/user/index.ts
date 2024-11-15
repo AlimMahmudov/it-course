@@ -35,7 +35,10 @@ const api = index.injectEndpoints({
 				return {
 					url: `/user/payment_card/add`,
 					method: 'POST',
-					body: arg
+					body: {
+						...arg,
+						card_number: arg.card_number.split(" ").join("")
+					}
 				}
 			},
 			invalidatesTags: ['auth']

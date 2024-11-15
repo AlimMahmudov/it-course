@@ -1,5 +1,5 @@
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
 import Courses from '@/shared/components/courses/Courses'
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
 import React from 'react'
 import styles from './OurCoursesPage.module.scss'
 const breadcrumbs = [

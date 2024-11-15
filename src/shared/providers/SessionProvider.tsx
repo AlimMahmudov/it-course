@@ -3,17 +3,31 @@ import { useRouter } from 'next-nprogress-bar'
 import { usePathname } from 'next/navigation'
 import { FC, ReactNode, useCallback, useEffect } from 'react'
 import { useGetMeQuery } from '../redux/api/user'
+import { useRefreshMutation } from '../redux/api/auth'
 
 interface SessionProviderProps {
 	children: ReactNode
 }
 
 export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
-	const { status, isLoading } = useGetMeQuery()
+	const { status, isLoading, error } = useGetMeQuery()
+	const [mutate] = useRefreshMutation()
 	const pathname = usePathname()
 	const router = useRouter()
-
+	const refresh = useCallback(() => {
+		const retry = JSON.parse(localStorage.getItem('retry')!)
+		if (
+			(error as any)?.status &&
+			retry !== 'true' &&
+			[403].includes((error as any)?.status)
+		) {
+			localStorage.setItem('retry', JSON.stringify('true'))
+			mutate()
+		}
+	}, [error, isLoading, mutate])
 	const handleNavigation = useCallback(() => {
+		if (isLoading) return
+		refresh()
 		switch (pathname) {
 			case '/auth/signin':
 			case '/auth/signup':
@@ -35,11 +49,11 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 			default:
 				break
 		}
-	}, [pathname, router, status])
+	}, [pathname, router, status, isLoading])
 
 	useEffect(() => {
 		handleNavigation()
-	}, [handleNavigation])
+	}, [handleNavigation, isLoading])
 
 	return <>{isLoading ? <span>Загрузка...</span> : children}</>
 }

@@ -92,6 +92,36 @@ const api = index.injectEndpoints({
 				return baseQueryReturnValue
 			},
 			invalidatesTags: ['auth']
+		}),
+		refresh: build.mutation<
+			Record<'accessToken' | 'refreshToken', string>,
+			void
+		>({
+			query() {
+				const refreshToken = JSON.parse(
+					String(localStorage.getItem('refreshToken'))
+				)
+				return {
+					url: '/auth/refresh',
+					method: 'PATCH',
+					body: { refreshToken }
+				}
+			},
+			transformResponse(
+				baseQueryReturnValue: Record<'accessToken' | 'refreshToken', string>
+			) {
+				localStorage.removeItem('retry')
+				localStorage.setItem(
+					'accessToken',
+					JSON.stringify(baseQueryReturnValue.accessToken)
+				)
+				localStorage.setItem(
+					'refreshToken',
+					JSON.stringify(baseQueryReturnValue.refreshToken)
+				)
+				return baseQueryReturnValue
+			},
+			invalidatesTags: ['auth']
 		})
 	}),
 	overrideExisting: true
@@ -102,5 +132,6 @@ export const {
 	useRegisterMutation,
 	useForgotPassMutation,
 	useResetPassMutation,
-	useLogoutMutation
+	useLogoutMutation,
+	useRefreshMutation
 } = api

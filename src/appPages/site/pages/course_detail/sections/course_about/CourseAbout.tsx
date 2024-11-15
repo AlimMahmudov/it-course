@@ -1,4 +1,4 @@
-import Animate from '@/shared/ui/animate/Animate'
+import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseAbout.module.scss'
 interface ICourseAboutProps {

@@ -1,11 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import styles from './RegisterForm.module.scss'
 import clsx from 'clsx'
-import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
+import { useSelector } from 'react-redux'
+import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
+import { parseAsBoolean, useQueryState } from 'nuqs'
 type TRegisterFormProps = {
 	price: string
 }
@@ -40,8 +42,8 @@ const register_schema = z.object({
 type TRegisterSchema = z.infer<typeof register_schema>
 
 const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
-	const { data } = useGetMeInfoQuery('payment_cards')
-
+	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
+	const [open, setOpen] = useQueryState('is_choise', parseAsBoolean.withDefault(true))
 	const {
 		register,
 		handleSubmit,
@@ -51,9 +53,8 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 	} = useForm<TRegisterSchema>({
 		resolver: zodResolver(register_schema),
 		defaultValues: {
-			card_number: data ? data[0].card_number : '',
-			expiration_date: data ? formatExpiryDate(data[0].expiration_date) : '',
-			card_type: data ? data[0].card_type : 'Visa'
+			...state?.data,
+			tel: formatPhoneNumber(state?.data?.tel)
 		}
 	})
 
@@ -62,15 +63,6 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 		} catch (e) {}
 	}
 
-	useEffect(() => {
-		if (data) {
-			setValue('card_number', data[0].card_number)
-			setValue('expiration_date', formatExpiryDate(data[0].expiration_date))
-			setValue('card_type', data[0].card_type)
-		}
-	}, [data, setValue])
-
-	const card_type = watch('card_type')
 	const changeCardType = useCallback(
 		(type: 'Visa' | 'MasterCard') => setValue('card_type', type),
 		[setValue]
@@ -82,6 +74,13 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 		},
 		[setValue]
 	)
+
+	const choisePaymentCard = useCallback((card_data: UserTypes.PaymentCard) => {
+		setValue('card_number', card_data.card_number)
+		setValue('expiration_date', formatExpiryDate(card_data.expiration_date))
+		setValue('card_type', card_data.card_type)
+		setOpen(false)
+	}, [])
 
 	return (
 		<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -116,12 +115,15 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 				)}
 			</div>
 			<div className={styles['card_type']}>
-				<label className={styles.label}>Выберите платежную карту</label>
+				<label onClick={() => setOpen(!open)} className={styles.label}>
+					Выберите платежную карту
+				</label>
+				{open && <ChoicePaymentCards choise={choisePaymentCard} />}
 				<div className={styles['row']}>
 					<button
 						type='button'
 						onClick={() => changeCardType('Visa')}
-						className={clsx({ [styles.active]: card_type === 'Visa' })}
+						className={clsx({ [styles.active]: watch('card_type') === 'Visa' })}
 					>
 						<span></span>
 						Visa
@@ -129,7 +131,9 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 					<button
 						type='button'
 						onClick={() => changeCardType('MasterCard')}
-						className={clsx({ [styles.active]: card_type === 'MasterCard' })}
+						className={clsx({
+							[styles.active]: watch('card_type') === 'MasterCard'
+						})}
 					>
 						<span></span>
 						MasterCard
@@ -193,7 +197,7 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 					<p>Я ознакомился и согласен с Условиями оказания услуг</p>
 				</div>
 				{errors.agree && (
-					<span className={styles.error}>{errors.agree.message}</span>
+					<span className={styles['agree-error']}>{errors.agree.message}</span>
 				)}
 			</div>
 		</form>

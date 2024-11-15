@@ -1,4 +1,11 @@
 namespace CoursesTypes {
+	interface CourseModule {
+		id: string
+		name: string
+		created_at: string
+		updated_at: string
+		materials: []
+	}
 	interface Course {
 		id: string
 		title: string

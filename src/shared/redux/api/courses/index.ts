@@ -13,9 +13,18 @@ const api = index.injectEndpoints({
 				url: `/course/${arg.course_id}`,
 				method: 'GET'
 			})
+		}),
+		getCourseModules: build.query<
+			CoursesTypes.CourseModule[],
+			{ course_id: string }
+		>({
+			query: arg => ({
+				url: `/modules/${arg.course_id}`,
+				method: 'GET'
+			})
 		})
 	}),
 	overrideExisting: true
 })
 
-export const { useGetCoursesQuery ,useGetCourseByIdQuery} = api
+export const { useGetCoursesQuery ,useGetCourseByIdQuery, useGetCourseModulesQuery} = api

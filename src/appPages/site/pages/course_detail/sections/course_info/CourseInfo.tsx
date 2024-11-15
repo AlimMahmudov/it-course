@@ -1,6 +1,6 @@
+import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseInfo.module.scss'
-import Animate from '@/shared/ui/animate/Animate'
 interface IBeforePurchaseProps {
 	course: CoursesTypes.Course
 	isBy?: boolean

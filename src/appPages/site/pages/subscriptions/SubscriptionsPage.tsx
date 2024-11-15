@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
 import Left from '../home/sections/left/Left'
 import Telegram from '../home/sections/telegram/Telegram'
 import Subscribe from './sections/Subscribe'

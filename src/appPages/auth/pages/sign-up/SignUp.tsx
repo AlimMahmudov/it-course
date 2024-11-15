@@ -1,14 +1,17 @@
 'use client'
 import logo from '@/shared/assets/logo.svg'
+import DateSelect from '@/shared/components/date_select/DateSelect'
+import useCSC from '@/shared/hooks/useCSC'
+import useFetch from '@/shared/hooks/useFetch'
 import { useRegisterMutation } from '@/shared/redux/api/auth'
-import DateSelect from '@/shared/ui/date_select/DateSelect'
+import { getCities, getCountries } from '@/shared/utils/csc-api'
 import { formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { useRouter } from 'next-nprogress-bar'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -48,12 +51,7 @@ const SignUp = () => {
 	const [registration, { error }] = useRegisterMutation()
 	const response = error as unknown as { data: any }
 
-	const handleDateChange = useCallback(
-		(date: string) => {
-			setValue('birthdate', date)
-		},
-		[setValue]
-	)
+	const { countries, cities, changeCountryISO, countryIso } = useCSC({})
 
 	const handlePhoneChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,6 +59,22 @@ const SignUp = () => {
 			setValue('tel', formattedPhone)
 		},
 		[setValue]
+	)
+
+	const handleDateChange = useCallback(
+		(date: string) => {
+			setValue('birthdate', date)
+		},
+		[setValue]
+	)
+
+	const handleCountryChange = useCallback(
+		(e: React.ChangeEvent<HTMLSelectElement>) => {
+			const selectedOption = e.target.selectedOptions[0]
+			const selectedCountryIso = selectedOption?.getAttribute('data-iso')
+			changeCountryISO(String(selectedCountryIso))
+		},
+		[changeCountryISO]
 	)
 
 	const onSubmit: SubmitHandler<IInputComponentProps> = async data => {
@@ -170,7 +184,6 @@ const SignUp = () => {
 										</span>
 									)}
 								</div>
-
 								<div className={'for_inp'}>
 									<label>Дата рождения*</label>
 									<DateSelect onDateChange={handleDateChange} />
@@ -178,23 +191,46 @@ const SignUp = () => {
 										<span className={'error'}>{errors.birthdate.message}</span>
 									)}
 								</div>
-
 								<div className={'for_inp'}>
 									<label htmlFor='country'>Страна*</label>
-									<input type='text' {...register('country')} />
+									<select
+										{...register('country')}
+										name='country'
+										id='country'
+										onChange={handleCountryChange}
+									>
+										<option value=''>Выберите страну</option>
+										{Array.isArray(countries.data) &&
+											countries.data?.map(country => (
+												<option
+													value={country.name}
+													data-iso={country.iso2}
+													key={country.id}
+												>
+													{country.name}
+												</option>
+											))}
+									</select>
 									{errors.country && (
 										<span className={'error'}>{errors.country.message}</span>
 									)}
 								</div>
-
 								<div className={'for_inp'}>
 									<label htmlFor='city'>Город*</label>
-									<input type='text' {...register('city')} />
+									<select {...register('city')} name='city' id='city'>
+										<option value=''>Выберите город</option>
+										{Array.isArray(countries.data) &&
+											countryIso &&
+											cities.data?.map(city => (
+												<option value={city.name} key={city.id}>
+													{city.name}
+												</option>
+											))}
+									</select>
 									{errors.city && (
 										<span className={'error'}>{errors.city.message}</span>
 									)}
 								</div>
-
 								<div className={'for_inp'}>
 									<label htmlFor='occupation'>Род деятельности*</label>
 									<input type='text' {...register('occupation')} />

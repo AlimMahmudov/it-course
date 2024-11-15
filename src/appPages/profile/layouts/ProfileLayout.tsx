@@ -1,6 +1,6 @@
 'use client'
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
 import { menu_items } from '@/shared/const/menu-items'
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import { useSelector } from 'react-redux'

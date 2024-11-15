@@ -12,10 +12,19 @@ interface IPopupProps extends IChildren {
 	onClose(): void
 	keyover?: boolean
 	blur_bg?: boolean
+	close_btn?: boolean
 }
 
 export const Popup: React.FC<IPopupProps> = memo(props => {
-	const { className, children, onClose, open, keyover, blur_bg = false } = props
+	const {
+		className,
+		children,
+		onClose,
+		open,
+		keyover,
+		blur_bg = false,
+		close_btn = true
+	} = props
 
 	useEventListener('keydown', (event: KeyboardEvent) => {
 		if (event.key === 'Escape' && keyover) {
@@ -69,13 +78,15 @@ export const Popup: React.FC<IPopupProps> = memo(props => {
 					className={clsx('popup', className)}
 				>
 					<div data-popupbody className='popup_body'>
-						<button
-							data-closepopup
-							onClick={onClose}
-							className={clsx('inlineFlexCenter close-popup')}
-						>
-							<CgClose />
-						</button>
+						{close_btn && (
+							<button
+								data-closepopup
+								onClick={onClose}
+								className={clsx('inlineFlexCenter close-popup')}
+							>
+								<CgClose />
+							</button>
+						)}
 						{children}
 					</div>
 				</motion.div>
