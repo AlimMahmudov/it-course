@@ -17,8 +17,8 @@ const SchoolPage = () => {
       <Courses />
       <Master />
       <Pack />
-      {/* <Review /> */}
-      {/* <Telegram /> */}
+      <Review />
+      <Telegram />
     </>
   );
 };

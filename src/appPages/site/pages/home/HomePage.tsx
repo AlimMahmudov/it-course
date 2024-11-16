@@ -9,10 +9,11 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
-      {/* <Article /> */}
+      <Article />
       <Subscribe />
       <Left />
       <Telegram />
+      ``
     </div>
   );
 };
