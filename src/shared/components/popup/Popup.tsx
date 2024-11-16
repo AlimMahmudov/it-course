@@ -57,7 +57,7 @@ export const Popup: React.FC<IPopupProps> = memo(props => {
 		}
 	}, [open, blur_bg])
 	if (typeof window === 'undefined') return null
-	return createPortal(
+	return (
 		<>
 			{open && blur_bg && (
 				<motion.div
@@ -91,7 +91,6 @@ export const Popup: React.FC<IPopupProps> = memo(props => {
 					</div>
 				</motion.div>
 			)}
-		</>,
-		document.body
+		</>
 	)
 })

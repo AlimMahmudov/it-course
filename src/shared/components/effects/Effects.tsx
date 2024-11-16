@@ -2,6 +2,8 @@
 import React, { useLayoutEffect } from 'react'
 import { useWindowSize } from 'usehooks-ts'
 
+
+
 const Effects: React.FC = () => {
 	const size = useWindowSize()
 

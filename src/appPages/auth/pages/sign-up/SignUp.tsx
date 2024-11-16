@@ -199,6 +199,9 @@ const SignUp = () => {
 										id='country'
 										onChange={handleCountryChange}
 									>
+										{countries.isLoading && (
+											<option value=''>{'Загрузка...'}</option>
+										)}
 										<option value=''>Выберите страну</option>
 										{Array.isArray(countries.data) &&
 											countries.data?.map(country => (
@@ -218,6 +221,9 @@ const SignUp = () => {
 								<div className={'for_inp'}>
 									<label htmlFor='city'>Город*</label>
 									<select {...register('city')} name='city' id='city'>
+										{cities.isLoading && (
+											<option value=''>{'Загрузка...'}</option>
+										)}
 										<option value=''>Выберите город</option>
 										{Array.isArray(countries.data) &&
 											countryIso &&

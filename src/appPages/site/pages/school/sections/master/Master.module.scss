@@ -1,88 +1,88 @@
 #Master {
-  padding: 50px;
-  padding-top: 200px;
+	padding: 50px;
+	padding-top: 150px;
 
-  .master {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+	.master {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 50px;
 
-    .master_text {
-      h1 {
-        font-family: Montserrat;
-        font-size: 36px;
-        font-weight: 700;
-        line-height: 35px;
-        color: #ffffff;
-      }
-    }
+		.master_text {
+			h1 {
+				font-family: Montserrat;
+				font-size: 36px;
+				font-weight: 700;
+				line-height: 35px;
+				color: #ffffff;
+			}
+		}
 
-    .master_block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+		.master_block {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
 
-      gap: 50px;
-      .master_box {
-        width: 80%;
-        height: 200px;
-        border-radius: 10px;
-        background: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: all 0.3s;
+			gap: 50px;
+			.master_box {
+				width: 80%;
+				height: 200px;
+				border-radius: 10px;
+				background: #ffffff;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: all 0.3s;
 
-        .asim_box {
-          width: 60%;
-          display: flex;
-          justify-content: center;
-          align-items: start;
-          flex-direction: column;
-          gap: 10px;
-          h1 {
-            font-family: Montserrat;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 24.38px;
-            color: #043f75;
-          }
-          p {
-            font-family: Montserrat;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 19.5px;
-            // width: 70%;
-            color: #000000;
-          }
-        }
-      }
-      .master_box:hover {
-        transform: scale(1.01);
-        transition: all 0.3s;
-      }
-    }
+				.asim_box {
+					width: 60%;
+					display: flex;
+					justify-content: center;
+					align-items: start;
+					flex-direction: column;
+					gap: 10px;
+					h1 {
+						font-family: Montserrat;
+						font-size: 20px;
+						font-weight: 500;
+						line-height: 24.38px;
+						color: #043f75;
+					}
+					p {
+						font-family: Montserrat;
+						font-size: 16px;
+						font-weight: 400;
+						line-height: 19.5px;
+						// width: 70%;
+						color: #000000;
+					}
+				}
+			}
+			.master_box:hover {
+				transform: scale(1.01);
+				transition: all 0.3s;
+			}
+		}
 
-    .master_button {
-      button {
-        padding: 16px 61px 15px 61px;
-        font-family: Montserrat;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 19.5px;
-        border-radius: 5px;
-        color: #ffffff;
-        background: #043c71;
-        border: none;
-        transition: all 0.3s;
-      }
-      button:hover {
-        background: #0455a0;
-        transform: scale(1.05);
-        transition: all 0.3s;
-      }
-    }
-  }
+		.master_button {
+			button {
+				padding: 16px 61px 15px 61px;
+				font-family: Montserrat;
+				font-size: 16px;
+				font-weight: 500;
+				line-height: 19.5px;
+				border-radius: 5px;
+				color: #ffffff;
+				background: #043c71;
+				border: none;
+				transition: all 0.3s;
+			}
+			button:hover {
+				background: #0455a0;
+				transform: scale(1.05);
+				transition: all 0.3s;
+			}
+		}
+	}
 }
