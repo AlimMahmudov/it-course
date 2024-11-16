@@ -50,7 +50,7 @@ const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 				<h4 className={`${styles['outcomes']}`}>{course.results.outcomes}</h4>
 				<div className={`${styles.actions}`}>
 					<button className={styles.by}>Купить курс</button>
-					<button className={styles.inview}>Смотреть программу</button>
+					<a href="#programs" className={styles.inview}>Смотреть программу</a>
 				</div>
 			</Animate>
 		</section>

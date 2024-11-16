@@ -12,7 +12,6 @@ const LogOutButton: React.FC = () => {
 	const confirmCallback = useCallback(async () => {
 		const { data,  } = await mutate()
 		if (data?.message) {
-			alert(data?.message)
 			router.push('/')
 		}
 	}, [router, mutate])

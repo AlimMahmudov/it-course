@@ -10,8 +10,6 @@ interface IBeforePurchaseProps {
 	course: CoursesTypes.Course
 }
 const BeforePurchase: React.FC<IBeforePurchaseProps> = ({ course }) => {
-	console.log(course);
-	
 	return (
 		<>
 			<CourseInfo course={course} />

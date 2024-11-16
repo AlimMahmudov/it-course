@@ -1,25 +1,25 @@
-import React from 'react'
-import styles from './OtherSubscriptions.module.scss'
 import { useGetSubscriptionsQuery } from '@/shared/redux/api/subscriptions'
 import clsx from 'clsx'
 import Link from 'next/link'
-type TProps = {
-	subscriptions: []
-}
-const OtherSubscriptions: React.FC<TProps> = () => {
-	const { data, isLoading, isError, error } = useGetSubscriptionsQuery()
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
+import React from 'react'
+import styles from './OtherSubscriptions.module.scss'
+
+const OtherSubscriptions: React.FC = () => {
+	const { data, isLoading, isError } = useGetSubscriptionsQuery()
+
 	return (
 		<div
 			className={clsx(
-				data.length == 0 && styles.empty,
+				data?.length == 0 && styles.empty,
 				styles.other_subscriptions
 			)}
 		>
 			{isLoading ? (
 				<span>Загрузка...</span>
+			) : isError || !data || data.length === 0 ? (
+				<span className={styles.error}>
+					Данные отсутствуют или произошла ошибка.
+				</span>
 			) : (
 				<div className={styles.subscription_list}>
 					{data.map(subscription => (

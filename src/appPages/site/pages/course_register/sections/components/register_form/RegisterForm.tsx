@@ -1,13 +1,13 @@
+import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
+import { formatExpiryDate } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
+import clsx from 'clsx'
+import { parseAsBoolean, useQueryState } from 'nuqs'
 import React, { useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useSelector } from 'react-redux'
 import { z } from 'zod'
 import styles from './RegisterForm.module.scss'
-import clsx from 'clsx'
-import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
-import { useSelector } from 'react-redux'
-import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
-import { parseAsBoolean, useQueryState } from 'nuqs'
 type TRegisterFormProps = {
 	price: string
 }
@@ -36,14 +36,18 @@ const register_schema = z.object({
 	card_type: z.enum(['Visa', 'MasterCard'], { message: 'Выберите тип карты' }),
 	agree: z.boolean().refine(val => val === true, {
 		message: 'Необходимо согласие с условиями'
-	})
+	}),
+	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
 
 type TRegisterSchema = z.infer<typeof register_schema>
 
 const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
-	const [open, setOpen] = useQueryState('is_choise', parseAsBoolean.withDefault(true))
+	const [open, setOpen] = useQueryState(
+		'is_choise',
+		parseAsBoolean.withDefault(true)
+	)
 	const {
 		register,
 		handleSubmit,
@@ -65,13 +69,6 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 
 	const changeCardType = useCallback(
 		(type: 'Visa' | 'MasterCard') => setValue('card_type', type),
-		[setValue]
-	)
-	const changePhone = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => {
-			const formattedPhone = formatPhoneNumber(e.target.value)
-			setValue('tel', formattedPhone)
-		},
 		[setValue]
 	)
 
@@ -97,9 +94,9 @@ const RegisterForm: React.FC<TRegisterFormProps> = ({ price }) => {
 				<label htmlFor='tel'>Номер телефона*</label>
 				<div className={styles['row']}>
 					<label htmlFor='tel' className={styles['tel-c']}>
-						+996
+						+{watch('phonecode') ?? '000'}
 					</label>
-					<input type='text' {...register('tel')} onChange={changePhone} />
+					<input type='text' {...register('tel')} />
 				</div>
 				{errors.tel && (
 					<span className={styles.error}>{errors.tel.message}</span>

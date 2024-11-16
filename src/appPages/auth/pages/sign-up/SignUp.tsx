@@ -2,16 +2,13 @@
 import logo from '@/shared/assets/logo.svg'
 import DateSelect from '@/shared/components/date_select/DateSelect'
 import useCSC from '@/shared/hooks/useCSC'
-import useFetch from '@/shared/hooks/useFetch'
 import { useRegisterMutation } from '@/shared/redux/api/auth'
-import { getCities, getCountries } from '@/shared/utils/csc-api'
-import { formatPhoneNumber } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import { useRouter } from 'next-nprogress-bar'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -31,7 +28,8 @@ const schema = z.object({
 	country: z.string().nonempty('Страна обязательна'),
 	city: z.string().nonempty('Город обязателен'),
 	occupation: z.string().nonempty('Профессия обязательна'),
-	gender: z.enum(['мужской', 'женский'])
+	gender: z.enum(['мужской', 'женский']),
+	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
 
 type IInputComponentProps = z.infer<typeof schema>
@@ -53,14 +51,6 @@ const SignUp = () => {
 
 	const { countries, cities, changeCountryISO, countryIso } = useCSC({})
 
-	const handlePhoneChange = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => {
-			const formattedPhone = formatPhoneNumber(e.target.value)
-			setValue('tel', formattedPhone)
-		},
-		[setValue]
-	)
-
 	const handleDateChange = useCallback(
 		(date: string) => {
 			setValue('birthdate', date)
@@ -72,6 +62,9 @@ const SignUp = () => {
 		(e: React.ChangeEvent<HTMLSelectElement>) => {
 			const selectedOption = e.target.selectedOptions[0]
 			const selectedCountryIso = selectedOption?.getAttribute('data-iso')
+			const selectedCountryPhoneCode =
+				selectedOption?.getAttribute('data-phonecode')
+			setValue('phonecode', String(selectedCountryPhoneCode))
 			changeCountryISO(String(selectedCountryIso))
 		},
 		[changeCountryISO]
@@ -89,7 +82,7 @@ const SignUp = () => {
 					'refreshToken',
 					JSON.stringify(responseData?.refreshToken)
 				)
-				route.push('/profile/personal')
+				route.push('/')
 			}
 		}
 	}
@@ -116,13 +109,9 @@ const SignUp = () => {
 								<div className={'for_inp'}>
 									<label htmlFor='tel'>Номер телефона*</label>
 									<label htmlFor='tel' className={'tel-c'}>
-										+996
+										+{watch('phonecode') ?? '000'}
 									</label>
-									<input
-										type='text'
-										{...register('tel')}
-										onChange={handlePhoneChange}
-									/>
+									<input type='text' {...register('tel')} />
 									{errors.tel && (
 										<span className={'error'}>{errors.tel.message}</span>
 									)}
@@ -208,6 +197,7 @@ const SignUp = () => {
 												<option
 													value={country.name}
 													data-iso={country.iso2}
+													data-phonecode={country.phonecode}
 													key={country.id}
 												>
 													{country.name}

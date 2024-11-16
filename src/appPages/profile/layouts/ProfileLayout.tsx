@@ -22,8 +22,10 @@ const ProfileLayout: React.FC<IChildren> = ({ children }) => {
 			<div className={`${styles['container']} container`}>
 				{state && state?.isLoading ? (
 					<span>Загрузка...</span>
-				) : !state.data ? (
-					<></>
+				) : state?.isError || !state?.data ? (
+					<span className={styles.error}>
+						Данные отсутствуют или произошла ошибка.
+					</span>
 				) : (
 					<>
 						<ProfileSidebar user={state.data} />

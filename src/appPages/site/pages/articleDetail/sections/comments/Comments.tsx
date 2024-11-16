@@ -8,7 +8,7 @@ import userProfile from "@/shared/assets/article-user-profile.svg";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { articleComments } from "@/shared/const/article-comments";
-import { useGetMeQuery } from "@/shared/redux/api/user";
+import { useGetMeQuery } from '@/shared/redux/api/user'
 interface Iform {
   userComment: string;
 }

@@ -1,32 +1,35 @@
 'use client'
-import React, { useState } from 'react'
-import styles from './MyPurchasesPage.module.scss'
-import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 import { Popup } from '@/shared/components/popup/Popup'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
+import React, { useCallback, useState } from 'react'
+import styles from './MyPurchasesPage.module.scss'
 
 const MyPurchasesPage: React.FC = () => {
 	const { data, isLoading, isError, error } = useGetMeInfoQuery('my_purchases')
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [selectedPurchase, setSelectedPurchase] = useState<any>(null)
 
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
+	const handleRowClick = useCallback(
+		(purchase: any) => {
+			setSelectedPurchase(purchase)
+			setIsModalOpen(true)
+		},
+		[setIsModalOpen, setSelectedPurchase]
+	)
 
-	const handleRowClick = (purchase: any) => {
-		setSelectedPurchase(purchase)
-		setIsModalOpen(true)
-	}
-
-	const closeModal = () => {
+	const closeModal = useCallback(() => {
 		setIsModalOpen(false)
 		setSelectedPurchase(null)
-	}
+	}, [setIsModalOpen, setSelectedPurchase])
 
 	return (
 		<div className={styles.my_purchases_page}>
 			{isLoading ? (
 				<span>Загрузка...</span>
+			) : isError || !data || data.length === 0 ? (
+				<span className={styles.error}>
+					Данные отсутствуют или произошла ошибка.
+				</span>
 			) : (
 				<>
 					<h1 className={styles.title}>Мои покупки</h1>

@@ -4,12 +4,11 @@ import styles from './CourseInfo.module.scss'
 interface IBeforePurchaseProps {
 	course: CoursesTypes.Course
 	isBy?: boolean
-	purchased_course?: IPuschasedCourse | undefined
+	purchased_course?: UserTypes.UserProgress
 }
 const CourseInfo: React.FC<IBeforePurchaseProps> = memo(
 	({ course, isBy = false, purchased_course }) => {
-		const materialsCompleted =
-			purchased_course?.materials.completeds.length || 0
+		const materialsCompleted = purchased_course?.completed_materials.length || 0
 		const materialsAll = course.duration.materials || 1
 		const progress = (materialsCompleted / materialsAll) * 100
 
@@ -49,7 +48,7 @@ const CourseInfo: React.FC<IBeforePurchaseProps> = memo(
 								<div className={styles.col}>
 									<span className={styles.completed}>Пройдено модулей</span>
 									<span>
-										{purchased_course?.modules.completeds.length}/
+										{purchased_course?.completed_modules.length}/
 										{course.duration.modules}
 									</span>
 								</div>

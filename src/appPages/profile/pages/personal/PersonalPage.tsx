@@ -1,6 +1,6 @@
 'use client'
 import DateSelect from '@/shared/components/date_select/DateSelect'
-import { formatPhoneNumber } from '@/shared/utils/formatting'
+import useCSC from '@/shared/hooks/useCSC'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import React, { useCallback } from 'react'
@@ -8,7 +8,6 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { z } from 'zod'
 import styles from './PersonalPage.module.scss'
-import useCSC from '@/shared/hooks/useCSC'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -24,7 +23,8 @@ const schema = z.object({
 	country: z.string().nonempty('Страна обязательна'),
 	city: z.string().nonempty('Город обязателен'),
 	occupation: z.string().nonempty('Профессия обязательна'),
-	gender: z.enum(['мужской', 'женский'])
+	gender: z.enum(['мужской', 'женский']),
+	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
 type TSchema = z.infer<typeof schema>
 
@@ -35,7 +35,7 @@ const PersonalPage: React.FC = () => {
 		resolver: zodResolver(schema),
 		defaultValues: {
 			...state?.data,
-			tel: formatPhoneNumber(state?.data?.tel)
+			phonecode: state?.data.phone_code
 		}
 	})
 	const {
@@ -62,16 +62,12 @@ const PersonalPage: React.FC = () => {
 			const selectedOption = e.target.selectedOptions[0]
 			const selectedCountryIso = selectedOption?.getAttribute('data-iso')
 			setValue('country', e.target.value)
+			const selectedCountryPhoneCode =
+				selectedOption?.getAttribute('data-phonecode')
+			setValue('phonecode', String(selectedCountryPhoneCode))
 			changeCountryISO(String(selectedCountryIso))
 		},
 		[String]
-	)
-	const handlePhoneChange = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => {
-			const formattedPhone = formatPhoneNumber(e.target.value)
-			setValue('tel', formattedPhone)
-		},
-		[setValue]
 	)
 
 	return state && state?.isLoading ? (
@@ -95,13 +91,9 @@ const PersonalPage: React.FC = () => {
 						<div className={styles['for_inp']}>
 							<label htmlFor='tel'>Номер телефона*</label>
 							<label htmlFor='tel' className={styles['tel-c']}>
-								+996
+								+{watch('phonecode') ?? '000'}
 							</label>
-							<input
-								type='text'
-								{...register('tel')}
-								onChange={handlePhoneChange}
-							/>
+							<input type='text' {...register('tel')} />
 							{errors.tel && (
 								<span className={styles['error']}>{errors.tel.message}</span>
 							)}
@@ -181,6 +173,7 @@ const PersonalPage: React.FC = () => {
 											<option
 												value={country.name}
 												data-iso={country.iso2}
+												data-phonecode={country.phonecode}
 												key={country.id}
 											>
 												{country.name}
@@ -233,9 +226,7 @@ const PersonalPage: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				<button  type='submit'>
-					Обновить
-				</button>
+				{/* <button type='submit'>Обновить</button> */}
 			</form>
 		</div>
 	)

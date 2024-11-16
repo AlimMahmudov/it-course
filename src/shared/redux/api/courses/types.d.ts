@@ -4,7 +4,14 @@ namespace CoursesTypes {
 		name: string
 		created_at: string
 		updated_at: string
-		materials: []
+		materials: ModuleMaterial[]
+	}
+	interface ModuleMaterial {
+		id: string
+		title: string
+		video_url: string
+		created_at: string
+		updated_at: string
 	}
 	interface Course {
 		id: string
@@ -31,7 +38,6 @@ namespace CoursesTypes {
 			profile_pic: string
 			specialization: string
 		}
-		module_ids: null | string[]
 		is_available: boolean
 	}
 }

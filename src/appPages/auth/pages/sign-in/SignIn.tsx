@@ -24,7 +24,11 @@ const SignIn = () => {
 		formState: { errors },
 		reset
 	} = useForm<SigninType>({
-		resolver: zodResolver(signinSchema)
+		resolver: zodResolver(signinSchema),
+		defaultValues: {
+			password: 'Islam-2007',
+			email: 'islam.janybekov.007@gmail.com'
+		}
 	})
 	const [login, { error }] = useLoginMutation()
 	const { translate } = useLanguageStore()
@@ -42,7 +46,7 @@ const SignIn = () => {
 					'refreshToken',
 					JSON.stringify(responseData?.refreshToken)
 				)
-				route.push('/profile/personal')
+				route.push('/')
 			}
 		}
 	}

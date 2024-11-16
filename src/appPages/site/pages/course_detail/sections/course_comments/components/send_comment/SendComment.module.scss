@@ -1,0 +1,36 @@
+.send_comment {
+	width: 851px;
+	height: 246px;
+	border-radius: 7.36px;
+	background: rgba(5, 12, 34, 1);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	textarea {
+		background: rgba(27, 41, 89, 0.4);
+		min-width: 810.96px;
+		max-width: 810.96px;
+		min-height: 136.14px;
+		max-height: 300px;
+		border-radius: 7.36px;
+		border: none;
+		outline: none;
+		padding: 15px;
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 21.94px;
+		color: rgba(255, 255, 255, 1);
+	}
+	button {
+		width: 190.38px;
+		height: 53.79px;
+		padding: 18.4px 55.19px 18.4px 55.19px;
+		border-radius: 7.36px;
+		background: rgba(27, 41, 89, 0.4);
+		color: rgba(255, 255, 255, 1);
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 17.07px;
+	}
+}

@@ -2,10 +2,7 @@
 import React from "react";
 import scss from "./Hero.module.scss";
 import Image from "next/image";
-import { useGetMeQuery } from "@/shared/redux/api/user";
-interface Iprops {
-  article: IArticles;
-}
+import { useGetMeQuery } from '@/shared/redux/api/user'
 const Hero: React.FC<Iprops> = ({ article }) => {
   const { status } = useGetMeQuery();
   return (
