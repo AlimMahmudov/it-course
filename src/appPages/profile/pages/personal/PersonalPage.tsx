@@ -175,6 +175,7 @@ const PersonalPage: React.FC = () => {
 									{countries.isLoading && (
 										<option value=''>{'Загрузка...'}</option>
 									)}
+									<option value=''>Выберите страну</option>
 									{Array.isArray(countries.data) &&
 										countries.data?.map(country => (
 											<option
@@ -196,7 +197,6 @@ const PersonalPage: React.FC = () => {
 
 						<div className={styles['for_inp']}>
 							<label htmlFor='city'>Город*</label>
-
 							<div className={styles['select-wr']}>
 								<select
 									{...register('city')}
@@ -207,6 +207,7 @@ const PersonalPage: React.FC = () => {
 									{cities.isLoading && (
 										<option value=''>{'Загрузка...'}</option>
 									)}
+									<option value=''>Выберите город</option>
 									{Array.isArray(cities?.data) &&
 										cities.data?.map(city => (
 											<option value={city.name} key={city.id}>
@@ -232,9 +233,9 @@ const PersonalPage: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				{/* <button className={'sign_btn'} type='submit'>
-					Создать аккаунт
-				</button> */}
+				<button  type='submit'>
+					Обновить
+				</button>
 			</form>
 		</div>
 	)

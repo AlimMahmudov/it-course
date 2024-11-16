@@ -13,19 +13,15 @@ type UseFetchState<T> = {
 type UseFetchOptions = {
 	enabled: boolean
 	queryKeys: any[]
-	cacheKey?: string
 	onSuccess?: (data: any) => void
 	onError?: (error: AxiosError) => void
 }
-
-const cache = new Map<string, any>()
 
 const useFetch = <T>(
 	fetchFunction: () => Promise<T>,
 	options?: Partial<UseFetchOptions>
 ) => {
 	const { enabled = true, queryKeys = [], onSuccess, onError } = options ?? {}
-	const cacheKey = queryKeys[0]
 	const [state, setState] = useState<UseFetchState<T>>({
 		isLoading: true,
 		status: null,
@@ -38,19 +34,6 @@ const useFetch = <T>(
 		if (!enabled) return
 
 		const fetchData = async () => {
-			if (cacheKey && cache.has(cacheKey)) {
-				const cachedData = cache.get(cacheKey)
-				setState({
-					isLoading: false,
-					status: 200,
-					error: null,
-					isError: false,
-					data: cachedData
-				})
-				onSuccess && onSuccess(cachedData)
-				return
-			}
-
 			try {
 				setState(prev => ({
 					...prev,
@@ -60,11 +43,7 @@ const useFetch = <T>(
 				}))
 
 				const response = await fetchFunction()
-				const data = (response as AxiosResponse).data
-
-				if (cacheKey) {
-					cache.set(cacheKey, data)
-				}
+				const data = response as T
 
 				setState({
 					isLoading: false,
@@ -90,7 +69,7 @@ const useFetch = <T>(
 		}
 
 		fetchData()
-	}, [enabled, cacheKey, ...queryKeys])
+	}, [enabled, ...queryKeys])
 
 	return state
 }

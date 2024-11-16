@@ -60,7 +60,6 @@ const AddCardForm: React.FC<TProps> = ({ onClose, open }) => {
 	const [mutate, { error }] = useAddPaymentCardMutation()
 	const response = error as unknown as { data: any }
 	async function onSubmit({ card_cvc, ...data }: CardFormData) {
-		return
 		const { data: response } = await mutate(data)
 		if (response?.message) {
 			alert(response?.message)
@@ -75,7 +74,7 @@ const AddCardForm: React.FC<TProps> = ({ onClose, open }) => {
 			onClose={onClose}
 		>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-				<h3>Данные карты ( не работает )</h3>
+				<h3>Данные карты </h3>
 				<div className={styles.form_group}>
 					<label htmlFor='card_type'>Тип карты*</label>
 					<div className={styles['row']}>

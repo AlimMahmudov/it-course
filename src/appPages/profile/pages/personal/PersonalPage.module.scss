@@ -19,6 +19,7 @@
 				gap: 15px;
 			}
 		}
+
 		.for_inp {
 			display: flex;
 			flex-direction: column;
@@ -142,6 +143,14 @@
 					padding-left: 70px;
 				}
 			}
+		}
+
+		button[type='submit'] {
+			padding: 15px 80px 15px 80px;
+			border-radius: 6px;
+			background: #034078;
+			color: #ffffff;
+			font-size: 16px;
 		}
 	}
 }
