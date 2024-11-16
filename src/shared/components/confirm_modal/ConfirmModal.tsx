@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import styles from './ConfirmModal.module.scss'
 import { createPortal } from 'react-dom'
 import Animate from '../animate/Animate'
+import styles from './ConfirmModal.module.scss'
 
 type TProps = {
 	confirm_callback(): void
@@ -34,7 +34,12 @@ const ConfirmModal: React.FC<TProps> = ({
 						Нет
 					</button>
 				</div>
-				{error && <p className={styles.error}>{JSON.stringify(error)}</p>}
+				{error && (
+					<p className={styles.error}>
+						{' '}
+						<></>
+					</p>
+				)}
 			</Animate>
 		</div>,
 		document.body

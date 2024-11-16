@@ -13,15 +13,14 @@ type TProps = {
 const ChoicePaymentCards: React.FC<TProps> = ({ choise }) => {
 	const { data, isLoading, isError, error } = useGetMeInfoQuery('payment_cards')
 
-	if (isError || !data) {
-		return <div className={styles.error}>{JSON.stringify(error)}</div>
-	}
-	if(data.length == 0) return <></>
-
 	return (
 		<Animate className={styles.choice_payment_cards}>
 			{isLoading ? (
 				<span className={styles.loading}>Загрузка...</span>
+			) : isError || !data || data.length === 0 ? (
+				<span className={styles.error}>
+					Данные отсутствуют или произошла ошибка.
+				</span>
 			) : (
 				<>
 					<h3 className={styles.title}>Выберите платежную карту</h3>

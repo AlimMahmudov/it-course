@@ -1,14 +1,14 @@
 'use client'
-import { formatExpiryDate, formatPhoneNumber } from '@/shared/utils/formatting'
+import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
+import { formatExpiryDate } from '@/shared/utils/formatting'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
+import { parseAsBoolean, useQueryState } from 'nuqs'
 import React, { useCallback } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useSelector } from 'react-redux'
 import { z } from 'zod'
 import styles from './SubscribeForm.module.scss'
-import { parseAsBoolean, useQueryState } from 'nuqs'
-import ChoicePaymentCards from '@/shared/components/choice_payment_cards/ChoicePaymentCards'
 
 const schema = z.object({
 	fullname: z.string().min(1, 'ФИО обязательно'),
@@ -33,7 +33,8 @@ const schema = z.object({
 	card_type: z.enum(['Visa', 'MasterCard'], { message: 'Выберите тип карты' }),
 	agree: z.boolean().refine(val => val === true, {
 		message: 'Необходимо согласие с условиями'
-	})
+	}),
+	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
 type ISchema = z.infer<typeof schema>
 
@@ -61,14 +62,6 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 		'is_choise',
 		parseAsBoolean.withDefault(true)
 	)
-	// const response = error as unknown as { data: any }
-	const handlePhoneChange = useCallback(
-		(e: React.ChangeEvent<HTMLInputElement>) => {
-			const formattedPhone = formatPhoneNumber(e.target.value)
-			setValue('tel', formattedPhone)
-		},
-		[setValue]
-	)
 
 	const choisePaymentCard = useCallback((card_data: UserTypes.PaymentCard) => {
 		setValue('card_number', card_data.card_number)
@@ -95,13 +88,9 @@ const SubscribeForm: React.FC<TProps> = ({ subscription }) => {
 							<label htmlFor='tel'>Номер телефона*</label>
 							<div className='row'>
 								<label htmlFor='tel' className={'tel-c'}>
-									+996
+									+{watch('phonecode') ?? '000'}
 								</label>
-								<input
-									type='text'
-									{...register('tel')}
-									onChange={handlePhoneChange}
-								/>
+								<input type='text' {...register('tel')} />
 							</div>
 							{errors.tel && (
 								<span className={'error'}>{errors.tel.message}</span>

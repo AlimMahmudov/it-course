@@ -27,6 +27,28 @@ const api = index.injectEndpoints({
 			},
 			providesTags: ['auth']
 		}),
+		getProgress: build.query<
+			UserTypes.UserProgress,
+			{
+				type: 'master_class' | 'course'
+				course_id?: string
+				master_class_id?: string
+			}
+		>({
+			query({ type, course_id, master_class_id }) {
+				return {
+					url: `/user/progress/${type}${
+						type === 'course'
+							? `?course_id=${course_id}`
+							: type == 'master_class'
+							? `?master_class_id=${master_class_id}`
+							: ''
+					}`,
+					method: 'GET'
+				}
+			},
+			providesTags: ['auth']
+		}),
 		addPaymentCard: build.mutation<
 			{ message: string },
 			UserTypes.AddPaymentCardArg
@@ -48,5 +70,6 @@ export const {
 	useGetMeQuery,
 	useGetMeInfoQuery,
 	useAddPaymentCardMutation,
-	useGetMyPurchasesQuery
+	useGetMyPurchasesQuery,
+	useGetProgressQuery
 } = api

@@ -2,12 +2,12 @@
 import React from "react";
 import scss from "./Hero.module.scss";
 import Image from "next/image";
-import { useGetUserAuthQuery } from "@/shared/redux/api/auth";
+import { useGetMeQuery } from '@/shared/redux/api/user'
 interface Iprops {
   article: IArticles;
 }
 const Hero: React.FC<Iprops> = ({ article }) => {
-  const { status } = useGetUserAuthQuery();
+  const { status } = useGetMeQuery()
   return (
     <section className={scss.Hero}>
       <div className={scss.content}>

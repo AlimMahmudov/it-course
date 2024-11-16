@@ -4,10 +4,18 @@ namespace UserTypes {
 		| 'my_purchases'
 		| 'subscriptions'
 		| 'payment_cards'
-	type purchases_key =
-		| 'master_classes'
-		| 'courses'
-		| 'subscriptions'
+	type purchases_key = 'master_classes' | 'courses' | 'subscriptions'
+
+	interface UserProgress {
+		id: string
+		user_id: string
+		course_id: string
+		completed_materials: string[]
+		completed_modules: string[]
+		started_at: string
+		is_completed: boolean
+	}
+
 	interface AddPaymentCardArg {
 		card_number: string
 		expiration_date: string

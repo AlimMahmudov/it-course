@@ -8,12 +8,12 @@ import userProfile from "@/shared/assets/article-user-profile.svg";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { articleComments } from "@/shared/const/article-comments";
-import { useGetUserAuthQuery } from "@/shared/redux/api/auth";
+import { useGetMeQuery } from '@/shared/redux/api/user'
 interface Iform {
   userComment: string;
 }
 const Comments = () => {
-  const { status } = useGetUserAuthQuery();
+  const { status } = useGetMeQuery();
   const isLogged = status === "fulfilled";
   const today = new Date();
   const { translate } = useLanguageStore();

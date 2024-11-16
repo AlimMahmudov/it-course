@@ -1,14 +1,14 @@
 'use client'
+import { Popup } from '@/shared/components/popup/Popup'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 import React, { useCallback, useState } from 'react'
 import styles from './MyPurchasesPage.module.scss'
-import { useGetMeInfoQuery } from '@/shared/redux/api/user'
-import { Popup } from '@/shared/components/popup/Popup'
 
 const MyPurchasesPage: React.FC = () => {
 	const { data, isLoading, isError, error } = useGetMeInfoQuery('my_purchases')
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [selectedPurchase, setSelectedPurchase] = useState<any>(null)
-	
+
 	const handleRowClick = useCallback(
 		(purchase: any) => {
 			setSelectedPurchase(purchase)
@@ -21,15 +21,15 @@ const MyPurchasesPage: React.FC = () => {
 		setIsModalOpen(false)
 		setSelectedPurchase(null)
 	}, [setIsModalOpen, setSelectedPurchase])
-	
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
 
 	return (
 		<div className={styles.my_purchases_page}>
 			{isLoading ? (
 				<span>Загрузка...</span>
+			) : isError || !data || data.length === 0 ? (
+				<span className={styles.error}>
+					Данные отсутствуют или произошла ошибка.
+				</span>
 			) : (
 				<>
 					<h1 className={styles.title}>Мои покупки</h1>

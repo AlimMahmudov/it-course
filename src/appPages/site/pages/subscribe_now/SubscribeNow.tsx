@@ -16,9 +16,7 @@ const SubscribeNow: React.FC = () => {
 	const searchParams = useSearchParams()
 	const plan_id = searchParams.get('plan_id')
 	const findPlan = data?.find(plan => plan.id == plan_id)
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
+
 	if (!plan_id || !findPlan) {
 		return <div className='centered-container none'>Несоответсие данных</div>
 	}
@@ -28,6 +26,10 @@ const SubscribeNow: React.FC = () => {
 			<div className='container'>
 				{isLoading ? (
 					<span>Загрузка...</span>
+				) : isError || !data || data.length === 0 ? (
+					<span>
+						Данные отсутствуют или произошла ошибка.
+					</span>
 				) : (
 					<div className={styles.cn}>
 						<h1>{findPlan.name}</h1>

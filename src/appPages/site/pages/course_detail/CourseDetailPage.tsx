@@ -20,10 +20,8 @@ const CourseDetailPage: React.FC = () => {
 		course_id: String(courseId)
 	})
 	const { data } = useGetMyPurchasesQuery('courses')
-	console.log(data)
 
 	const isPurchased = data?.find(v => v.course_id == courseId)
-	const purchased_course = data?.find(v => v.course_id == findCourse?.id)
 
 	const breadcrumbs = [
 		{ label: 'Главная', href: '/' },
@@ -40,10 +38,7 @@ const CourseDetailPage: React.FC = () => {
 			<Suspense fallback={<div>Загрузка данных...</div>}>
 				<Breadcrumbs items={breadcrumbs} />
 				{isPurchased && state?.data ? (
-					<AfterPurchase
-						purchased_course={purchased_course}
-						course={findCourse}
-					/>
+					<AfterPurchase course={findCourse} />
 				) : (
 					<BeforePurchase course={findCourse} />
 				)}

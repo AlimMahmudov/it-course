@@ -1,30 +1,44 @@
-import React from 'react'
+'use client'
+import { useGetProgressQuery } from '@/shared/redux/api/user'
+import React, { useCallback, useState } from 'react'
+import CourseComments from '../../sections/course_comments/CourseComments'
 import CourseInfo from '../../sections/course_info/CourseInfo'
 import CourseMaterials from '../../sections/course_materials/CourseMaterials'
 interface IAfterPurchaseProps {
 	course: CoursesTypes.Course
-	purchased_course: any
 }
-const AfterPurchase: React.FC<IAfterPurchaseProps> = ({
-	course,
-	purchased_course
-}) => {
-	console.log(purchased_course);
-	return <></>
-	// return (
-	// 	<>
+const AfterPurchase: React.FC<IAfterPurchaseProps> = ({ course }) => {
+	const { data, isError, isLoading } = useGetProgressQuery({
+		type: 'course',
+		course_id: course.id
+	})
+	const [active, setActive] = useState({ module: '', material: '' })
+	const toggleModule = useCallback(
+		(key: keyof typeof active, id: string) => {
+			setActive(p => ({
+				...p,
+				[key]: id
+			}))
+		},
+		[setActive]
+	)
 
-	// 		<CourseInfo
-	// 			purchased_course={purchased_course}
-	// 			isBy={true}
-	// 			course={course}
-	// 		/>
-	// 		<CourseMaterials
-	// 			purchased_course={purchased_course}
-	// 			course={course}
-	// 		/>
-	// 	</>
-	// )
+	return isLoading ? (
+		<span>Загрузка...</span>
+	) : isError || !data ? (
+		<span>Данные отсутствуют или произошла ошибка.</span>
+	) : (
+		<>
+			<CourseInfo purchased_course={data} isBy={true} course={course} />
+			<CourseMaterials
+				toggleModule={toggleModule}
+				active={active}
+				purchased_course={data}
+				course={course}
+			/>
+			<CourseComments material_id={active.material} />
+		</>
+	)
 }
 
 export default AfterPurchase

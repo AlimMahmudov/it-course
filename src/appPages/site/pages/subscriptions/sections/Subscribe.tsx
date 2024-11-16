@@ -1,13 +1,10 @@
 'use client'
 import { useGetSubscriptionsQuery } from '@/shared/redux/api/subscriptions'
-import scss from './Subscribe.module.scss'
 import Link from 'next/link'
+import scss from './Subscribe.module.scss'
 
 const Subscribe = () => {
-	const { data, isLoading, isError, error } = useGetSubscriptionsQuery()
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
+	const { data, isLoading, isError } = useGetSubscriptionsQuery()
 	return (
 		<div id={scss.Subscribe}>
 			<div className='container'>
@@ -18,6 +15,10 @@ const Subscribe = () => {
 
 					{isLoading ? (
 						<span>Загрузка...</span>
+					) : isError || !data || data.length === 0 ? (
+						<span>
+							Данные отсутствуют или произошла ошибка.
+						</span>
 					) : (
 						<div className={scss.block}>
 							{data.map(subscription => (
