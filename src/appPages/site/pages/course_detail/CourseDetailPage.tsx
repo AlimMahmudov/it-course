@@ -16,29 +16,30 @@ const Breadcrumbs = dynamic(
 const CourseDetailPage: React.FC = () => {
 	const { courseId } = useParams()
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
-	const { data: findCourse } = useGetCourseByIdQuery({
+	const { data: findCourse, isLoading } = useGetCourseByIdQuery({
 		course_id: String(courseId)
 	})
 	const { data } = useGetMyPurchasesQuery('courses')
+	console.log(data)
 
-	if (!findCourse) {
-		return <div>Курс не найден</div>
-	}
-
-	const isPurchased = data?.find(v => v.id == courseId)
-	const purchased_course = data?.find(v => v.id == findCourse?.id)
+	const isPurchased = data?.find(v => v.course_id == courseId)
+	const purchased_course = data?.find(v => v.course_id == findCourse?.id)
 
 	const breadcrumbs = [
 		{ label: 'Главная', href: '/' },
 		{ label: 'Наши курсы', href: '/our_courses' },
-		{ label: findCourse.title, href: '#this' }
+		{ label: String(findCourse?.title), href: '#this' }
 	]
 
+	if (isLoading) return <span>Загрузка...</span>
+	if (!findCourse) {
+		return <div>Курс не найден</div>
+	}
 	return (
 		<>
 			<Suspense fallback={<div>Загрузка данных...</div>}>
 				<Breadcrumbs items={breadcrumbs} />
-				{isPurchased && state.data ? (
+				{isPurchased && state?.data ? (
 					<AfterPurchase
 						purchased_course={purchased_course}
 						course={findCourse}

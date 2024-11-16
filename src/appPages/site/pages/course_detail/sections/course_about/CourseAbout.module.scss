@@ -87,7 +87,8 @@
 			display: flex;
 			align-items: center;
 			gap: 140px;
-			button {
+			button,
+			a {
 				transition: all 0.25s;
 				will-change: transform;
 				&:hover {

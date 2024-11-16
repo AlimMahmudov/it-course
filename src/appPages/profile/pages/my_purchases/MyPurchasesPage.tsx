@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styles from './MyPurchasesPage.module.scss'
 import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 import { Popup } from '@/shared/components/popup/Popup'
@@ -8,19 +8,22 @@ const MyPurchasesPage: React.FC = () => {
 	const { data, isLoading, isError, error } = useGetMeInfoQuery('my_purchases')
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [selectedPurchase, setSelectedPurchase] = useState<any>(null)
+	
+	const handleRowClick = useCallback(
+		(purchase: any) => {
+			setSelectedPurchase(purchase)
+			setIsModalOpen(true)
+		},
+		[setIsModalOpen, setSelectedPurchase]
+	)
 
-	if (isError || !data) {
-		return <div>{JSON.stringify(error)}</div>
-	}
-
-	const handleRowClick = (purchase: any) => {
-		setSelectedPurchase(purchase)
-		setIsModalOpen(true)
-	}
-
-	const closeModal = () => {
+	const closeModal = useCallback(() => {
 		setIsModalOpen(false)
 		setSelectedPurchase(null)
+	}, [setIsModalOpen, setSelectedPurchase])
+	
+	if (isError || !data) {
+		return <div>{JSON.stringify(error)}</div>
 	}
 
 	return (

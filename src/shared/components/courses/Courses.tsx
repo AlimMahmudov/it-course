@@ -36,7 +36,7 @@ export const Courses: React.FC<{ max: string }> = ({ max = 'full' }) => {
 						</Animate>
 					)
 				})
-				?.slice(0, max == 'full' ? 1 : Number(max))}
+				?.slice(0, max == 'full' ? data?.length : Number(max))}
 		</div>
 	)
 }

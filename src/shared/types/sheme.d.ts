@@ -19,15 +19,6 @@ interface IModule {
 	}[]
 }
 
-interface IPuschasedCourse {
-	id: string
-	materials: {
-		completeds: string[]
-	}
-	modules: {
-		completeds: string[]
-	}
-}
 interface IArticles {
 	id: number
 	isSubscribe: boolean
@@ -51,4 +42,3 @@ interface IArticles {
 		fuck_after_subscribe: Array<string>
 	}
 }
-

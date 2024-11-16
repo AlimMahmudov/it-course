@@ -1,4 +1,4 @@
-'use client';
+'use client'
 import CourseProgramImage from '@/shared/assets/course_program.png'
 import Animate from '@/shared/components/animate/Animate'
 import Image from 'next/image'
@@ -10,7 +10,7 @@ const CourseProgram: React.FC<{ course: CoursesTypes.Course }> = memo(
 	({ course }) => {
 		const { data } = useGetCourseModulesQuery({ course_id: course.id })
 		return (
-			<section className={styles.course_program}>
+			<section id='programs' className={styles.course_program}>
 				<Animate className={`${styles['container']} container`}>
 					<div className={styles['left']}>
 						<h4>Программа курса</h4>

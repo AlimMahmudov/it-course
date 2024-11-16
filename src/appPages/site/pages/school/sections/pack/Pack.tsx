@@ -33,7 +33,7 @@ const Pack = () => {
 										<h2>{subscription.name}</h2>
 										<ul>
 											{subscription.subscription_benefits.map((benefit,idx) => (
-												<li>{benefit}{subscription.subscription_benefits.length !== (idx+1)&&','}</li>
+												<li key={`benefit-${idx}`}>{benefit}{subscription.subscription_benefits.length !== (idx+1)&&','}</li>
 											))}
 										</ul>
 									</div>
