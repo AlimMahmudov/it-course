@@ -1,15 +1,13 @@
 'use client'
 import logo from '@/shared/assets/logo.svg'
-import { usePostUserSigninMutation } from '@/shared/redux/api/auth'
+import { useLoginMutation } from '@/shared/redux/api/auth'
 import { useLanguageStore } from '@/shared/stores/Language'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { AxiosError } from 'axios'
+import { useRouter } from 'next-nprogress-bar'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
-import scss from './SignIn.module.scss'
-import Link from 'next/link'
-import { useRouter } from 'next-nprogress-bar'
 
 const signinSchema = z.object({
 	email: z.string().nonempty('Email обязателен').email('Неверный формат email'),
@@ -23,32 +21,41 @@ const SignIn = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors },
+		reset
 	} = useForm<SigninType>({
 		resolver: zodResolver(signinSchema)
 	})
-	const [postUserSigninMutation] = usePostUserSigninMutation()
+	const [login, { error }] = useLoginMutation()
 	const { translate } = useLanguageStore()
+	const response = error as unknown as { data: any }
 
 	const onSubmit: SubmitHandler<SigninType> = async data => {
-		try {
-			const { data: responseData } = await postUserSigninMutation(data)
-			localStorage.setItem('user', JSON.stringify(responseData.accessToken))
-		} catch (e) {
-			const error = e as AxiosError
-			console.log(error.response?.data)
+		const { data: responseData } = await login(data)
+		if (responseData) {
+			if (responseData?.accessToken && responseData?.refreshToken) {
+				localStorage.setItem(
+					'accessToken',
+					JSON.stringify(responseData?.accessToken)
+				)
+				localStorage.setItem(
+					'refreshToken',
+					JSON.stringify(responseData?.refreshToken)
+				)
+				route.push('/profile/personal')
+			}
 		}
 	}
 
 	return (
-		<div id={scss.SignIn}>
+		<div id={'BaseForm'}>
 			<div className='container'>
-				<div className={scss.signin}>
-					<Link href='/' className={scss.signin_logo}>
+				<div className={'BaseForm auth'}>
+					<Link href='/' className={'signin_logo'}>
 						<Image src={logo} alt='' />
 					</Link>
-					<form className={scss.form} onSubmit={handleSubmit(onSubmit)}>
-						<div className={scss.for_inp}>
+					<form className={'form'} onSubmit={handleSubmit(onSubmit)}>
+						<div className={'for_inp'}>
 							<label htmlFor='email'>Email*</label>
 							<input
 								{...register('email', { required: true })}
@@ -56,32 +63,37 @@ const SignIn = () => {
 								id='email'
 							/>
 							{errors.email && (
-								<span className={scss.error}>{errors.email.message}</span>
+								<span className={'error'}>{errors.email.message}</span>
 							)}
 						</div>
-						<div className={scss.for_inp}>
+						<div className={'for_inp'}>
 							<label htmlFor='password'>Пароль*</label>
 							<input
 								{...register('password', { required: true })}
-								type='text'
+								type='password'
 								id='password'
 							/>
 							{errors.password && (
-								<span className={scss.error}>{errors.password.message}</span>
+								<span className={'error'}>{errors.password.message}</span>
 							)}
 						</div>
-						<div className={scss.buttons}>
-							<button className={scss.sign_btn} type='submit'>
+						<div className={'buttons'}>
+							<button className={'sign_btn'} type='submit'>
 								{translate('Кирүү', 'Войти')}
 							</button>
 							<button
 								type='button'
-								className={scss.sign_btn2}
-								onClick={() => route.push('/auth/signup')}
+								className={'sign_btn2'}
+								onClick={() => route.push('/auth/forgot-pass')}
 							>
 								{translate('Сырсөзүңүздү унутуп калдыңыз', 'Забыли пароль')}
 							</button>
 						</div>
+						{response?.data?.detail && <p>{response.data.detail}</p>}
+						<p className={'cn'}>
+							Нет учетной записи ?{' '}
+							<Link href='/auth/signup'>Зарегестрироватся</Link>
+						</p>
 					</form>
 				</div>
 			</div>

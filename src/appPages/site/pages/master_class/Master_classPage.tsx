@@ -1,8 +1,8 @@
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
 import MasterClasses from './sections/masterclasses/MasterClasses'
 const breadcrumbs = [
 	{ label: 'Главная', href: '/' },
-	{ label: 'Мастер классы', href: '#' }
+	{ label: 'Мастер классы', href: '#this' }
 ]
 const Master_classPage = () => {
 	return (

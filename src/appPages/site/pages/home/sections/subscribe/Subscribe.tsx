@@ -26,7 +26,7 @@ const Subscribe = () => {
 					</div>
 					<div className={scss.subscribe_buttons}>
 						<button>{translate('Жазылуу', 'Оформить подписку')}</button>
-						<Link href=''>
+						<Link href='/subscription'>
 							{translate(
 								'Пакеттер жөнүндө көбүрөөк маалымат',
 								'Подробнее о пакетах'

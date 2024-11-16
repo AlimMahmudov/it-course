@@ -1,47 +1,65 @@
 #Header {
-	position: fixed;
-	width: 100%;
-	padding-block: 20px;
-	background: rgba(31, 31, 31, 0);
-	backdrop-filter: blur(10px);
-	z-index: 80;
+  position: fixed;
+  width: 100%;
+  padding-block: 20px;
+  background: rgba(31, 31, 31, 0);
+  backdrop-filter: blur(10px);
+  z-index: 80;
 
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		.teg {
-			display: flex;
-			align-items: center;
-			gap: 20px;
-			[data-home] {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-			}
-			a {
-				font-family: Montserrat;
-				font-size: 15px;
-				font-weight: 500;
-				line-height: 18.29px;
-				color: #ffffff;
-			}
-		}
-		.header_button {
-			display: flex;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .teg {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      [data-home] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      a {
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 18.29px;
+        color: #ffffff;
+      }
+    }
+    .header_button {
+      display: flex;
+      align-items: center;
+      .profile {
+        width: 160px;
+        height: 40px;
+        color: #ffffff;
+        border-radius: 10px;
+        border: 2px solid #034078;
+        margin-left: 20px;
+      }
+      .notify {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px;
+      }
 
-			button {
-				padding: 16px 60px;
-				border-radius: 5px;
-				color: #ffffff;
-				background: #034078;
-			}
-			.btn {
-				border-radius: 5px;
-				color: #ffffff;
-				background: none;
-				border: none;
-			}
-		}
-	}
+      .subscribe {
+        padding: 16px 60px;
+        border-radius: 5px;
+        color: #ffffff;
+        background: #034078;
+        margin-left: 30px;
+      }
+      .btn {
+        border-radius: 5px;
+        color: #ffffff;
+        background: none;
+        border: none;
+      }
+    }
+  }
 }

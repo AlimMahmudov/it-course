@@ -1,6 +1,6 @@
 import { frontendMaterials } from './materials'
 
-export const courses: ICourse[] = [
+export const courses = [
 	{
 		id: 'cm300nsmq000008i57sntds1o',
 		title: 'Frontend-разработчик',

@@ -1,12 +1,11 @@
-import React from 'react'
+import Breadcrumbs from '@/shared/components/breadcrumbs/Breadcrumbs'
+import Telegram from '../home/sections/telegram/Telegram'
+import Review from '../school/sections/review/Review'
 import AboutUs from './sections/aboutUs/AboutUs'
 import Certificate from './sections/certificate/Certificate'
-import Review from '../school/sections/review/Review'
-import Telegram from '../home/sections/telegram/Telegram'
-import Breadcrumbs from '@/shared/ui/breadcrumbs/Breadcrumbs'
 const breadcrumbs = [
 	{ label: 'Главная', href: '/' },
-	{ label: 'О нас', href: '#' }
+	{ label: 'О нас', href: '#this' }
 ]
 const UsPage = () => {
 	return (

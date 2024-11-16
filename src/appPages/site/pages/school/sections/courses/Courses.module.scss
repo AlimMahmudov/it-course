@@ -1,6 +1,5 @@
 #Courses {
-  padding: 50px;
-  padding-top: 200px;
+  padding-top: 150px;
   .courses {
     display: flex;
     flex-direction: column;
@@ -15,51 +14,7 @@
         color: #ffffff;
       }
     }
-    .courses_block {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      .courses_box {
-        width: 370px;
-        height: 283px;
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: start;
-        padding: 30px;
-        background: #ffffff;
-        transition: all 0.3s;
-
-        h1 {
-          font-family: Montserrat;
-          font-size: 24px;
-          font-weight: 700;
-          line-height: 29.26px;
-          color: #000000;
-        }
-        p {
-          width: 312px;
-          font-family: Montserrat;
-          font-size: 16px;
-          font-weight: 400;
-          line-height: 19.5px;
-          color: #000000;
-        }
-        a {
-          font-family: Montserrat;
-          font-size: 16px;
-          font-weight: 700;
-          line-height: 19.5px;
-          border-bottom: splid 2px #000000;
-        }
-      }
-      .courses_box:hover {
-        background: #e5f0fa;
-        transform: scale(1.05);
-        transition: all 0.3s;
-      }
-    }
+   
     .courses_button {
       button {
         padding: 16px 61px 15px 61px;

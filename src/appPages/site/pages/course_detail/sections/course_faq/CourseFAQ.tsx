@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styles from "./CourseFAQ.module.scss";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import Animate from "@/shared/ui/animate/Animate";
-
+import Animate from "@/shared/components/animate/Animate";
 const faq = [
   {
     id: "faq-1",

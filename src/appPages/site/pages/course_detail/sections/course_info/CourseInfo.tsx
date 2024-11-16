@@ -1,8 +1,8 @@
+import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseInfo.module.scss'
-import Animate from '@/shared/ui/animate/Animate'
 interface IBeforePurchaseProps {
-	course: ICourse
+	course: CoursesTypes.Course
 	isBy?: boolean
 	purchased_course?: IPuschasedCourse | undefined
 }
@@ -18,14 +18,14 @@ const CourseInfo: React.FC<IBeforePurchaseProps> = memo(
 				<Animate className={`${styles['container']} container`}>
 					<div className={styles['left']}>
 						<h4>{course.title}</h4>
-						<p>{course.description2}</p>
+						<p>{course.description}</p>
 						{!isBy && <button>Купить курс за {course.price} $</button>}
 					</div>
 					{!isBy && (
 						<div className={styles['right']}>
 							<div className={styles['col']}>
 								<label>Доступ: </label>
-								<span>{course.access}</span>
+								<span>{course.access_level}</span>
 							</div>
 							<div className={styles['col']}>
 								<label>В курс входит: </label>

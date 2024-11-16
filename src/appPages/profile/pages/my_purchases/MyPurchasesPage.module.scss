@@ -1,0 +1,78 @@
+.my_purchases_page {
+	width: 100%;
+
+	h1 {
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 43.88px;
+		margin-bottom: 33px;
+	}
+
+	.no_purchases {
+		text-align: center;
+		color: #777;
+		font-size: 18px;
+	}
+
+	.purchases_table {
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		th,
+		td {
+			padding: 12px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			color: white;
+			font-size: 16px;
+		}
+	}
+}
+
+.modal {
+	height: min-content;
+	position: fixed;
+	width: 400px;
+	top: 25%;
+	left: calc(50% - 400px / 2);
+	z-index: 100;
+
+	background-color: #0a1128;
+	border-radius: 8px;
+	display: flex;
+	padding: 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal_content h3 {
+	font-size: 22px;
+	margin-bottom: 15px;
+	font-weight: 600;
+	color: #fff;
+}
+
+.modal_content p {
+	font-size: 16px;
+	line-height: 1.6;
+	color: #ddd;
+	margin-bottom: 5px;
+}
+
+.close_button {
+	background-color: #f44336;
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 4px;
+	margin-top: 10px;
+}
+
+.close_button:hover {
+	background-color: #d32f2f;
+}

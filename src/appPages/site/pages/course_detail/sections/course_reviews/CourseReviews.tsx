@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import cardman from '@/shared/assets/cardman.svg'
 import styles from './CourseReviews.module.scss'
 import Image from 'next/image'
-const CourseReviews: React.FC<{ course: ICourse }> = memo(({}) => {
+const CourseReviews: React.FC<{ course: CoursesTypes.Course }> = memo(({}) => {
 	return (
 		<div id={styles.Review}>
 			<div className='container'>

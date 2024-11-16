@@ -1,0 +1,110 @@
+#Subscribe {
+	padding: 50px;
+	padding-top: 0;
+	.subscribe {
+		display: flex;
+		flex-direction: column;
+		gap: 70px;
+		.p {
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+			p {
+				span {
+					color: rgb(199, 203, 214);
+				}
+				font-family: Montserrat;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 19.5px;
+			}
+			h1 {
+				font-family: Montserrat;
+				font-size: 36px;
+				font-weight: 700;
+				line-height: 43.88px;
+				text-align: center;
+			}
+		}
+		.block {
+			display: flex;
+			justify-content: space-between;
+			.box {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-between;
+				background: #ffffff;
+				width: 349px;
+				height: 481px;
+				border-radius: 10px;
+				padding: 40px;
+
+				.box_text {
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					h3 {
+						font-size: 16px;
+						font-weight: 600;
+						line-height: 19.5px;
+						color: #000000;
+					}
+					h1 {
+						font-size: 36px;
+						font-weight: 700;
+						line-height: 43.88px;
+						color: #000;
+					}
+					span {
+						font-size: 12px;
+						font-weight: 500;
+						line-height: 14.63px;
+						width: 112px;
+						height: 35px;
+						border: 1px solid #11416f;
+						color: #000;
+						border-radius: 5px;
+						transition: all 0.5s;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+					}
+
+					ul {
+						list-style: none;
+						display: flex;
+						flex-direction: column;
+						gap: 15px;
+						margin-top: 26px;
+						li {
+							font-size: 16px;
+							font-weight: 500;
+							line-height: 19.5px;
+							color: rgba(0, 0, 0, 1);
+							display: flex;
+							align-items: center;
+							gap: 6px;
+							
+						}
+					}
+				}
+
+				.btn {
+					padding: 20px 40px;
+					border-radius: 10px;
+					color: #ffffff;
+					border: none;
+					background: #044076;
+					will-change: transform;
+				}
+				.btn:hover {
+					background: #0455a0;
+					transform: scale(1.05);
+					transition: all 0.3s;
+				}
+			}
+		}
+	}
+}

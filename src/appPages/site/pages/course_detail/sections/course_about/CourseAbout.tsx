@@ -1,8 +1,8 @@
-import Animate from '@/shared/ui/animate/Animate'
+import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseAbout.module.scss'
 interface ICourseAboutProps {
-	course: ICourse
+	course: CoursesTypes.Course
 }
 
 const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
@@ -13,14 +13,14 @@ const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 				<h3>О курсе</h3>
 				<div className={`${styles['row']} ${styles.block}`}>
 					<div className={styles['left']}>
-						{course.course_about.descriptions.map((desc, idx) => (
+						{course.course_details.descriptions.map((desc, idx) => (
 							<p key={idx}>{desc}</p>
 						))}
 					</div>
 					<div className={styles['right']}>
 						<div className={styles['col']}>
 							<label>Доступ: </label>
-							<span>{course.access}</span>
+							<span>{course.access_level}</span>
 						</div>
 						<div className={styles['col']}>
 							<label>В курс входит: </label>
@@ -31,12 +31,12 @@ const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 				</div>
 				<div className={styles['block']}>
 					<h5>Для кого это</h5>
-					<li className={styles.dot}>{course.course_about.this_for}</li>
+					<li className={styles.dot}>{course.course_details.this_for}</li>
 				</div>
 				<div className={styles['block']}>
 					<h5>Вы изучите</h5>
 					<ul>
-						{course.course_about.learning.map(learn => (
+						{course.course_details.learning.map(learn => (
 							<li key={learn}>{learn}</li>
 						))}
 					</ul>

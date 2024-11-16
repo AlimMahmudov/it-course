@@ -7,15 +7,16 @@
 
 	.for_inps {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		width: 100%;
 		gap: 100px;
 	}
-	.select {
+	.card_type {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+		position: relative;
 		label {
 			font-size: 16px;
 			font-weight: 400;
@@ -24,11 +25,14 @@
 		}
 		.row {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: space-between;
+			gap: 100px;
+			margin-bottom: 28px;
+
 			button {
-				width: 250px;
-				height: 74px;
+				width: 100%;
+				height: 64px;
 				border-radius: 8px;
 				border: 1px solid rgba(255, 255, 255, 1);
 				font-size: 20px;
@@ -39,75 +43,142 @@
 				justify-content: flex-start;
 				padding: 0 40px;
 				gap: 10px;
+				&.active span {
+					background: #fff;
+				}
 				span {
 					border: 1px solid rgba(217, 217, 217, 1);
-					width: 30px;
-					height: 30px;
+					width: 20px;
+					height: 20px;
 					border-radius: 50%;
 				}
 			}
 		}
 	}
+	.agree-error {
+		color: red;
+		font-size: 14px;
+		margin-top: 3px;
+	}
+
 	.for_inp {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 4px;
 		position: relative;
-		width: 100%;
 
+		width: 100%;
+		margin-bottom: 28px;
+		.row {
+			display: flex;
+			align-items: flex-start;
+			position: relative;
+			width: 100%;
+		}
 		.error {
 			color: red;
 			font-size: 14px;
+			margin-top: 3px;
+		}
+		.tel-c {
+			position: absolute;
+			left: 0;
+			height: 100%;
+			bottom: 0;
+			border-right: 1px solid rgba(164, 164, 164, 1);
+			display: flex;
+			align-items: center;
+			padding: 0 15px;
 		}
 
-		label {
+		label:not(.tel-c) {
 			color: #fff;
 			position: absolute;
 			top: -10px;
 			left: 14px;
 			background-color: #0a1128;
 			padding: 0 6px;
+			z-index: 10;
 		}
 
+		input:-webkit-autofill,
+		input:-webkit-autofill:hover,
+		input:-webkit-autofill:focus,
+		input:-webkit-autofill:active {
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: #fff;
+			transition: background-color 5000s ease-in-out 0s;
+			box-shadow: inset 0 0 20px 20px transparent;
+		}
 		input {
 			width: 100%;
 			height: 50px;
 			outline: none;
 			color: #ffffff;
 			background: none;
-			border-radius: 10px;
+			border-radius: 6px;
 			border: solid 1px #ffffff;
 			padding: 20px;
 			font-size: 16px;
+			&[name='tel'] {
+				padding-left: 80px;
+			}
+			transition: all 0.25s;
+			&:focus {
+				border-color: #007bff;
+			}
+		}
+	}
+	.agree {
+		text-align: left;
+		width: 100%;
+		.row {
+			display: flex;
+			align-items: flex-start;
+			gap: 15px;
+			margin-bottom: 10px;
+			p {
+				font-size: 19px;
+				font-weight: 400;
+			}
+			.checkbox {
+				width: 40px;
+				height: 40px;
+				border-radius: 5px;
+				border: 1px solid rgba(255, 255, 255, 1);
+				position: relative;
+
+				&::after {
+					content: '';
+					width: 15px;
+					height: 10px;
+					position: absolute;
+					top: 40%;
+					left: 50%;
+					transform: translate(-50%, -50%) rotate(125deg) rotateX(180deg);
+					border: solid rgba(255, 255, 255, 1);
+					border-width: 0 3px 3px 0;
+					opacity: 0;
+					transition: all 0.25s;
+				}
+
+				&.checked::after {
+					opacity: 1;
+				}
+			}
 		}
 	}
 
-	.buttons {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-
-		.sign_btn {
-			padding: 17px 90px 17px 90px;
-			border-radius: 10px;
-			background: #034078;
-			border: none;
-			color: #ffffff;
-			font-size: 12px;
-		}
-
-		.sign_btn2 {
-			font-family: Montserrat;
-			font-size: 16px;
-			font-weight: 500;
-			line-height: 19.5px;
-
-			color: #ffffff;
-			background: none;
-			border: none;
-			border-bottom: solid #ffffff 1px;
-		}
+	.sign_btn {
+		border-radius: 10px;
+		background: #034078;
+		color: #ffffff;
+		font-size: 12px;
+		width: 591px;
+		height: 60px;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 29.26px;
 	}
 }

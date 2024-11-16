@@ -9,6 +9,7 @@
       font-size: 20px;
       font-weight: 500;
       line-height: 24.38px;
+      width: 188px;
       color: #ffffff;
     }
 
@@ -29,7 +30,6 @@
 
     p {
       width: 195px;
-      height: 36px;
       font-family: Montserrat;
       font-size: 15px;
       font-weight: 400;
@@ -53,8 +53,7 @@
         display: flex;
 
         button {
-          width: 36px;
-          height: 30px;
+          padding: 7px;
           border: solid 2px #ffffff;
           background: none;
           color: #ffffff;
@@ -70,9 +69,10 @@
     .icon {
       display: flex;
       flex-direction: column;
-      width: 150px;
+      width: 190px;
 
       .icons {
+        width: 170px;
         display: flex;
         gap: 20px;
         flex-wrap: wrap;
@@ -87,6 +87,242 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
+    }
+  }
+}
+
+@media (max-width: 1050px) {
+  #Footer {
+    padding: 30px;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 18px;
+        line-height: 24.38px;
+        // width: 188px;
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 18.29px;
+      }
+      h3 {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      p {
+        width: 175px;
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+      a {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .logo_buttons {
+          display: flex;
+
+          button {
+            width: 36px;
+            height: 30px;
+          }
+        }
+      }
+
+      .teg {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .icon {
+        display: flex;
+        flex-direction: column;
+        width: 190px;
+
+        .icons {
+          width: 170px;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+      }
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .adress {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  #Footer {
+    padding: 30px;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+
+      h1 {
+        font-size: 18px;
+        line-height: 24.38px;
+        // width: 188px;
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 18.29px;
+      }
+      h3 {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      p {
+        width: 175px;
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+      a {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .logo_buttons {
+          display: flex;
+
+          button {
+            width: 36px;
+            height: 30px;
+          }
+        }
+      }
+
+      .teg {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .icon {
+        display: flex;
+        flex-direction: column;
+        width: 190px;
+
+        .icons {
+          width: 170px;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+      }
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .adress {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  #Footer {
+    padding: 30px;
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 20px;
+
+      h1 {
+        font-size: 18px;
+        line-height: 24.38px;
+        width: 100%;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 18.29px;
+      }
+      h3 {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      p {
+        width: 175px;
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+      a {
+        font-size: 15px;
+        line-height: 18.29px;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+
+        .logo_buttons {
+          display: flex;
+
+          button {
+            width: 36px;
+            height: 30px;
+          }
+        }
+      }
+
+      .teg {
+        display: none;
+      }
+
+      .icon {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+
+        .icons {
+          width: 100%;
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   }
 }

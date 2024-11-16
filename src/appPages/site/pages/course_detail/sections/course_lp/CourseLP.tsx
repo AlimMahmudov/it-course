@@ -1,4 +1,4 @@
-import Animate from '@/shared/ui/animate/Animate'
+import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseLP.module.scss'
 
@@ -13,24 +13,26 @@ const learning_process = {
 
 const stepsname = ['Мастер-класс', 'Своё расписание', 'Сообщество', 'Доступ']
 // Course Learning Process
-const CourseLP: React.FC<{ course: ICourse }> = memo(({ course }) => {
-	return (
-		<section className={styles['course_lp']}>
-			<Animate className={`${styles['container']} container`}>
-				<h4>Процесс обучения</h4>
-				<ul>
-					{learning_process.steps.map((step, idx) => (
-						<li key={idx}>
-							<span>{idx + 1}</span>
-							<h5>{stepsname[idx]}</h5>
-							<p>{step}</p>
-						</li>
-					))}
-				</ul>
-			</Animate>
-		</section>
-	)
-})
+const CourseLP: React.FC<{ course: CoursesTypes.Course }> = memo(
+	({ course }) => {
+		return (
+			<section className={styles['course_lp']}>
+				<Animate className={`${styles['container']} container`}>
+					<h4>Процесс обучения</h4>
+					<ul>
+						{learning_process.steps.map((step, idx) => (
+							<li key={idx}>
+								<span>{idx + 1}</span>
+								<h5>{stepsname[idx]}</h5>
+								<p>{step}</p>
+							</li>
+						))}
+					</ul>
+				</Animate>
+			</section>
+		)
+	}
+)
 
 CourseLP.displayName = 'CourseLP'
 export default CourseLP
