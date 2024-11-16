@@ -29,15 +29,19 @@ const Header = () => {
         <div className={scss.header}>
           <div className={scss.teg}>
             <Link href="/" data-home>
-              <Image src={logo} alt="Logo" />
+              <Image src={logo} alt="Logo" style={{ marginRight: "10px" }} />
             </Link>
-
-            <Link href="/school">{translate("Мектеп жөнүндө", "О школе")}</Link>
-            <Link href="/our_courses">
-              {translate("Биздин курстар", "Наши курсы")}
-            </Link>
-            <Link href="/us">{translate("Биз жөнүндө", "О нас")}</Link>
+            <div className={`${scss.teg} ${scss.none}`}>
+              <Link href="/school">
+                {translate("Мектеп жөнүндө", "О школе")}
+              </Link>
+              <Link href="/our_courses">
+                {translate("Биздин курстар", "Наши курсы")}
+              </Link>
+              <Link href="/us">{translate("Биз жөнүндө", "О нас")}</Link>
+            </div>
           </div>
+
           <div className={scss.header_button}>
             {!state?.data ? (
               <>
