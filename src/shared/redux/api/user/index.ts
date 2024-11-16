@@ -1,5 +1,4 @@
 import { api as index } from '..'
-import crypto from 'crypto'
 const api = index.injectEndpoints({
 	endpoints: build => ({
 		getMe: build.query<UserTypes.User, void>({

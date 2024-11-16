@@ -3,11 +3,8 @@ import React from "react";
 import scss from "./Hero.module.scss";
 import Image from "next/image";
 import { useGetMeQuery } from '@/shared/redux/api/user'
-interface Iprops {
-  article: IArticles;
-}
 const Hero: React.FC<Iprops> = ({ article }) => {
-  const { status } = useGetMeQuery()
+  const { status } = useGetMeQuery();
   return (
     <section className={scss.Hero}>
       <div className={scss.content}>
