@@ -78,7 +78,77 @@
           border: 1px solid #0272ce;
           transition: all 0.3s;
         }
+
+        .process_card2 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          gap: 25px;
+          width: 300px;
+          height: 300px;
+          border-radius: 10px;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 84, 160, 0.2) 0%,
+            rgba(0, 11, 48, 0.2) 100%
+          );
+          border: 1px solid #0272ce;
+          transition: all 0.3s;
+        }
+
+        .process_card3 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          gap: 25px;
+          width: 300px;
+          height: 300px;
+          border-radius: 10px;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 84, 160, 0.2) 0%,
+            rgba(0, 11, 48, 0.2) 100%
+          );
+          border: 1px solid #0272ce;
+          transition: all 0.3s;
+        }
+
+        .process_card4 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          justify-content: center;
+          gap: 25px;
+          width: 300px;
+          height: 300px;
+          border-radius: 10px;
+          background: linear-gradient(
+            180deg,
+            rgba(0, 84, 160, 0.2) 0%,
+            rgba(0, 11, 48, 0.2) 100%
+          );
+          border: 1px solid #0272ce;
+          transition: all 0.3s;
+        }
+
         .process_card:hover {
+          transform: scale(1.03);
+          transition: all 0.3s;
+        }
+        .process_card2:hover {
+          transform: scale(1.03);
+          transition: all 0.3s;
+        }
+        .process_card3:hover {
+          transform: scale(1.03);
+          transition: all 0.3s;
+        }
+        .process_card4:hover {
           transform: scale(1.03);
           transition: all 0.3s;
         }
@@ -127,6 +197,682 @@
       .process_box2:hover {
         transform: scale(1.03);
         transition: all 0.3s;
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 298px;
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 250px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 19.5px;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 36px;
+          line-height: 43.88px;
+        }
+        p {
+          width: 750px;
+          height: 48px;
+          font-size: 20px;
+          line-height: 24.38px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+          }
+          .process_card2 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+          }
+          .process_card3 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+          }
+          .process_card4 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 40px;
+          justify-content: center;
+          gap: 20px;
+          width: 400px;
+          height: 470px;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+          }
+          h2 {
+            color: #000;
+          }
+          p {
+            color: #000;
+          }
+
+          button {
+            font-size: 16px;
+            padding: 25px 70px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 298px;
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 250px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 19.5px;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 36px;
+          line-height: 43.88px;
+        }
+        p {
+          width: 100%;
+          height: 100%;
+          font-size: 20px;
+          line-height: 24.38px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+          }
+          .process_card2 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+          }
+          .process_card3 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+          }
+          .process_card4 {
+            gap: 25px;
+            width: 300px;
+            height: 300px;
+            margin-left: 50px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 40px;
+          justify-content: center;
+          gap: 20px;
+          width: 400px;
+          height: 470px;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+          }
+          h2 {
+            color: #000;
+          }
+          p {
+            color: #000;
+          }
+
+          button {
+            font-size: 16px;
+            padding: 25px 70px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 85%;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 32px;
+          line-height: 43.88px;
+        }
+        p {
+          width: 100%;
+          height: 100%;
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 25px;
+            width: 250px;
+            height: 250px;
+            margin-left: -50px;
+          }
+          .process_card2 {
+            gap: 25px;
+            width: 250px;
+            height: 250px;
+            margin-left: 50px;
+          }
+          .process_card3 {
+            gap: 25px;
+            width: 250px;
+            height: 250px;
+            margin-left: -50px;
+          }
+          .process_card4 {
+            gap: 25px;
+            width: 250px;
+            height: 250px;
+            margin-left: 50px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 30px;
+          justify-content: center;
+          gap: 20px;
+          width: 70%;
+          height: 100%;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+          }
+          h2 {
+            color: #000;
+          }
+          p {
+            color: #000;
+          }
+
+          button {
+            font-size: 16px;
+            padding: 0px;
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 12px;
+        line-height: 16px;
+        width: 85%;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 30px;
+          line-height: 43px;
+        }
+        p {
+          width: 100%;
+          height: 100%;
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 15px;
+            width: 230px;
+            height: 230px;
+            margin-left: -30px;
+          }
+          .process_card2 {
+            gap: 15px;
+            width: 230px;
+            height: 230px;
+            margin-left: 30px;
+          }
+          .process_card3 {
+            gap: 15px;
+            width: 230px;
+            height: 230px;
+            margin-left: -30px;
+          }
+          .process_card4 {
+            gap: 15px;
+            width: 230px;
+            height: 230px;
+            margin-left: 30px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 30px;
+          justify-content: center;
+          gap: 10px;
+          width: 70%;
+          height: 100%;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+            font-size: 30px;
+          }
+          h2 {
+            color: #000;
+            font-size: 16px;
+            line-height: 18px;
+          }
+          p {
+            color: #000;
+          }
+
+          button {
+            font-size: 16px;
+            padding: 0px;
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 36px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 19.5px;
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 12px;
+        line-height: 16px;
+        width: 85%;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 28px;
+          line-height: 43px;
+        }
+        p {
+          width: 100%;
+          height: 100%;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 10px;
+            width: 200px;
+            height: 200px;
+            margin-left: -30px;
+          }
+          .process_card2 {
+            gap: 10px;
+            width: 200px;
+            height: 200px;
+            margin-left: 30px;
+          }
+          .process_card3 {
+            gap: 10px;
+            width: 200px;
+            height: 200px;
+            margin-left: -30px;
+          }
+          .process_card4 {
+            gap: 10px;
+            width: 200px;
+            height: 200px;
+            margin-left: 30px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 30px;
+          justify-content: center;
+          gap: 10px;
+          width: 70%;
+          height: 100%;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+            font-size: 26px;
+          }
+          h2 {
+            color: #000;
+            font-size: 14px;
+            line-height: 15px;
+          }
+          p {
+            color: #000;
+            font-size: 12px;
+            line-height: 15px;
+          }
+
+          button {
+            font-size: 14px;
+            padding: 0px;
+            width: 100%;
+            height: 60px;
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  #Process {
+    padding: 50px;
+    padding-top: 100px;
+    .process {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 16px;
+        line-height: 16px;
+        width: 100%;
+      }
+
+      h3 {
+        font-size: 10px;
+        line-height: 12px;
+        width: 85%;
+      }
+
+      .process_text {
+        display: flex;
+        flex-direction: column;
+        h1 {
+          font-size: 26px;
+          line-height: 43px;
+        }
+        p {
+          width: 100%;
+          height: 100%;
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+      .process_block {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+
+        .process_box {
+          width: 90%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-wrap: none;
+          gap: 10px;
+          .process_card {
+            gap: 8px;
+            width: 160px;
+            height: 160px;
+            margin-left: -20px;
+          }
+          .process_card2 {
+            gap: 8px;
+            width: 160px;
+            height: 160px;
+            margin-left: 20px;
+          }
+          .process_card3 {
+            gap: 8px;
+            width: 160px;
+            height: 160px;
+            margin-left: -20px;
+          }
+          .process_card4 {
+            gap: 8px;
+            width: 160px;
+            height: 160px;
+            margin-left: 20px;
+          }
+        }
+        .process_box2 {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          padding: 30px;
+          justify-content: center;
+          gap: 10px;
+          width: 70%;
+          height: 100%;
+          border-radius: 10px;
+          background: #ffffff;
+          h1 {
+            color: #000;
+            font-size: 26px;
+          }
+          h2 {
+            color: #000;
+            font-size: 10px;
+            line-height: 10px;
+          }
+          p {
+            color: #000;
+            font-size: 12px;
+            line-height: 12px;
+          }
+
+          button {
+            font-size: 10px;
+            padding: 0px;
+            width: 100%;
+            height: 40px;
+            margin: 0 auto;
+          }
+        }
       }
     }
   }

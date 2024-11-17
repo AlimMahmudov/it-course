@@ -22,7 +22,7 @@ const Process = () => {
                   дополнительным материалам
                 </h3>
               </div>
-              <div className={scss.process_card}>
+              <div className={scss.process_card2}>
                 <h1>2</h1>
                 <h2>Своё расписание</h2>
                 <h3>
@@ -30,7 +30,7 @@ const Process = () => {
                   вас следующий урок
                 </h3>
               </div>
-              <div className={scss.process_card}>
+              <div className={scss.process_card3}>
                 <h1>3</h1>
                 <h2>Сообщество</h2>
                 <h3>
@@ -38,7 +38,7 @@ const Process = () => {
                   учениками в комментариях
                 </h3>
               </div>
-              <div className={scss.process_card}>
+              <div className={scss.process_card4}>
                 <h1>4</h1>
                 <h2>Доступ</h2>
                 <h3>
