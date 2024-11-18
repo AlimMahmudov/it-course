@@ -78,3 +78,295 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  #Faq {
+    .faq {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      .faq_text {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 24.38px;
+          text-align: left;
+        }
+        h1 {
+          font-family: Montserrat;
+          font-size: 36px;
+          font-weight: 700;
+          line-height: 43.88px;
+          text-align: left;
+        }
+      }
+
+      .accordion {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+
+        .accordionItem {
+          border-bottom: 1px solid #2a2f3c;
+
+          .accordionHeader {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px 0;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-align: start;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &:hover {
+              color: #3498db;
+            }
+
+            .icon {
+              font-size: 16px;
+              color: #3498db;
+              transition: transform 0.3s;
+            }
+          }
+
+          .accordionContent {
+            p {
+              padding: 0 0 15px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #Faq {
+    .faq {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      .faq_text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 24.38px;
+          text-align: left;
+        }
+        h1 {
+          font-family: Montserrat;
+          font-size: 30px;
+          font-weight: 700;
+          line-height: 43.88px;
+          text-align: left;
+        }
+      }
+
+      .accordion {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+
+        .accordionItem {
+          border-bottom: 1px solid #2a2f3c;
+
+          .accordionHeader {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px 0;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-align: start;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &:hover {
+              color: #3498db;
+            }
+
+            .icon {
+              font-size: 16px;
+              color: #3498db;
+              transition: transform 0.3s;
+            }
+          }
+
+          .accordionContent {
+            p {
+              padding: 0 0 15px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #Faq {
+    .faq {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      .faq_text {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 24.38px;
+          text-align: left;
+        }
+        h1 {
+          font-family: Montserrat;
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 43.88px;
+          text-align: left;
+        }
+      }
+
+      .accordion {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+
+        .accordionItem {
+          border-bottom: 1px solid #2a2f3c;
+
+          .accordionHeader {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px 0;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-align: start;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &:hover {
+              color: #3498db;
+            }
+
+            .icon {
+              font-size: 16px;
+              color: #3498db;
+              transition: transform 0.3s;
+            }
+          }
+
+          .accordionContent {
+            p {
+              padding: 0 0 15px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  #Faq {
+    .faq {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      .faq_text {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        p {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 24.38px;
+          text-align: left;
+        }
+        h1 {
+          font-family: Montserrat;
+          font-size: 22px;
+          font-weight: 700;
+          line-height: 25px;
+          text-align: left;
+        }
+      }
+
+      .accordion {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        width: 90%;
+
+        .accordionItem {
+          border-bottom: 1px solid #2a2f3c;
+
+          .accordionHeader {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 15px 0;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-align: start;
+            justify-content: space-between;
+            cursor: pointer;
+
+            &:hover {
+              color: #3498db;
+            }
+
+            .icon {
+              font-size: 16px;
+              color: #3498db;
+              transition: transform 0.3s;
+            }
+          }
+
+          .accordionContent {
+            p {
+              padding: 0 0 15px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

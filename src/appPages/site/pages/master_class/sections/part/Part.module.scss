@@ -79,3 +79,344 @@
     }
   }
 }
+
+@media (max-width: 1000px) {
+  #Part {
+    .part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 50px;
+      h1 {
+        font-size: 36px;
+        line-height: 43.88px;
+        width: 80%;
+      }
+      p {
+        display: none;
+      }
+
+      h2 {
+        font-size: 20px;
+        line-height: 24.38px;
+        width: 80%;
+      }
+
+      h3 {
+        font-size: 20px;
+        line-height: 24.38px;
+      }
+
+      h4 {
+        font-size: 20px;
+        line-height: 24.38px;
+      }
+
+      .part_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .part_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 50px;
+          padding: 20px;
+
+          button {
+            width: 50%;
+            padding: 20px 10px;
+          }
+        }
+        .aboutmaster_box2 {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+          gap: 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  #Part {
+    .part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      h1 {
+        font-size: 32px;
+        line-height: 36px;
+        width: 80%;
+      }
+      p {
+        display: none;
+      }
+
+      h2 {
+        font-size: 20px;
+        line-height: 24px;
+        width: 80%;
+      }
+
+      h3 {
+        font-size: 20px;
+        line-height: 24.38px;
+      }
+
+      h4 {
+        font-size: 20px;
+        line-height: 24.38px;
+      }
+
+      .part_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .part_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          padding: 20px;
+
+          button {
+            width: 50%;
+            padding: 20px 10px;
+          }
+        }
+        .aboutmaster_box2 {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #Part {
+    .part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      h1 {
+        font-size: 26px;
+        line-height: 36px;
+        width: 80%;
+      }
+      p {
+        display: none;
+      }
+
+      h2 {
+        font-size: 18px;
+        line-height: 24px;
+        width: 80%;
+      }
+
+      h3 {
+        font-size: 20px;
+        line-height: 18px;
+      }
+
+      h4 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      .part_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .part_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          padding: 20px;
+
+          button {
+            width: 50%;
+            padding: 10px 10px;
+          }
+        }
+        .aboutmaster_box2 {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #Part {
+    .part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      h1 {
+        font-size: 24px;
+        line-height: 36px;
+        width: 80%;
+      }
+      p {
+        display: none;
+      }
+
+      h2 {
+        font-size: 14px;
+        line-height: 24px;
+        width: 80%;
+      }
+
+      h3 {
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      h4 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      .part_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .part_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          padding: 20px;
+
+          button {
+            width: 50%;
+            padding: 10px 10px;
+          }
+        }
+        .aboutmaster_box2 {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  #Part {
+    .part {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      h1 {
+        font-size: 20px;
+        line-height: 25px;
+        width: 80%;
+      }
+      p {
+        display: none;
+      }
+
+      h2 {
+        font-size: 14px;
+        line-height: 20px;
+        width: 80%;
+      }
+
+      h3 {
+        font-size: 12px;
+        line-height: 18px;
+      }
+
+      h4 {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .part_text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .part_block {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          padding: 20px;
+
+          button {
+            width: 50%;
+            padding: 10px 10px;
+          }
+        }
+        .aboutmaster_box2 {
+          width: 250px;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+        }
+      }
+    }
+  }
+}

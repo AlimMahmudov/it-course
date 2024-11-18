@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import { useLanguageStore } from "@/shared/stores/Language";
+// import scss from "./Master.module.scss";
 import scss from "./MasterClasses.module.scss";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 
 const asim = [
   {
@@ -12,13 +13,15 @@ const asim = [
 ];
 
 const MasterClasses = () => {
+  const { translate } = useLanguageStore();
   const router = useRouter();
+
   return (
-    <div id={scss.MasterClasses}>
+    <div id={scss.Master}>
       <div className="container">
-        <div className={scss.masterclasses}>
-          <div className={scss.masterclasses_text}>
-            <h1>Мастер классы</h1>
+        <div className={scss.master}>
+          <div className={scss.master_text}>
+            <h1>{translate("Мастер-класстары", "Мастер-классы")}</h1>
           </div>
           <div className={scss.master_block}>
             {Array.from({ length: 6 }).map((_, index) => (
