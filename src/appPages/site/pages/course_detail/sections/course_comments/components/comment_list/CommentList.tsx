@@ -3,7 +3,6 @@ import styles from './CommentList.module.scss'
 import { formatCommentDate } from '@/shared/utils/formatting'
 import SendComment from '../send_comment/SendComment'
 import clsx from 'clsx'
-import Link from 'next/link'
 
 type TProps = {
 	comments: ModuleTypes.MaterialComment[]
@@ -76,13 +75,13 @@ const CommentList: React.FC<TProps> = ({ comments, material_id }) => {
 						</div>
 						<p className={styles.content}>
 							{' '}
-							<Link
+							<button
 								onClick={() => setScrollComment(comment?.reply_to)}
-								href={`#${comment?.reply_to}`}
+								// href={`#${comment?.reply_to}`}
 								className={styles.id}
 							>
 								{comment?.reply_info?.id}
-							</Link>{' '}
+							</button>{' '}
 							{comment.content}
 						</p>
 

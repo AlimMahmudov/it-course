@@ -56,8 +56,9 @@
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 19.5px;
-	a {
+	.id {
 		color: rgba(3, 71, 129, 1);
+		font-size: 16px;
 		&:hover {
 			text-decoration: underline;
 		}
