@@ -19,9 +19,20 @@ const api = index.injectEndpoints({
 				body: arg.body
 			}),
 			invalidatesTags: ['comments']
+		}),
+		deleteComment: build.mutation<{ message: string }, { comment_id: string }>({
+			query: arg => ({
+				url: `/material/comments/${arg.comment_id}`,
+				method: 'DELETE'
+			}),
+			invalidatesTags: ['comments', 'auth']
 		})
 	}),
 	overrideExisting: true
 })
 
-export const { useGetMaterialCommentsQuery,useSendCommentMutation } = api
+export const {
+	useGetMaterialCommentsQuery,
+	useSendCommentMutation,
+	useDeleteCommentMutation
+} = api

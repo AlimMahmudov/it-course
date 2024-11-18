@@ -5,7 +5,7 @@ namespace ModuleTypes {
 		updated_at: string
 		content: string
 		sender_id: string
-		sender_info: { profile_pic: string; fullname: string; id: string }
+		sender_info: { profile_pic: string; fullname: string }
 		reply_info?: { id: string }
 		material_id: string
 		reply_to?: string
