@@ -119,12 +119,12 @@ html {
 	}
 
 	&.v2 {
-		border-bottom-color: #ef272c;
+		border-bottom-color: rgba(3, 71, 129, 1);
 	}
 
 	&.small {
-		width: 20px;
-		height: 20px;
+		width: 15px;
+		height: 15px;
 		border-width: 3px;
 	}
 }

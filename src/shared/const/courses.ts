@@ -227,7 +227,7 @@ export const courses = [
 		price: 65,
 		duration: {
 			modules: 6,
-			materials: 80
+			materials: 75
 		},
 		course_about: {
 			descriptions: [

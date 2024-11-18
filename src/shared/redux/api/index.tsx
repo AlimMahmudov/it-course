@@ -32,6 +32,6 @@ export const api = createApi({
 	reducerPath: 'api',
 	refetchOnFocus: true,
 	refetchOnReconnect: false,
-	tagTypes: ['auth'],
+	tagTypes: ['auth', 'comments'],
 	endpoints: () => ({})
 })

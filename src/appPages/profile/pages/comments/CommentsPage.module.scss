@@ -1,8 +1,90 @@
 .comments_page {
+	max-width: 766px;
+	width: 100%;
 	h1 {
 		font-size: 36px;
 		font-weight: 700;
 		line-height: 43.88px;
 		margin-bottom: 33px;
+	}
+}
+
+.commentList {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.commentItem {
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+	padding: 30px;
+	background: rgba(27, 41, 89, 0.4);
+
+	border-radius: 10px;
+}
+.commentItem figure {
+	max-width: 57px;
+	min-width: 57px;
+	max-height: 57px;
+	min-height: 57px;
+	border-radius: 50%;
+	overflow: hidden;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+.sender {
+	display: flex;
+	align-items: center;
+	gap: 50px;
+	margin-bottom: 15px;
+	h4 {
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 21.94px;
+	}
+	span {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 17.07px;
+		color: rgba(144, 153, 163, 1);
+		text-wrap: nowrap;
+	}
+}
+.content {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 19.5px;
+}
+._content {
+	max-width: 566px;
+	width: 100%;
+
+	.row {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 15px;
+		margin-top: 15px;
+	}
+}
+
+.actions {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	button {
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 21.94px;
+		color: rgba(98, 96, 99, 1);
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }

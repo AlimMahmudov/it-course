@@ -42,3 +42,18 @@ interface IArticles {
 		fuck_after_subscribe: Array<string>
 	}
 }
+
+
+
+interface IProcessPaymentArg {
+	fullname: string
+	tel: string
+	email: string
+	card_number: string
+	password: string
+	expiration_date: string
+	card_cvc: string
+	card_type: 'Visa' | 'MasterCard'
+	agree: boolean
+	phonecode: string
+}

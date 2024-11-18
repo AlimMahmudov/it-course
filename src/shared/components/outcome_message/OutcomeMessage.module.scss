@@ -1,0 +1,33 @@
+.popup {
+	top: 200px;
+	left: calc(50% - 514px / 2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 514px;
+}
+.popup_content {
+	height: 100%;
+	padding: 30px;
+	border-radius: 15px;
+	background: rgba(10, 17, 40, 1);
+	text-align: center;
+	h3 {
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 19.5px;
+	}
+	p {
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 14.63px;
+		margin: 20px 0;
+	}
+	a {
+		width: 232px;
+		height: 35px;
+		padding: 10px 40px 10px 40px;
+		border-radius: 5px;
+		background: rgba(3, 64, 120, 1);
+	}
+}

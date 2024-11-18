@@ -15,15 +15,25 @@ const ProfileSidebar: React.FC<TProps> = ({ user }) => {
 	return (
 		<aside className={styles.aside}>
 			<figure className={styles.profile_pic}>
-				{/* @ts-ignore */}
-				<img
-					src={user?.profile_pic}
-					alt={`${user?.fullname} | Profile Picture`}
-				/>
+				{user?.profile_pic ? (
+					<>
+						{/* @ts-ignore */}
+						<img
+							src={user?.profile_pic}
+							alt={`${user?.fullname} | Profile Picture`}
+						/>
+					</>
+				) : (
+					<div className={styles.profile_placeholder}>
+						{/* @ts-ignore */}
+						<img src='/images/profile_pic_placeholder.svg' alt='Profile picture placeholder' />
+					
+					</div>
+				)}
 				<button>Добавить фото</button>
 			</figure>
 			<ul className={styles.menu_items}>
-				{menu_items.map((item,index) => {
+				{menu_items.map((item, index) => {
 					const isActive = pathname == item.href
 					return (
 						<li key={`${item.href}-${index}`} className={styles.menu_item}>
@@ -31,7 +41,10 @@ const ProfileSidebar: React.FC<TProps> = ({ user }) => {
 								className={clsx(isActive && styles['active'])}
 								href={item.href}
 							>
-								<span>{item.icon}{}</span>
+								<span>
+									{item.icon}
+									{}
+								</span>
 								<span>{item.title.ru}</span>
 							</Link>
 						</li>

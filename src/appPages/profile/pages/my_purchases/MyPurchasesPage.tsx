@@ -5,7 +5,7 @@ import React, { useCallback, useState } from 'react'
 import styles from './MyPurchasesPage.module.scss'
 
 const MyPurchasesPage: React.FC = () => {
-	const { data, isLoading, isError, error } = useGetMeInfoQuery('my_purchases')
+	const { data, isLoading, isError } = useGetMeInfoQuery('my_purchases')
 	const [isModalOpen, setIsModalOpen] = useState(false)
 	const [selectedPurchase, setSelectedPurchase] = useState<any>(null)
 
@@ -21,20 +21,24 @@ const MyPurchasesPage: React.FC = () => {
 		setIsModalOpen(false)
 		setSelectedPurchase(null)
 	}, [setIsModalOpen, setSelectedPurchase])
-
+	if (isError) {
+		return (
+			<div className='container'>
+				<span>Данные отсутствуют или произошла ошибка.</span>
+			</div>
+		)
+	}
 	return (
 		<div className={styles.my_purchases_page}>
 			{isLoading ? (
-				<span>Загрузка...</span>
-			) : isError || !data || data.length === 0 ? (
-				<span className={styles.error}>
-					Данные отсутствуют или произошла ошибка.
-				</span>
+				<div className='centered-container none'>
+					<span className='loader v2'></span>
+				</div>
 			) : (
 				<>
 					<h1 className={styles.title}>Мои покупки</h1>
-					{data.length === 0 ? (
-						<p className={styles.no_purchases}>У вас нет покупок.</p>
+					{!data || data.length === 0 ? (
+						<span>У вас нет покупок.</span>
 					) : (
 						<table className={styles.purchases_table}>
 							<thead>
@@ -54,7 +58,7 @@ const MyPurchasesPage: React.FC = () => {
 											{new Date(purchase.purchase_date).toLocaleDateString()} г
 										</td>
 										<td>{purchase.description}</td>
-										<td>{purchase.price} ₽</td>
+										<td>{purchase.price} $</td>
 									</tr>
 								))}
 							</tbody>
@@ -80,6 +84,16 @@ const MyPurchasesPage: React.FC = () => {
 						<p>
 							<strong>Описание:</strong> {selectedPurchase.description}
 						</p>
+						{selectedPurchase.title_type == 'course' && (
+							<p>
+								<strong>Курс:</strong> {selectedPurchase.title}
+							</p>
+						)}
+						{selectedPurchase.title_type == 'plan' && (
+							<p>
+								<strong>План:</strong> {selectedPurchase.title}
+							</p>
+						)}
 						<p>
 							<strong>Цена:</strong> {selectedPurchase.price} $
 						</p>

@@ -1,4 +1,6 @@
 .personal_page {
+	width: 100%;
+
 	h1 {
 		font-size: 36px;
 		font-weight: 700;
@@ -8,7 +10,7 @@
 	.form {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 		gap: 20px;
 		.input_block {
 			display: flex;

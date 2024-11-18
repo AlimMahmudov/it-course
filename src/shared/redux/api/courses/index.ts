@@ -24,6 +24,16 @@ const api = index.injectEndpoints({
 				}`,
 				method: 'GET'
 			})
+		}),
+		courseRegister: build.mutation<
+			{ message: string },
+			{ course_id: string; dto: IProcessPaymentArg }
+		>({
+			query: arg => ({
+				url: `/course/${arg.course_id}/register`,
+				method: 'POST',
+				body: arg.dto
+			})
 		})
 	}),
 	overrideExisting: true
@@ -32,5 +42,6 @@ const api = index.injectEndpoints({
 export const {
 	useGetCoursesQuery,
 	useGetCourseByIdQuery,
-	useGetCourseModulesQuery
+	useGetCourseModulesQuery,
+	useCourseRegisterMutation
 } = api
