@@ -11,13 +11,23 @@ const breadcrumbs = [
 const CourseRegisterPage: React.FC = () => {
 	const searchParams = useSearchParams()
 	const course_id = searchParams.get('course_id')
-	const { data: findCourse } = useGetCourseByIdQuery({
+	const {
+		data: course,
+		isLoading,
+		isError
+	} = useGetCourseByIdQuery({
 		course_id: String(course_id)
 	})
-	return (
+	return isLoading ? (
+		<div className='centered-container none'>
+			<span className='loader v2'></span>
+		</div>
+	) : isError || !course ? (
+		<span>Данные отсутствуют или произошла ошибка.</span>
+	) : (
 		<>
 			<Breadcrumbs items={breadcrumbs} />
-			<Register course={findCourse} />
+			<Register course={course} />
 		</>
 	)
 }

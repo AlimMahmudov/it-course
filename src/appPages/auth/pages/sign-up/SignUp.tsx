@@ -23,8 +23,8 @@ const schema = z.object({
 	profile_pic: z.string().nonempty({ message: 'Фото профиля обязательно' }),
 	birthdate: z
 		.string()
-		.nonempty('Дата рождения обязательна')
-		.regex(/^\d{4}-\d{2}-\d{2}$/, 'Дата рождения обязательна'),
+		.regex(/^\d{4}-\d{2}-\d{2}$/, 'Дата рождения обязательна')
+		.optional(),
 	country: z.string().nonempty('Страна обязательна'),
 	city: z.string().nonempty('Город обязателен'),
 	occupation: z.string().nonempty('Профессия обязательна'),
@@ -174,7 +174,7 @@ const SignUp = () => {
 									)}
 								</div>
 								<div className={'for_inp'}>
-									<label>Дата рождения*</label>
+									<label>Дата рождения</label>
 									<DateSelect onDateChange={handleDateChange} />
 									{errors.birthdate && (
 										<span className={'error'}>{errors.birthdate.message}</span>

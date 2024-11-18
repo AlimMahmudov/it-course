@@ -1,10 +1,6 @@
 namespace UserTypes {
-	type info_key =
-		| 'comments'
-		| 'my_purchases'
-		| 'subscriptions'
-		| 'payment_cards'
-	type purchases_key = 'master_classes' | 'courses' | 'subscriptions'
+	type info_key = 'comments' | 'my_purchases' | 'plans' | 'payment_cards'
+	type purchases_key = 'master_classes' | 'courses' | 'plans'
 
 	interface UserProgress {
 		id: string

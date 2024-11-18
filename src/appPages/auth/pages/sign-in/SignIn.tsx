@@ -25,10 +25,6 @@ const SignIn = () => {
 		reset
 	} = useForm<SigninType>({
 		resolver: zodResolver(signinSchema),
-		defaultValues: {
-			password: 'Islam-2007',
-			email: 'islam.janybekov.007@gmail.com'
-		}
 	})
 	const [login, { error }] = useLoginMutation()
 	const { translate } = useLanguageStore()

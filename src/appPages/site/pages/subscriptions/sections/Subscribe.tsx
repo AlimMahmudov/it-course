@@ -1,10 +1,17 @@
 'use client'
-import { useGetSubscriptionsQuery } from '@/shared/redux/api/subscriptions'
+import { useGetPlansQuery } from '@/shared/redux/api/plans'
 import Link from 'next/link'
 import scss from './Subscribe.module.scss'
 
 const Subscribe = () => {
-	const { data, isLoading, isError } = useGetSubscriptionsQuery()
+	const { data, isLoading, isError } = useGetPlansQuery()
+	if (isError) {
+		return (
+			<div className='container'>
+				<span>Данные отсутствуют или произошла ошибка.</span>
+			</div>
+		)
+	}
 	return (
 		<div id={scss.Subscribe}>
 			<div className='container'>
@@ -14,11 +21,11 @@ const Subscribe = () => {
 					</div>
 
 					{isLoading ? (
-						<span>Загрузка...</span>
-					) : isError || !data || data.length === 0 ? (
-						<span>
-							Данные отсутствуют или произошла ошибка.
-						</span>
+						<div className='centered-container none'>
+							<span className='loader v2'></span>
+						</div>
+					) : !data || data.length === 0 ? (
+						<span>Данные отсутствуют.</span>
 					) : (
 						<div className={scss.block}>
 							{data.map(subscription => (
@@ -32,29 +39,27 @@ const Subscribe = () => {
 												: 'Ежегодно'}
 										</span>
 										<ul>
-											{subscription.subscription_benefits.map(
-												(benefit, idx) => (
-													<li key={`${idx}`}>
-														<svg
-															width='18'
-															height='19'
-															viewBox='0 0 18 19'
-															fill='none'
-															xmlns='http://www.w3.org/2000/svg'
-														>
-															<path
-																d='M15.1875 5.41309L7.3125 13.322L3.375 9.36755'
-																stroke='black'
-																strokeWidth='1.5'
-																strokeLinecap='round'
-																strokeLinejoin='round'
-															/>
-														</svg>
+											{subscription.benefits.map((benefit, idx) => (
+												<li key={`${idx}`}>
+													<svg
+														width='18'
+														height='19'
+														viewBox='0 0 18 19'
+														fill='none'
+														xmlns='http://www.w3.org/2000/svg'
+													>
+														<path
+															d='M15.1875 5.41309L7.3125 13.322L3.375 9.36755'
+															stroke='black'
+															strokeWidth='1.5'
+															strokeLinecap='round'
+															strokeLinejoin='round'
+														/>
+													</svg>
 
-														{benefit}
-													</li>
-												)
-											)}
+													{benefit}
+												</li>
+											))}
 										</ul>
 									</div>
 									<Link

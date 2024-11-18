@@ -1,6 +1,8 @@
 import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseInfo.module.scss'
+import Link from 'next/link'
+import { useRouter } from 'next-nprogress-bar'
 interface IBeforePurchaseProps {
 	course: CoursesTypes.Course
 	isBy?: boolean
@@ -11,14 +13,23 @@ const CourseInfo: React.FC<IBeforePurchaseProps> = memo(
 		const materialsCompleted = purchased_course?.completed_materials.length || 0
 		const materialsAll = course.duration.materials || 1
 		const progress = (materialsCompleted / materialsAll) * 100
-
+		const router = useRouter()
 		return (
 			<section className={styles.course_info}>
 				<Animate className={`${styles['container']} container`}>
 					<div className={styles['left']}>
 						<h4>{course.title}</h4>
 						<p>{course.description}</p>
-						{!isBy && <button>Купить курс за {course.price} $</button>}
+						{!isBy && (
+							<button
+								className={styles.by}
+								onClick={() =>
+									router.push(`/course_register?course_id=${course.id}`)
+								}
+							>
+								Купить курс за {course.price} $
+							</button>
+						)}
 					</div>
 					{!isBy && (
 						<div className={styles['right']}>

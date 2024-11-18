@@ -10,8 +10,11 @@ const LogOutButton: React.FC = () => {
 	const [mutate, { error }] = useLogoutMutation()
 	const router = useRouter()
 	const confirmCallback = useCallback(async () => {
-		const { data,  } = await mutate()
-		if (data?.message) {
+		const { data,error  } = await mutate()
+		if (data?.message || error) {
+			localStorage.removeItem('refreshToken')
+			localStorage.removeItem('accessToken')
+			localStorage.removeItem('retry')
 			router.push('/')
 		}
 	}, [router, mutate])

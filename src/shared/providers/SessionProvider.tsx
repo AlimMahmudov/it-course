@@ -8,9 +8,10 @@ import { useRefreshMutation } from '../redux/api/auth'
 interface SessionProviderProps {
 	children: ReactNode
 }
+const privateRoutes: string[] = ['/profile/*']
 
 export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
-	const { status, isLoading, error } = useGetMeQuery()
+	const { status, isLoading, error, data } = useGetMeQuery()
 	const [mutate] = useRefreshMutation()
 	const pathname = usePathname()
 	const router = useRouter()
@@ -28,26 +29,15 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 	const handleNavigation = useCallback(() => {
 		if (isLoading) return
 		refresh()
-		switch (pathname) {
-			case '/auth/signin':
-			case '/auth/signup':
-			case '/':
-				if (status === 'fulfilled') {
-					router.push('/')
-				}
-				break
-			case '/profile/personal':
-			case '/profile/payment_cards':
-			case '/profile/subscriptions':
-			case '/profile/comments':
-			case '/profile/my_purchases':
-			case '/':
-				if (status === 'rejected') {
-					router.push('/auth/signin')
-				}
-				break
-			default:
-				break
+		const isAuthenticated = !!data
+		const isPrivateRoute = privateRoutes.some(path => pathname.match(path))
+
+		if (!isAuthenticated && isPrivateRoute) {
+			router.push(`/auth/signin?from=${pathname}`)
+		}
+
+		if (isAuthenticated && pathname.includes('auth')) {
+			router.push(`/`)
 		}
 	}, [pathname, router, status, isLoading])
 

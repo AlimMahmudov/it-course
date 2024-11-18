@@ -4,6 +4,7 @@ import React, { useCallback, useState } from 'react'
 import CourseComments from '../../sections/course_comments/CourseComments'
 import CourseInfo from '../../sections/course_info/CourseInfo'
 import CourseMaterials from '../../sections/course_materials/CourseMaterials'
+import { useLocalStorage } from 'usehooks-ts'
 interface IAfterPurchaseProps {
 	course: CoursesTypes.Course
 }
@@ -12,7 +13,10 @@ const AfterPurchase: React.FC<IAfterPurchaseProps> = ({ course }) => {
 		type: 'course',
 		course_id: course.id
 	})
-	const [active, setActive] = useState({ module: '', material: '' })
+	const [active, setActive] = useLocalStorage('active', {
+		module: '',
+		material: ''
+	})
 	const toggleModule = useCallback(
 		(key: keyof typeof active, id: string) => {
 			setActive(p => ({
@@ -24,7 +28,9 @@ const AfterPurchase: React.FC<IAfterPurchaseProps> = ({ course }) => {
 	)
 
 	return isLoading ? (
-		<span>Загрузка...</span>
+		<div className='centered-container none'>
+			<span className='loader v2'></span>
+		</div>
 	) : isError || !data ? (
 		<span>Данные отсутствуют или произошла ошибка.</span>
 	) : (

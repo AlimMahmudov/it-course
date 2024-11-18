@@ -71,7 +71,9 @@ const PersonalPage: React.FC = () => {
 	)
 
 	return state && state?.isLoading ? (
-		<span>Загрузка...</span>
+		<div className='centered-container none'>
+			<span className='loader v2'></span>
+		</div>
 	) : (
 		<div className={styles.personal_page}>
 			<h1>Личные данные</h1>

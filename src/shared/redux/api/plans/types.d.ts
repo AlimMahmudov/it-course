@@ -1,9 +1,9 @@
-namespace SubscriptionsTypes {
-	interface Subscription {
+namespace PlansTypes {
+	interface Plan {
 		name: string
 		duration: string
 		price: string
-		subscription_benefits: string[]
+		benefits: string[]
 		access_to_course_id: string | null
 		id: string
 		is_active: boolean

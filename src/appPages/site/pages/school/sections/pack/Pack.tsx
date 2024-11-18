@@ -1,13 +1,19 @@
 'use client'
-import { useGetSubscriptionsQuery } from '@/shared/redux/api/subscriptions'
+import { useGetPlansQuery } from '@/shared/redux/api/plans'
 import { useLanguageStore } from '@/shared/stores/Language'
 import Link from 'next/link'
 import scss from './Pack.module.scss'
 
 const Pack = () => {
 	const { translate } = useLanguageStore()
-	const { data, isLoading, isError } = useGetSubscriptionsQuery()
-
+	const { data, isLoading, isError } = useGetPlansQuery()
+	if (isError) {
+		return (
+			<div className='container'>
+				<span>Данные отсутствуют или произошла ошибка.</span>
+			</div>
+		)
+	}
 	return (
 		<div id={scss.Pack}>
 			<div className='container'>
@@ -22,9 +28,11 @@ const Pack = () => {
 						</p>
 					</div>
 					{isLoading ? (
-						<span>Загрузка...</span>
-					) : isError || !data || data.length === 0 ? (
-						<span>Данные отсутствуют или произошла ошибка.</span>
+						<div className='centered-container none'>
+							<span className='loader v2'></span>
+						</div>
+					) : !data || data.length === 0 ? (
+						<span>Данные отсутствуют.</span>
 					) : (
 						<div className={scss.pack_block}>
 							{data.map(subscription => (
@@ -32,15 +40,12 @@ const Pack = () => {
 									<div className={scss.box1}>
 										<h2>{subscription.name}</h2>
 										<ul>
-											{subscription.subscription_benefits.map(
-												(benefit, idx) => (
-													<li key={`benefit-${idx}`}>
-														{benefit}
-														{subscription.subscription_benefits.length !==
-															idx + 1 && ','}
-													</li>
-												)
-											)}
+											{subscription.benefits.map((benefit, idx) => (
+												<li key={`benefit-${idx}`}>
+													{benefit}
+													{subscription.benefits.length !== idx + 1 && ','}
+												</li>
+											))}
 										</ul>
 									</div>
 									<div className={scss.box2}>

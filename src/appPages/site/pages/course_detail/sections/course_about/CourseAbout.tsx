@@ -1,6 +1,7 @@
 import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseAbout.module.scss'
+import Link from 'next/link'
 interface ICourseAboutProps {
 	course: CoursesTypes.Course
 }
@@ -49,8 +50,15 @@ const CourseAbout: React.FC<ICourseAboutProps> = memo(({ course }) => {
 				</div>
 				<h4 className={`${styles['outcomes']}`}>{course.results.outcomes}</h4>
 				<div className={`${styles.actions}`}>
-					<button className={styles.by}>Купить курс</button>
-					<a href="#programs" className={styles.inview}>Смотреть программу</a>
+					<Link
+						href={`/course_register?course_id=${course.id}`}
+						className={styles.by}
+					>
+						Купить курс
+					</Link>
+					<a href='#programs' className={styles.inview}>
+						Смотреть программу
+					</a>
 				</div>
 			</Animate>
 		</section>

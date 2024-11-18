@@ -57,22 +57,16 @@ const AddCardForm: React.FC<TProps> = ({ onClose, open }) => {
 		[setValue]
 	)
 
-	const [mutate, { error }] = useAddPaymentCardMutation()
+	const [mutate, { error,isLoading, data }] = useAddPaymentCardMutation()
 	const response = error as unknown as { data: any }
 	async function onSubmit({ card_cvc, ...data }: CardFormData) {
 		const { data: response } = await mutate(data)
 		if (response?.message) {
-			alert(response?.message)
 			onClose()
 		}
 	}
 	return (
-		<Popup
-			open={open}
-			blur_bg
-			className={styles.popup}
-			onClose={onClose}
-		>
+		<Popup open={open} blur_bg className={styles.popup} onClose={onClose}>
 			<form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
 				<h3>Данные карты </h3>
 				<div className={styles.form_group}>
@@ -149,8 +143,13 @@ const AddCardForm: React.FC<TProps> = ({ onClose, open }) => {
 					<p className={styles.error_message}>{response.data.detail}</p>
 				)}
 				<button type='submit' className={styles.submit_btn}>
-					Добавить карту
+					{isLoading ? (
+						<span className='loader small v2'></span>
+					) : (
+						'Добавить карту'
+					)}
 				</button>
+				{data && data.message && <p>{data.message}</p>}
 			</form>
 		</Popup>
 	)

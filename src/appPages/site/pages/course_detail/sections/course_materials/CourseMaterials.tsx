@@ -2,7 +2,7 @@
 import Animate from '@/shared/components/animate/Animate'
 import { useGetCourseModulesQuery } from '@/shared/redux/api/courses'
 import clsx from 'clsx'
-import React from 'react'
+import React, { useState } from 'react'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import styles from './CourseMaterials.module.scss'
 
@@ -21,41 +21,48 @@ const CourseMaterials: React.FC<ICourseMaterialsProps> = ({
 	active,
 	toggleModule
 }) => {
-	const { data, isError,  isLoading } = useGetCourseModulesQuery({
+	const [activeVideoUrl, setActiveVideoUrl] = useState('')
+	const { data, isError, isLoading } = useGetCourseModulesQuery({
 		course_id: course.id,
 		materials_returned: true
 	})
-
+	if (isError) {
+		return (
+			<div className='container'>
+				<span>Данные отсутствуют или произошла ошибка.</span>
+			</div>
+		)
+	}
 	return (
 		<section className={styles.course_materials}>
 			<div className={clsx(styles.container, 'container')}>
 				<h3>ПРОГРАММА КУРСА</h3>
 				<div className={styles['row']}>
 					<div className={styles.left}>
-						{active.material && active.module ? (
-							<figure>
+						{active.material && active.module && activeVideoUrl ? (
+							<Animate className={styles.iframe_block} key={active.material}>
 								<iframe
 									width='100%'
 									height='100%'
-									src='https://www.youtube.com/embed/zAPTohhQpg0?si=MjjPNfnL1MnjipoG'
+									src={activeVideoUrl}
 									title='YouTube video player'
 									frameBorder='0'
 									allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
 									referrerPolicy='strict-origin-when-cross-origin'
 									allowFullScreen
 								></iframe>
-							</figure>
+							</Animate>
 						) : (
-							<div className={styles.no_selected}>No Selected Material</div>
+							<div className={styles.no_selected}>Нет выбранного материала</div>
 						)}
 					</div>
 					<div className={styles['modules']}>
 						{isLoading ? (
-							<span>Загрузка...</span>
-						) : isError || !data || data.length === 0 ? (
-							<span className={styles.error}>
-								Данные отсутствуют или произошла ошибка.
-							</span>
+							<div className='centered-container none'>
+								<span className='loader v2'></span>
+							</div>
+						) : !data || data.length === 0 ? (
+							<span className={styles.error}>Данные отсутствуют.</span>
 						) : (
 							data?.map((module, idx) => {
 								const materials = module.materials || []
@@ -103,9 +110,10 @@ const CourseMaterials: React.FC<ICourseMaterialsProps> = ({
 																[styles.isCompleted]: isCompleted,
 																[styles.active]: active.material === material.id
 															})}
-															onClick={() =>
+															onClick={() => {
 																toggleModule('material', material.id)
-															}
+																setActiveVideoUrl(material.video_url)
+															}}
 														>
 															<figure>
 																{/* @ts-ignore */}
@@ -113,7 +121,7 @@ const CourseMaterials: React.FC<ICourseMaterialsProps> = ({
 															</figure>
 															<div className={styles['material_col']}>
 																<h4>
-																	{idx + 1} {material.title}
+																	<span>{idx + 1}</span> {material.title}
 																</h4>
 																<span>Урок</span>
 															</div>

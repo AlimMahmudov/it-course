@@ -1,104 +1,59 @@
 .choice_payment_cards {
 	position: absolute;
 	top: 0;
-	right: -50%;
-	background: #fff;
+	left: 102%;
 	z-index: 100;
-	border-radius: 12px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	color: #333;
-	width: 280px;
-	padding: 10px;
+	color: #f5f5f5;
+	border-radius: 6px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+	width: 240px;
 
-	.title {
-		text-align: center;
-		font-size: 18px;
-		font-weight: 600;
-		color: #333;
-		margin-bottom: 20px;
-	}
-
-	.loading {
-		display: block;
-		text-align: center;
-		color: #007bff;
-		font-size: 18px;
-	}
-
+	.loading,
 	.error {
 		text-align: center;
-		color: red;
-		font-size: 16px;
+		font-size: 12px;
 	}
 }
 
 .cards {
-	display: grid;
-	gap: 20px;
-	grid-template-columns: 1fr;
-	max-height: 400px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	max-height: 200px;
 }
 
 .card {
-	border: 1px solid #e0e0e0;
-	border-radius: 8px;
-	padding: 16px;
-	background-color: #fafafa;
-	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-	transition: all 0.3s ease;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-
-	&.active {
-		border-color: #007bff;
-		background-color: #f0faff;
-		box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
-	}
+	border: 1px solid #1c2942;
+	border-radius: 4px;
+	padding: 8px;
+	background: #142039;
+	transition: all 0.25s;
 
 	&:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		background: #1c2942;
 	}
-}
-
-.card_info {
-	margin-bottom: 15px;
 }
 
 .card_type {
-	font-weight: bold;
-	font-size: 16px;
-	color: #555;
+	font-size: 12px;
+	color: #bfc8e0;
 	text-transform: uppercase;
+	margin-bottom: 2px;
 }
 
 .card_number {
-	font-size: 18px;
-	margin: 10px 0;
-	color: #333;
-	letter-spacing: 1px;
-}
-
-.expiration_date {
 	font-size: 14px;
-	color: #777;
+	color: #f5f5f5;
 }
 
 .select_button {
-	padding: 12px;
-	background-color: #007bff;
+	padding: 2px 6px;
+	background: #0a84ff;
 	color: #fff;
-	border-radius: 6px;
-	font-size: 16px;
-	width: 100%;
-	transition: background-color 0.3s ease;
+	border-radius: 3px;
+	font-size: 12px;
 
 	&:hover {
-		background-color: #0056b3;
-	}
-
-	&:focus {
-		outline: none;
+		background: #0066cc;
 	}
 }
