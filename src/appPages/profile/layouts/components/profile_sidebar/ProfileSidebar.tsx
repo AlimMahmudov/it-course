@@ -26,6 +26,22 @@ const ProfileSidebar: React.FC<TProps> = ({ user }) => {
 			>
 				<span>{findMenuItem?.icon}</span>
 				<span>{findMenuItem?.title.ru}</span>
+				<span className={styles.icon}>
+					<svg
+						width='23'
+						height='14'
+						viewBox='0 0 23 14'
+						fill='none'
+						xmlns='http://www.w3.org/2000/svg'
+					>
+						<path
+							d='M1 1L10.625 12L21.625 1'
+							stroke='black'
+							strokeWidth='1.5'
+							strokeLinecap='round'
+						/>
+					</svg>
+				</span>
 			</button>
 			<div className={clsx(styles.block, open && styles.active)}>
 				<figure className={styles.profile_pic}>
