@@ -15,7 +15,7 @@ const CardList: React.FC<TProps> = ({ list }) => {
 			{list.length == 0 ? (
 				<p data-empty>У вас нету платежных карт</p>
 			) : (
-				[...list,...list].map((card,idx) => {
+				list.map((card,idx) => {
 					return (
 						<div key={card.id + idx} className={styles.card}>
 							<h4>

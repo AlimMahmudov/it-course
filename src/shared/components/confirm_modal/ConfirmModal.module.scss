@@ -17,7 +17,7 @@
 		background: rgba(10, 17, 40, 1);
 		padding: 21px;
 		@media (max-width: 530px) {
-			width: calc(var(--viewport-width) - 60px);
+			width: calc(var(--viewport-width) - 50px);
 		}
 		p {
 			text-align: center;

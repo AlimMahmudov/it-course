@@ -75,8 +75,8 @@
 	justify-content: center;
 	align-items: center;
 	@media (max-width: 530px) {
-		width: calc(var(--viewport-width) - 60px);
-		left: calc(50% - calc(var(--viewport-width) - 60px) / 2);
+		width: calc(var(--viewport-width) - 50px);
+		left: calc(50% - calc(var(--viewport-width) - 50px) / 2);
 	}
 }
 
