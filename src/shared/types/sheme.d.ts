@@ -55,5 +55,5 @@ interface IProcessPaymentArg {
 	card_cvc: string
 	card_type: 'Visa' | 'MasterCard'
 	agree: boolean
-	phonecode: string
+	phone_code: string | number
 }

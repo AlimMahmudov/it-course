@@ -5,19 +5,6 @@ import React from 'react'
 import OtherSubscriptions from './components/other_subscriptions/OtherSubscriptions'
 import styles from './SubscriptionsPage.module.scss'
 
-type TUserPlans = {
-	id: string
-	plan_id: string
-	start_date: string
-	end_date: string
-	plan_name: string
-	payment_card_number: string
-	subscription_status: string
-	subscription_is_active: boolean
-	subscription_price: string
-	rate: string
-}
-
 const SubscriptionsPage: React.FC = () => {
 	const { data, isLoading, isError } = useGetMeInfoQuery('plans')
 	if (isError) {
@@ -40,7 +27,7 @@ const SubscriptionsPage: React.FC = () => {
 						{!data || data.length === 0 ? (
 							<span>У вас нет активных подписок.</span>
 						) : (
-							(data as TUserPlans[]).map(plan => (
+							(data as UserTypes.TUserPlans[]).map(plan => (
 								<div key={plan.id} className={styles.plan}>
 									<div className={styles.row}>
 										<span>Тариф :</span>
@@ -68,7 +55,9 @@ const SubscriptionsPage: React.FC = () => {
 							))
 						)}
 					</div>
-					<OtherSubscriptions active_subscription_id={data && data[0] ? data[0].plan_id: ''} />
+					<OtherSubscriptions
+						active_subscription_id={data && data[0] ? data[0].plan_id : ''}
+					/>
 				</>
 			)}
 		</div>

@@ -61,7 +61,7 @@ const ForgotPassPage = () => {
 							{translate('Жөнөтүү', 'Отправить')}
 						</button>
 						{response?.data && response?.data?.detail && (
-							<p>{response.data.detail}</p>
+							<p className={'detail'}>{response.data.detail}</p>
 						)}
 						<p className={'cn'}>
 							Вспомнили или нашли свой пароль ?{' '}

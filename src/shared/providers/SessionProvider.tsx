@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation'
 import { FC, ReactNode, useCallback, useEffect } from 'react'
 import { useGetMeQuery } from '../redux/api/user'
 import { useRefreshMutation } from '../redux/api/auth'
+import Preloader from '../components/preloader/Preloader'
 
 interface SessionProviderProps {
 	children: ReactNode
@@ -45,5 +46,5 @@ export const SessionProvider: FC<SessionProviderProps> = ({ children }) => {
 		handleNavigation()
 	}, [handleNavigation, isLoading])
 
-	return <>{isLoading ? <span>Загрузка...</span> : children}</>
+	return <>{isLoading ? <Preloader/> : children}</>
 }

@@ -89,7 +89,7 @@ const ResetPassPage = () => {
 							{translate('өзгөртүү', 'Изменить')}
 						</button>
 						{response?.data && response?.data?.detail && (
-							<p>{response.data.detail}</p>
+							<p className={'detail'}>{response.data.detail}</p>
 						)}
 					</form>
 				</div>

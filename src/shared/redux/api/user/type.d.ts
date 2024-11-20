@@ -1,6 +1,18 @@
 namespace UserTypes {
 	type info_key = 'comments' | 'my_purchases' | 'plans' | 'payment_cards'
 	type purchases_key = 'master_classes' | 'courses' | 'plans'
+	type TUserPlans = {
+		id: string
+		plan_id: string
+		start_date: string
+		end_date: string
+		plan_name: string
+		payment_card_number: string
+		subscription_status: string
+		subscription_is_active: boolean
+		subscription_price: string
+		rate: string
+	}
 
 	interface UserProgress {
 		id: string
@@ -26,7 +38,6 @@ namespace UserTypes {
 		is_active: boolean
 	}
 	interface User {
-		purchased_courses: IPuschasedCourse[]
 		id: string
 		fullname: string
 		email: string
@@ -35,7 +46,7 @@ namespace UserTypes {
 		birthdate: string
 		country: string
 		city: string
-		gender: 'main' | 'woman'
+		gender: 'man' | 'woman'
 		occupation: string
 		created_at: string
 		updated_at: string

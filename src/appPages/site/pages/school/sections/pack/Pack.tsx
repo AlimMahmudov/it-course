@@ -3,10 +3,17 @@ import { useGetPlansQuery } from '@/shared/redux/api/plans'
 import { useLanguageStore } from '@/shared/stores/Language'
 import Link from 'next/link'
 import scss from './Pack.module.scss'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 
 const Pack = () => {
 	const { translate } = useLanguageStore()
 	const { data, isLoading, isError } = useGetPlansQuery()
+	const { data: plans } = useGetMeInfoQuery('plans')
+	const findPlan = data?.find(
+		plan =>
+			Array.isArray(plans) &&
+			plan.id == (plans as UserTypes.TUserPlans[])[0].plan_id
+	)
 	if (isError) {
 		return (
 			<div className='container'>
@@ -57,15 +64,26 @@ const Pack = () => {
 										</p>
 									</div>
 									<div className={scss.pack_buttons}>
-										<Link
-											href={`/subscribe_now?plan_id=${subscription.id}`}
-											className={scss.btn1}
-										>
-											{translate(
-												'Жазылууну рәсмилештирүү',
-												'Оформить подписку'
-											)}
-										</Link>
+										{findPlan && findPlan.id === subscription.id ? (
+											<>
+												<Link
+													href={`/profile/subscriptions`}
+													className={scss.btn1}
+												>
+													{translate('Сатып алынган', 'Уже приобретено')}
+												</Link>
+											</>
+										) : (
+											<Link
+												href={`/subscribe_now?plan_id=${subscription.id}`}
+												className={scss.btn1}
+											>
+												{translate(
+													'Жазылууну рәсмилештирүү',
+													'Оформить подписку'
+												)}
+											</Link>
+										)}
 										<button className={scss.btn2}>
 											{translate('Көбүрөөк маалымат', 'Подробнее')}
 										</button>

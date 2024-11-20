@@ -1,6 +1,7 @@
 'use client'
 import DateSelect from '@/shared/components/date_select/DateSelect'
 import useCSC from '@/shared/hooks/useCSC'
+import { useUpdateUserMutation } from '@/shared/redux/api/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import clsx from 'clsx'
 import React, { useCallback } from 'react'
@@ -22,20 +23,30 @@ const schema = z.object({
 		.regex(/^\d{4}-\d{2}-\d{2}$/, 'Дата рождения обязательна'),
 	country: z.string().nonempty('Страна обязательна'),
 	city: z.string().nonempty('Город обязателен'),
-	occupation: z.string().nonempty('Профессия обязательна'),
+	occupation: z.string().nonempty('Род деятельности обязательна'),
 	gender: z.enum(['мужской', 'женский']),
 	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
+
 type TSchema = z.infer<typeof schema>
+
+const genderMap: Record<string, string> = {
+	man: 'мужской',
+	woman: 'женский',
+	мужской: 'man',
+	женский: 'woman'
+}
 
 const PersonalPage: React.FC = () => {
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
+	const [update, { isLoading: updateLoading }] = useUpdateUserMutation()
 
 	const methods = useForm<TSchema>({
 		resolver: zodResolver(schema),
 		defaultValues: {
 			...state?.data,
-			phonecode: state?.data.phone_code
+			phonecode: state?.data.phone_code,
+			gender: genderMap[state?.data.gender]
 		}
 	})
 	const {
@@ -49,13 +60,21 @@ const PersonalPage: React.FC = () => {
 	const { countries, cities, changeCountryISO } = useCSC({ state })
 
 	const handleDateChange = useCallback(
-		(date: string) => {
-			setValue('birthdate', date)
-		},
+		(date: string) => setValue('birthdate', date),
 		[setValue]
 	)
 
-	const onSubmit: SubmitHandler<TSchema> = async data => {}
+	const onSubmit: SubmitHandler<TSchema> = async data => {
+		const gender = data.gender == 'женский' ? 'woman' : 'man'
+		try {
+			const { message } = await update({ ...data, gender }).unwrap()
+			if (message) {
+				alert(message)
+			}
+		} catch (err) {
+			console.log(err)
+		}
+	}
 
 	const handleCountryChange = useCallback(
 		(e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -67,7 +86,7 @@ const PersonalPage: React.FC = () => {
 			setValue('phonecode', String(selectedCountryPhoneCode))
 			changeCountryISO(String(selectedCountryIso))
 		},
-		[String]
+		[setValue, changeCountryISO]
 	)
 
 	return state && state?.isLoading ? (
@@ -228,7 +247,17 @@ const PersonalPage: React.FC = () => {
 						</div>
 					</div>
 				</div>
-				{/* <button type='submit'>Обновить</button> */}
+				{/* <button
+					disabled={updateLoading}
+					type='submit'
+					className='btn_secondary large'
+				>
+					{updateLoading ? (
+						<span className='loader small v2'></span>
+					) : (
+						'Сохранить'
+					)}
+				</button> */}
 			</form>
 		</div>
 	)

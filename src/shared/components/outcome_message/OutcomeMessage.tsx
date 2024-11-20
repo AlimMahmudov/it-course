@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './OutcomeMessage.module.scss'
-import { useToggle } from 'usehooks-ts'
 import { Popup } from '../popup/Popup'
 import Link from 'next/link'
 type TProps = {

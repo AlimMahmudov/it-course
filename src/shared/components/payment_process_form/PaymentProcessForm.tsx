@@ -31,7 +31,10 @@ const register_schema = z.object({
 	agree: z.boolean().refine(val => val === true, {
 		message: 'Необходимо согласие с условиями'
 	}),
-	phonecode: z.string().min(1, 'Код телефона обязателен')
+	phone_code: z.union([
+		z.string().min(1, 'Код телефона обязателен'),
+		z.number().min(1, 'Код телефона обязателен')
+	])
 })
 
 type TPaymentProcessFormProps = {
@@ -61,8 +64,7 @@ const PaymentProcessForm: React.FC<TPaymentProcessFormProps> = ({
 	} = useForm<TProcessPaymentSchema>({
 		resolver: zodResolver(register_schema),
 		defaultValues: {
-			...state?.data,
-			phonecode: state?.data?.phone_code
+			...state?.data
 		}
 	})
 
@@ -109,7 +111,7 @@ const PaymentProcessForm: React.FC<TPaymentProcessFormProps> = ({
 						<label htmlFor='tel'>Номер телефона*</label>
 						<div className={'row'}>
 							<label htmlFor='tel' className={'tel-c'}>
-								+{watch('phonecode') ?? '000'}
+								+{watch('phone_code') ?? '000'}
 							</label>
 							<input type='text' {...register('tel')} />
 						</div>

@@ -2,9 +2,16 @@
 import { useGetPlansQuery } from '@/shared/redux/api/plans'
 import Link from 'next/link'
 import scss from './Subscribe.module.scss'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 
 const Subscribe = () => {
 	const { data, isLoading, isError } = useGetPlansQuery()
+	const { data: plans } = useGetMeInfoQuery('plans')
+	const findPlan = data?.find(
+		plan =>
+			Array.isArray(plans) &&
+			plan.id == (plans as UserTypes.TUserPlans[])[0].plan_id
+	)
 	if (isError) {
 		return (
 			<div className='container'>
@@ -62,12 +69,23 @@ const Subscribe = () => {
 											))}
 										</ul>
 									</div>
-									<Link
-										href={`/subscribe_now?plan_id=${subscription.id}`}
-										className={scss.btn}
-									>
-										Оформить подписку
-									</Link>
+									{findPlan && findPlan.id === subscription.id ? (
+										<>
+											<Link
+												href={`/profile/subscriptions`}
+												className={scss.btn}
+											>
+												Уже приобретено
+											</Link>
+										</>
+									) : (
+										<Link
+											href={`/subscribe_now?plan_id=${subscription.id}`}
+											className={scss.btn}
+										>
+											Оформить подписку
+										</Link>
+									)}
 								</div>
 							))}
 						</div>

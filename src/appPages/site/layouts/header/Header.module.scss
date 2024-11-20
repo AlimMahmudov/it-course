@@ -6,7 +6,12 @@
   background: rgba(31, 31, 31, 0);
   backdrop-filter: blur(10px);
   color: white;
-  z-index: 1000;
+  z-index: 90;
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
   .content {
     display: flex;

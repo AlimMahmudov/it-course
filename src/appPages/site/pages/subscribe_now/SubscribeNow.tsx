@@ -10,12 +10,19 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import React, { useCallback, useState } from 'react'
 import styles from './SubscribeNow.module.scss'
+import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 const breadcrumbs = [
 	{ label: 'Главная', href: '/' },
 	{ label: 'Оформить подписку', href: '#this' }
 ]
 const SubscribeNow: React.FC = () => {
 	const { data, isLoading, isError } = useGetPlansQuery()
+	const { data: plans } = useGetMeInfoQuery('plans')
+	const findSubscriptionPlan = data?.find(
+		plan =>
+			Array.isArray(plans) &&
+			plan.id == (plans as UserTypes.TUserPlans[])[0].plan_id
+	)
 	const [open, setOpen] = useState(false)
 
 	const searchParams = useSearchParams()
@@ -64,36 +71,46 @@ const SubscribeNow: React.FC = () => {
 					<div className='centered-container none'>Несоответсие данных</div>
 				) : (
 					<div className={styles.cn}>
-						<h1>{findPlan.name}</h1>
-						<PaymentProcessForm
-							error_message={error_message}
-							onSubmit={onsubmit}
-							price={findPlan.price}
-						/>
+						{String(findSubscriptionPlan?.id) === String(findPlan.id) ? (
+							<div className='centered-container none'>
+								<p>Вы уже подписаны на план "{findPlan.name}"!</p>
+							</div>
+						) : (
+							<>
+								<h1>{findPlan.name}</h1>
+								<PaymentProcessForm
+									error_message={error_message}
+									onSubmit={onsubmit}
+									price={findPlan.price}
+								/>
+							</>
+						)}
 						<div className={styles['info']}>
-							<ul>
-								{findPlan.benefits.map((benefit, idx) => (
-									<li key={`${idx}`}>
-										<svg
-											width='18'
-											height='19'
-											viewBox='0 0 18 19'
-											fill='none'
-											xmlns='http://www.w3.org/2000/svg'
-										>
-											<path
-												d='M15.1875 5.41309L7.3125 13.322L3.375 9.36755'
-												stroke='#fff'
-												strokeWidth='1.5'
-												strokeLinecap='round'
-												strokeLinejoin='round'
-											/>
-										</svg>
+							{!findSubscriptionPlan && (
+								<ul>
+									{findPlan.benefits.map((benefit, idx) => (
+										<li key={`${idx}`}>
+											<svg
+												width='18'
+												height='19'
+												viewBox='0 0 18 19'
+												fill='none'
+												xmlns='http://www.w3.org/2000/svg'
+											>
+												<path
+													d='M15.1875 5.41309L7.3125 13.322L3.375 9.36755'
+													stroke='#fff'
+													strokeWidth='1.5'
+													strokeLinecap='round'
+													strokeLinejoin='round'
+												/>
+											</svg>
 
-										{benefit}
-									</li>
-								))}
-							</ul>
+											{benefit}
+										</li>
+									))}
+								</ul>
+							)}
 							<h4>Другие варианты подписки: </h4>
 							<ul className={styles.other_plans}>
 								{data

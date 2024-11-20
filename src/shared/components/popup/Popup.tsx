@@ -13,6 +13,7 @@ interface IPopupProps extends IChildren {
 	keyover?: boolean
 	blur_bg?: boolean
 	close_btn?: boolean
+	isOutsideClick?:boolean
 }
 
 export const Popup: React.FC<IPopupProps> = memo(props => {
@@ -23,7 +24,8 @@ export const Popup: React.FC<IPopupProps> = memo(props => {
 		open,
 		keyover,
 		blur_bg = false,
-		close_btn = true
+		close_btn = true,
+		isOutsideClick = false
 	} = props
 
 	useEventListener('keydown', (event: KeyboardEvent) => {
@@ -76,6 +78,7 @@ export const Popup: React.FC<IPopupProps> = memo(props => {
 					exit={{ opacity: 0, y: 10 }}
 					transition={{ duration: 0.2, ease: 'backIn' }}
 					className={clsx('popup', className)}
+					ref={isOutsideClick?ref:null}
 				>
 					<div data-popupbody className='popup_body'>
 						{close_btn && (

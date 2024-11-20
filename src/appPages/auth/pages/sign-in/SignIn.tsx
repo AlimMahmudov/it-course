@@ -28,7 +28,7 @@ const SignIn = () => {
 	})
 	const [login, { error }] = useLoginMutation()
 	const { translate } = useLanguageStore()
-	const response = error as unknown as { data: any }
+	const e = error as unknown as { data: any }
 
 	const onSubmit: SubmitHandler<SigninType> = async data => {
 		const { data: responseData } = await login(data)
@@ -46,6 +46,9 @@ const SignIn = () => {
 			}
 		}
 	}
+
+	const error_message =
+		e?.data && e.data?.detail ? e.data?.detail : JSON.stringify(e?.data)
 
 	return (
 		<div id={'BaseForm'}>
@@ -89,7 +92,7 @@ const SignIn = () => {
 								{translate('Сырсөзүңүздү унутуп калдыңыз', 'Забыли пароль')}
 							</button>
 						</div>
-						{response?.data?.detail && <p>{response.data.detail}</p>}
+						{error_message && <p className={'detail'}>{error_message}</p>}
 						<p className={'cn'}>
 							Нет учетной записи ?{' '}
 							<Link href='/auth/signup'>Зарегестрироватся</Link>

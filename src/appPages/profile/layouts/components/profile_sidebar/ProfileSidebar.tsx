@@ -6,6 +6,8 @@ import React, { useMemo } from 'react'
 import styles from './ProfileSidebar.module.scss'
 import LogOutButton from './ui/LogOutButton'
 import { useToggle } from 'usehooks-ts'
+import UpdateProfilePic from '@/shared/components/update_profile_pic/UpdateProfilePic'
+import { profile_picture } from '@/shared/config/api'
 
 type TProps = {
 	user: null | UserTypes.User
@@ -49,7 +51,11 @@ const ProfileSidebar: React.FC<TProps> = ({ user }) => {
 						<>
 							{/* @ts-ignore */}
 							<img
-								src={user?.profile_pic}
+								src={
+									user?.profile_pic.includes('http')
+										? user.profile_pic
+										: profile_picture(user.profile_pic)
+								}
 								alt={`${user?.fullname} | Profile Picture`}
 							/>
 						</>
@@ -62,7 +68,7 @@ const ProfileSidebar: React.FC<TProps> = ({ user }) => {
 							/>
 						</div>
 					)}
-					<button>Добавить фото</button>
+					<UpdateProfilePic />
 				</figure>
 				<ul className={styles.menu_items}>
 					{menu_items.map((item, index) => {

@@ -64,7 +64,8 @@ const api = index.injectEndpoints({
 								? 'woman'
 								: value
 					}
-					formData.append(key, value)
+					if (key !== 'phonecode') formData.append(key, value)
+					else formData.append('phone_code', value)
 				})
 				return {
 					url: '/auth/register',

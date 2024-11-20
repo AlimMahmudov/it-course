@@ -1,87 +1,84 @@
 .burger_menu {
-  position: absolute;
-  top: 89px;
-  right: -300px;
-  width: 270px;
-  height: 270px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px 0 0 20px;
+	position: absolute;
+	top: 89px;
+	right: -300px;
+	width: 270px;
+	height: auto;
+	border-radius: 20px 0 0 20px;
 
-  background: rgb(41, 41, 92);
-  backdrop-filter: blur(10px);
-  // box-shadow: 0 0 10px rgba(0, 94, 235, 0.315), 0 0 20px rgb(0, 94, 235);
-  // border: solid rgb(0, 81, 255) 4px;
+		border: 1px solid #1c2942;
+	background-color: #0a1128;
 
-  transition: 0.5s;
-  color: white;
+	transition: 0.5s;
+	color: white;
 
-  &.active {
-    right: 0px;
-    padding: 20px;
-    color: white;
-  }
+	&.active {
+		right: 0px;
+		color: white;
+	}
 }
 
 .content {
-  color: white;
+	padding: 30px;
+	.nav {
+		color: white;
 
-  .nav {
-    color: white;
+		ul {
+			color: white;
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			align-items: center;
 
-    ul {
-      color: white;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
+			a {
+				text-decoration: none;
+				font-size: 20px;
+				color: white;
+				padding: 3px;
+			}
+		}
 
-      a {
-        text-decoration: none;
-        font-size: 20px;
-        color: white;
-      }
-    }
+		.buttons {
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
+			gap: 5px;
+			margin-top: 25px;
+			&.no_auth {
+				flex-direction: column;
+				align-items: center;
+				margin-top: 15px;
+			}
+			.profile {
+				width: 120px;
+				height: 40px;
+				color: #ffffff;
+				border-radius: 10px;
+				border: 2px solid #034078;
+			}
+			.notify {
+				width: 36px;
+				height: 36px;
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+				padding: 4px;
+			}
 
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      justify-content: start;
-      gap: 10px;
-      .profile {
-        width: 160px;
-        height: 40px;
-        color: #ffffff;
-        border-radius: 10px;
-        border: 2px solid #034078;
-        margin-left: 20px;
-      }
-      .notify {
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: start;
-        justify-content: start;
-        padding: 4px;
-      }
-
-      .subscribe {
-        padding: 16px 40px;
-        border-radius: 5px;
-        color: #ffffff;
-        background: #034078;
-        // margin-left: 30px;
-      }
-      .btn {
-        border-radius: 5px;
-        color: #ffffff;
-        background: none;
-        border: none;
-        font-size: 20px;
-        margin-top: 30px;
-      }
-    }
-  }
+			.subscribe {
+				padding: 16px 40px;
+				border-radius: 5px;
+				color: #ffffff;
+				background: #034078;
+			}
+			.btn {
+				border-radius: 5px;
+				color: #ffffff;
+				background: none;
+				border: none;
+				font-size: 20px;
+				padding: 4px;
+			}
+		}
+	}
 }

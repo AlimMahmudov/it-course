@@ -27,7 +27,7 @@ const schema = z.object({
 		.optional(),
 	country: z.string().nonempty('Страна обязательна'),
 	city: z.string().nonempty('Город обязателен'),
-	occupation: z.string().nonempty('Профессия обязательна'),
+	occupation: z.string().nonempty('Род деятельности обязательна'),
 	gender: z.enum(['мужской', 'женский']),
 	phonecode: z.string().min(1, 'Код телефона обязателен')
 })
@@ -47,8 +47,7 @@ const SignUp = () => {
 		register
 	} = methods
 	const [registration, { error }] = useRegisterMutation()
-	const response = error as unknown as { data: any }
-
+	const e = error as unknown as { data: any }
 	const { countries, cities, changeCountryISO, countryIso } = useCSC({})
 
 	const handleDateChange = useCallback(
@@ -86,7 +85,8 @@ const SignUp = () => {
 			}
 		}
 	}
-
+	const error_message =
+		e?.data && e.data?.detail ? e.data?.detail : JSON.stringify(e?.data)
 	return (
 		<div id={'BaseForm'}>
 			<div className='container'>
@@ -96,7 +96,7 @@ const SignUp = () => {
 					</Link>
 
 					<form onSubmit={handleSubmit(onSubmit)} className={'form'}>
-						<div className={'input_block'}>
+						<div className={'input_block auth'}>
 							<div className={'input_box'}>
 								<div className={'for_inp'}>
 									<label htmlFor='fullname'>ФИО*</label>
@@ -239,7 +239,7 @@ const SignUp = () => {
 						<button className={'sign_btn'} type='submit'>
 							Создать аккаунт
 						</button>
-						{response?.data?.detail && <p>{response.data.detail}</p>}
+						{error_message && <p className={'detail'}>{error_message}</p>}
 						<p className={'cn'}>
 							Уже есть учетный запис? <Link href='/auth/signin'>Войти</Link>
 						</p>

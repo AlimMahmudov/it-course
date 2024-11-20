@@ -26,6 +26,16 @@ const api = index.injectEndpoints({
 			},
 			providesTags: ['auth']
 		}),
+		updateUser: build.mutation<{ message: string }, Partial<UserTypes.User>>({
+			query(body) {
+				return {
+					url: `/user/update/`,
+					method: 'PATCH',
+					body
+				}
+			},
+			invalidatesTags: ['auth']
+		}),
 		getProgress: build.query<
 			UserTypes.UserProgress,
 			{
@@ -70,5 +80,6 @@ export const {
 	useGetMeInfoQuery,
 	useAddPaymentCardMutation,
 	useGetMyPurchasesQuery,
-	useGetProgressQuery
+	useGetProgressQuery,
+	useUpdateUserMutation
 } = api

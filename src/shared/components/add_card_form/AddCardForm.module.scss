@@ -3,7 +3,9 @@
 	border-radius: 8px;
 	top: 100px;
 	left: calc(50% - 500px / 2);
+	border: 1px solid #1c2942;
 	background-color: #0a1128;
+
 	@media (max-width: 530px) {
 		width: calc(var(--viewport-width) - 50px);
 		left: calc(50% - calc(var(--viewport-width) - 50px) / 2);

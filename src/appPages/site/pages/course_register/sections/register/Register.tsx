@@ -16,15 +16,12 @@ const Register: React.FC<TRegisterProps> = ({ course }) => {
 	const error_message =
 		e?.data && e.data?.detail ? e.data?.detail : JSON.stringify(e?.data)
 
-	const onsubmit = useCallback(
-		async (arg: IProcessPaymentArg) => {
-			const { data } = await mutate({ course_id: course?.id, dto: arg })
-			if (data && data.message) {
-				setOpen(true)
-			}
-		},
-		[mutate]
-	)
+	const onsubmit = async (arg: IProcessPaymentArg) => {
+		const { data } = await mutate({ course_id: course?.id, dto: arg })
+		if (data && data.message) {
+			setOpen(true)
+		}
+	}
 	if (!course) {
 		return <>Course not found</>
 	}
