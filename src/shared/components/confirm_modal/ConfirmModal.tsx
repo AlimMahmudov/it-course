@@ -36,8 +36,7 @@ const ConfirmModal: React.FC<TProps> = ({
 				</div>
 				{error && (
 					<p className={styles.error}>
-						{' '}
-						<></>
+						<>{error}</>
 					</p>
 				)}
 			</Animate>
