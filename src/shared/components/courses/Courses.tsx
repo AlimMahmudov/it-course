@@ -27,7 +27,7 @@ export const Courses: React.FC<{ max?: string }> = ({ max = "full" }) => {
           ?.map((course, idx) => {
             return (
               <Animate idx={idx} key={course.id} className={styles.course_item}>
-                <div>
+                <div className={styles.info}>
                   <h3>{course.title}</h3>
                   <p>{course.description}</p>
                 </div>

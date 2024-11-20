@@ -50,7 +50,7 @@ const PaymentProcessForm: React.FC<TPaymentProcessFormProps> = ({
 	const state = useSelector((s: any) => s?.api?.queries['getMe(undefined)'])
 	const [open, setOpen] = useQueryState(
 		'is_choise',
-		parseAsBoolean.withDefault(true)
+		parseAsBoolean.withDefault(false)
 	)
 	const {
 		register,

@@ -22,6 +22,7 @@ const OtherSubscriptions: React.FC<{ active_subscription_id: string }> = ({
 				styles.other_subscriptions
 			)}
 		>
+			<h3>Другие тарифы</h3>
 			{isLoading ? (
 				<div className='centered-container none'>
 					<span className='loader v2'></span>
@@ -35,8 +36,8 @@ const OtherSubscriptions: React.FC<{ active_subscription_id: string }> = ({
 						.map(subscription => (
 							<div key={subscription.id} className={styles.box}>
 								<div className={styles.box_text}>
-									<h3>{subscription.name}</h3>
-									<h1>{subscription.price} $</h1>
+									<h4>{subscription.name}</h4>
+									<h5>{subscription.price} $</h5>
 									<span>
 										{subscription.duration == 'month'
 											? 'Ежемесячно'

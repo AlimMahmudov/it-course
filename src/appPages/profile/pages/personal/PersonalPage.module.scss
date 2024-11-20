@@ -10,15 +10,9 @@
 		}
 	}
 
-	@media (max-width: 360px) {
+	@media (max-width: 960px) {
 		h1 {
-			font-size: 22px;
-			margin-bottom: 12px;
-		}
-	}
-	@media (max-width: 620px) {
-		h1 {
-			font-size: 26px;
+			display: none;
 		}
 	}
 	.form {

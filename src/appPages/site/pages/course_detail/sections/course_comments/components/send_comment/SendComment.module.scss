@@ -7,10 +7,18 @@
 	flex-direction: column;
 	gap: 15px;
 	margin-bottom: 20px;
+	@media (max-width: 950px) {
+		padding: 15px;
+	}
+	@media (max-width: 550px) {
+		padding: 10px;
+		max-width: 100%;
+	}
 
 	textarea {
 		background: rgba(27, 41, 89, 0.4);
-		width: 100%;
+		max-width: 100%;
+		min-width: 100%;
 		min-height: 136.14px;
 		max-height: 300px;
 		border-radius: 7.36px;
@@ -21,11 +29,16 @@
 		font-weight: 500;
 		line-height: 21.94px;
 		color: rgba(255, 255, 255, 1);
+		@media (max-width: 950px) {
+			padding: 10px;
+			font-size: 16px;
+		}
 	}
 	.actions {
 		display: flex;
 		align-items: center;
 		gap: 15px;
+		
 	}
 	.send {
 		width: min-content;
@@ -36,6 +49,12 @@
 		font-size: 14px;
 		font-weight: 500;
 		line-height: 17.07px;
+		@media (max-width: 950px) {
+			padding: 16.4px 48.19px;
+		}
+		@media (max-width: 550px) {
+			padding: 14.4px 38.19px;
+		}
 		span {
 			display: flex;
 			align-items: center;

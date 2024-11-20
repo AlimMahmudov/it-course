@@ -28,29 +28,20 @@
 		align-items: center;
 		max-width: 90%;
 		margin-top: 40px;
+		div[class='base_page'] h1 {
+			display: none;
+		}
 	}
 }
 
 @media (max-width: 700px) {
 	.profile_layout .container {
 		max-width: 95%;
-		div[class='base_page'] h1 {
-			font-size: 26px;
-		}
 	}
 }
 
 @media (max-width: 620px) and (min-width: 510px) {
 	.profile_layout .container {
 		max-width: 90%;
-	}
-}
-
-@media (max-width: 360px) {
-	.profile_layout .container div[class='base_page'] {
-		h1 {
-			font-size: 22px;
-			margin-bottom: 12px;
-		}
 	}
 }

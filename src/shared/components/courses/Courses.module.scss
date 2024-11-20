@@ -3,6 +3,10 @@
 	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 	justify-items: center;
 	gap: 25px;
+	@media (max-width: 600px) {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
 .course_item {
@@ -15,6 +19,14 @@
 	justify-content: space-between;
 	transition: all 0.25s;
 	will-change: transform;
+	@media (max-width: 800px) {
+		width: 70%;
+	}
+	@media (max-width: 600px) {
+		width: 100%;
+		padding: 15px;
+		height: 270px;
+	}
 	&:hover {
 		transform: scale(1.015) !important;
 	}

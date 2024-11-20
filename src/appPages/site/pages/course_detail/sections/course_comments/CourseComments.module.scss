@@ -5,11 +5,12 @@
 		font-weight: 700;
 		line-height: 43.88px;
 		margin-bottom: 50px;
+		@media (max-width: 550px) {
+			font-size: 30px;
+			margin-bottom: 20px;
+		}
 	}
 	.no_selected {
 		margin: 15px 0;
-	}
-	.comment_list {
-		
 	}
 }

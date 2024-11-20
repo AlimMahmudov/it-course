@@ -21,7 +21,7 @@ const AfterPurchase: React.FC<IAfterPurchaseProps> = ({ course }) => {
 		(key: keyof typeof active, id: string) => {
 			setActive(p => ({
 				...p,
-				[key]: id
+				[key]: p[key] == id ? '' : id
 			}))
 		},
 		[setActive]

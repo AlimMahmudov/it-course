@@ -1,7 +1,6 @@
 import Animate from '@/shared/components/animate/Animate'
 import React, { memo } from 'react'
 import styles from './CourseInfo.module.scss'
-import Link from 'next/link'
 import { useRouter } from 'next-nprogress-bar'
 interface IBeforePurchaseProps {
 	course: CoursesTypes.Course
