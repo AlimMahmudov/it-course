@@ -1,11 +1,23 @@
 .subscriptions_page {
 	width: 100%;
+
 	h1 {
 		font-size: 36px;
 		font-weight: 700;
 		line-height: 43.88px;
 		margin-bottom: 33px;
 	}
+	@media (max-width: 620px) {
+		h1 {
+			font-size: 26px;
+		}
+	}
+	@media (max-width: 360px) {
+		h1 {
+			font-size: 22px;
+		}
+	}
+
 	.plan_list {
 		display: flex;
 		width: 700px;
@@ -27,6 +39,17 @@
 				font-weight: 700;
 				line-height: 27px;
 			}
+		}
+	}
+}
+
+@media (max-width: 960px) {
+	.subscriptions_page {
+		.plan_list {
+			width: 100%;
+		}
+		h1 {
+			margin-bottom: 22px;
 		}
 	}
 }

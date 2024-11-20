@@ -1,8 +1,11 @@
 .aside {
-	width: 354px;
+	min-width: 354px;
 	height: 527px;
 	border-radius: 10px;
 	background: rgba(255, 255, 255, 1);
+	.toggleOpen {
+		display: none;
+	}
 	.profile_pic {
 		width: 100%;
 		align-items: center;
@@ -29,6 +32,7 @@
 	}
 	.menu_items {
 		list-style: none;
+		width: 100%;
 		button {
 			border-bottom: none !important;
 		}
@@ -38,12 +42,13 @@
 			align-items: center;
 			gap: 8px;
 			padding: 12px 58px;
-			width: 354.01px;
+			width: 100%;
 			border-bottom: 1px solid rgba(154, 154, 154, 1);
 			font-size: 16px;
 			font-weight: 500;
 			line-height: 19.5px;
 			color: rgba(0, 0, 0, 1);
+			text-wrap: nowrap;
 
 			&.active {
 				border-color: rgba(2, 114, 206, 1);
@@ -61,6 +66,87 @@
 				align-items: center;
 				justify-content: center;
 			}
+		}
+	}
+}
+
+@media (max-width: 1130px) {
+	.aside {
+		min-width: 300px;
+		height: auto;
+		padding-bottom: 20px;
+		.profile_pic {
+			padding: 25px 0;
+		}
+		.menu_items {
+			.menu_item button,
+			.menu_item a {
+				padding: 12px 28px;
+			}
+		}
+	}
+}
+
+@media (max-width: 960px) {
+	.aside {
+		min-width: 400px;
+		height: auto;
+		padding: 0;
+		position: relative;
+		.block {
+			position: absolute;
+			background: white;
+			z-index: 100;
+			width: 100%;
+			top: 105%;
+			border-radius: 10px;
+			visibility: hidden;
+			opacity: 0;
+			pointer-events: none;
+			transition: all 0.25s;
+			transform: translateY(5px);
+			&.active {
+				transform: translateY(0px);
+				visibility: visible;
+				opacity: 1;
+				pointer-events: all;
+			}
+		}
+
+		.menu_items {
+			.menu_item button,
+			.menu_item a {
+				padding: 12px 48px;
+			}
+		}
+		.toggleOpen {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			padding: 16px 58px;
+			width: 100%;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 19.5px;
+			color: rgba(0, 0, 0, 1);
+			text-wrap: nowrap;
+			span {
+				color: black;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+}
+
+@media (max-width: 440px) {
+	.aside {
+		min-width: auto;
+		width: 100%;
+		.toggleOpen {
+			min-width: 100%;
 		}
 	}
 }

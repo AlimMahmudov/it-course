@@ -22,6 +22,9 @@ a {
 body {
 	background: #0a1128;
 	font-weight: 500;
+	&::-webkit-scrollbar {
+		width: 0;
+	}
 }
 
 .container {
@@ -29,6 +32,9 @@ body {
 	width: 100%;
 	margin: 0 auto;
 	padding: 0 20px;
+	@media (max-width: 720px) {
+		padding: 0 10px;
+	}
 }
 
 button {
