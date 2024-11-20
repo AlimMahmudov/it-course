@@ -45,7 +45,7 @@ const CommentsPage: React.FC = () => {
 					confirm_callback={confirmCallback}
 					text='Вы уверены что хотите удалить этот комментарий?'
 					onClose={() => setDeleteComment(null)}
-					error={error as any}
+					error={JSON.stringify((error as any)?.data?.detail ?? error)}
 				/>
 			)}
 			{isLoading ? (
