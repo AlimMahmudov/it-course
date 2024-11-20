@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import styles from './CardList.module.scss'
 import XBG from '@/shared/assets/payment/xbg.svg'
 import Surge from '@/shared/assets/payment/surge.svg'
@@ -15,9 +15,9 @@ const CardList: React.FC<TProps> = ({ list }) => {
 			{list.length == 0 ? (
 				<p data-empty>У вас нету платежных карт</p>
 			) : (
-				list.map(card => {
+				[...list,...list].map((card,idx) => {
 					return (
-						<div key={card.id} className={styles.card}>
+						<div key={card.id + idx} className={styles.card}>
 							<h4>
 								{card.card_type === 'Visa'
 									? 'Visa Classic'

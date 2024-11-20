@@ -1,11 +1,24 @@
 .comments_page {
 	max-width: 766px;
 	width: 100%;
+
 	h1 {
 		font-size: 36px;
 		font-weight: 700;
 		line-height: 43.88px;
 		margin-bottom: 33px;
+		@media (max-width: 620px) {
+			font-size: 26px;
+		}
+		@media (max-width: 360px) {
+			font-size: 22px;
+		}
+	}
+	@media (max-width: 960px) {
+		max-width: 100%;
+		h1 {
+			margin-bottom: 22px;
+		}
 	}
 }
 
@@ -28,6 +41,9 @@
 	background: rgba(27, 41, 89, 0.4);
 
 	border-radius: 10px;
+	@media (max-width: 620px) {
+		padding: 15px;
+	}
 }
 .commentItem figure {
 	max-width: 57px;
@@ -41,16 +57,29 @@
 		height: 100%;
 		object-fit: cover;
 	}
+	@media (max-width: 620px) {
+		max-width: 50px;
+		min-width: 50px;
+		max-height: 50px;
+		min-height: 50px;
+	}
 }
 .sender {
 	display: flex;
 	align-items: center;
 	gap: 50px;
 	margin-bottom: 15px;
+	@media (max-width: 420px) {
+		gap: 5px;
+	}
 	h4 {
 		font-size: 18px;
 		font-weight: 600;
 		line-height: 21.94px;
+		text-wrap: nowrap;
+		@media (max-width: 620px) {
+			font-size: 1em;
+		}
 	}
 	span {
 		font-size: 14px;
@@ -58,12 +87,21 @@
 		line-height: 17.07px;
 		color: rgba(144, 153, 163, 1);
 		text-wrap: nowrap;
+		@media (max-width: 620px) {
+			font-size: 12px;
+		}
+	}
+	@media (max-width: 620px) {
+		margin-bottom: 10px;
 	}
 }
 .content {
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 19.5px;
+	@media (max-width: 620px) {
+		font-size: 14px;
+	}
 }
 ._content {
 	max-width: 566px;
@@ -83,6 +121,9 @@
 	display: flex;
 	align-items: center;
 	gap: 20px;
+	@media (max-width: 620px) {
+		margin-top: 10px;
+	}
 	button {
 		font-size: 16px;
 		font-weight: 400;
@@ -90,6 +131,9 @@
 		color: rgba(98, 96, 99, 1);
 		&:hover {
 			text-decoration: underline;
+		}
+		@media (max-width: 620px) {
+			font-size: 14px;
 		}
 	}
 }

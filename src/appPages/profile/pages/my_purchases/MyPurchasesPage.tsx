@@ -40,29 +40,32 @@ const MyPurchasesPage: React.FC = () => {
 					{!data || data.length === 0 ? (
 						<span>У вас нет покупок.</span>
 					) : (
-						<table className={styles.purchases_table}>
-							<thead>
-								<tr>
-									<th>Дата покупки</th>
-									<th>Описание</th>
-									<th>Цена</th>
-								</tr>
-							</thead>
-							<tbody>
-								{data.map(purchase => (
-									<tr
-										key={purchase.purchase_date}
-										onClick={() => handleRowClick(purchase)}
-									>
-										<td>
-											{new Date(purchase.purchase_date).toLocaleDateString()} г
-										</td>
-										<td>{purchase.description}</td>
-										<td>{purchase.price} $</td>
+						<div className={styles.table}>
+							<table className={styles.purchases_table}>
+								<thead>
+									<tr>
+										<th>Дата покупки</th>
+										<th>Описание</th>
+										<th>Цена</th>
 									</tr>
-								))}
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{data.map(purchase => (
+										<tr
+											key={purchase.purchase_date}
+											onClick={() => handleRowClick(purchase)}
+										>
+											<td>
+												{new Date(purchase.purchase_date).toLocaleDateString()}{' '}
+												г
+											</td>
+											<td>{purchase.description}</td>
+											<td>{purchase.price} $</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
 					)}
 				</>
 			)}

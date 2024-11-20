@@ -9,12 +9,16 @@
 	display: flex;
 	justify-content: center;
 	padding-top: 200px;
+
 	.content {
 		width: 360px;
 		height: min-content;
 		border-radius: 15px;
 		background: rgba(10, 17, 40, 1);
 		padding: 21px;
+		@media (max-width: 530px) {
+			width: calc(var(--viewport-width) - 15px);
+		}
 		p {
 			text-align: center;
 			&.error {
@@ -26,6 +30,7 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
+			gap: 15px;
 			button {
 				width: 100%;
 				background: rgba(3, 64, 120, 1);

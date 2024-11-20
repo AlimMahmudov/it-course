@@ -15,3 +15,42 @@
 		}
 	}
 }
+
+@media (max-width: 1130px) {
+	.profile_layout .container {
+		gap: 25px;
+	}
+}
+
+@media (max-width: 960px) {
+	.profile_layout .container {
+		flex-direction: column;
+		align-items: center;
+		max-width: 90%;
+		margin-top: 40px;
+	}
+}
+
+@media (max-width: 700px) {
+	.profile_layout .container {
+		max-width: 100%;
+		div[class='base_page'] h1 {
+			font-size: 26px;
+		}
+	}
+}
+
+@media (max-width: 620px) and (min-width: 510px) {
+	.profile_layout .container {
+		max-width: 90%;
+	}
+}
+
+@media (max-width: 360px) {
+	.profile_layout .container div[class='base_page'] {
+		h1 {
+			font-size: 22px;
+			margin-bottom: 12px;
+		}
+	}
+}
