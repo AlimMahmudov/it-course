@@ -13,7 +13,6 @@ const HomePage = () => {
       <Subscribe />
       <Left />
       <Telegram />
-      ``
     </div>
   );
 };
