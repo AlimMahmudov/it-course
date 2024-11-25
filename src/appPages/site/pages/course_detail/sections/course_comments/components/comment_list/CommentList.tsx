@@ -3,6 +3,7 @@ import styles from './CommentList.module.scss'
 import { formatCommentDate } from '@/shared/utils/formatting'
 import SendComment from '../send_comment/SendComment'
 import clsx from 'clsx'
+import { profile_picture } from '@/shared/config/api'
 
 type TProps = {
 	comments: ModuleTypes.MaterialComment[]
@@ -54,7 +55,11 @@ const CommentList: React.FC<TProps> = ({ comments, material_id }) => {
 							<>
 								{/* @ts-ignore */}
 								<img
-									src={comment.sender_info?.profile_pic}
+             src={
+									comment.sender_info?.profile_pic.includes('http')
+										? comment.sender_info.profile_pic
+										: profile_picture(comment.sender_info.profile_pic)
+								}
 									alt={`${comment.sender_info?.fullname} | Profile Picture`}
 								/>
 							</>
