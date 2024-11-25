@@ -67,7 +67,6 @@ const CommentsPage: React.FC = () => {
 											<>
 												{/* @ts-ignore */}
 												<img
-													src={comment.sender_info?.profile_pic}
                    src={
 									       comment.sender_info?.profile_pic.includes('http')
 										          ? comment.sender_info.profile_pic
