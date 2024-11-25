@@ -5,6 +5,7 @@ import { useGetMeInfoQuery } from '@/shared/redux/api/user'
 import { formatCommentDate } from '@/shared/utils/formatting'
 import { useDeleteCommentMutation } from '@/shared/redux/api/modules'
 import ConfirmModal from '@/shared/components/confirm_modal/ConfirmModal'
+import { profile_picture } from '@/shared/config/api'
 
 type TComment = {
 	content: string
@@ -67,6 +68,11 @@ const CommentsPage: React.FC = () => {
 												{/* @ts-ignore */}
 												<img
 													src={comment.sender_info?.profile_pic}
+                   src={
+									       comment.sender_info?.profile_pic.includes('http')
+										          ? comment.sender_info.profile_pic
+										          : profile_picture(comment.sender_info.profile_pic)
+								       }
 													alt={`${comment.sender_info?.fullname} | Profile Picture`}
 												/>
 											</>
